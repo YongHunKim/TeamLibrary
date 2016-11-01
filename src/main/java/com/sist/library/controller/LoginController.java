@@ -28,6 +28,7 @@ public class LoginController {
 
 		return mav;
 	}
+	
 
 	@RequestMapping(value = "/login/join_ok.do")
 	public ModelAndView memberJoin(MemberVO vo) throws Exception {
