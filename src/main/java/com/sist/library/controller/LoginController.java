@@ -27,6 +27,7 @@ public class LoginController {
 		mav.addObject("jsp", "/WEB-INF/jsp/login/join.jsp");
 
 		return mav;
+		
 	}
 	
 
