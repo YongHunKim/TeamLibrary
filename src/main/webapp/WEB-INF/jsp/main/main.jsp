@@ -11,7 +11,7 @@
 	<div id="container">
 		<div id="inner">
 			<div id="header">
-				<h1>
+				<h1>   
 					<a href="/main/main.do"><div id="mainpage"><font color="black">SIST LIBRARY</font></div></a>
 				</h1>
 				<div align="right">
