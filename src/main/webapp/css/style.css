@@ -1,0 +1,381 @@
+@CHARSET "UTF-8";
+body {
+	background: #FFFFF6;
+	color: #666666;
+	font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	font-size: 10px;
+	line-height: 1.9em;
+	margin-bottom: 20px;
+}
+
+a {
+	color: #0AC7B3;
+}
+
+a:HOVER {
+	color: #000;
+	text-decoration: underline;
+}
+
+a:FOCUS {
+	outline: medium none;
+}
+
+h1 {
+	color: #000000;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 35px;
+}
+
+h2 {
+	color: #000000;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 27px;
+	font-weight: normal;
+	letter-spacing: 0;
+	margin: 0;
+	padding: 0 0 5px;
+}
+
+ul, ol {
+	margin: 0 0  35px 35px;
+}
+
+li {
+	padding-bottom: 5px;
+}
+
+#container {
+	background: #FFFFF6;
+	box-shadow: 0 1px 6px #685C4C;
+	margin: 0 auto;
+	padding: 0;
+	width: 100%;	
+	height:100%;
+}
+
+#inner {
+	margin: 0 auto;
+	padding: 0;
+	width: 960px;
+}
+
+#header {
+	margin: 10px auto 0;
+	padding: 10px 15px;
+}
+
+#header h1 a {
+	color: #FFFFFF;
+	font-size: 50px;
+	font-weight: normal;
+	letter-spacing: -3px;
+	text-decoration: none;
+}
+
+#header h2 {
+	color: #000000;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	letter-spacing: 0;
+	margin-top: 3px;
+	padding-left: 4px;
+}
+
+#nav {
+	background-color: #0AC7B3;
+	box-shadow: 0 1px 6px #685C4C;
+	height: 45px;
+	margin-bottom: 0;
+	margin-top: 10px;
+	width: 960px;
+}
+
+#nav ul {
+	height: 45px;
+	list-style: none outside none;
+	margin: 0;
+	padding: 0;
+}
+
+#nav ul li {
+	display: block;
+	float: left;
+	padding: 0;
+}
+
+#nav ul li a {
+	color: #FFFFFF;
+	display: block;
+	font-family: 'Lucida Grande','Lucida Sans Unicode',Geneva,Verdana,Sans-serif;
+	font-weight: bold;
+	padding: 15px 20px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+#nav ul li a:HOVER {
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+
+#banner{
+	margin:0 auto;
+}
+
+#slider-wrapper{
+	box-shadow: 0 0 3px #685C4C;
+	height:250px;
+}
+
+#slider{
+	background: url("images/loading.gif") no-repeat scroll 50% 50% transparent;
+	height:250px;
+	width:960px;
+	position:relative;
+}
+
+#slider img{
+	display: none;
+	left: 0;
+	position: absolute;
+	top: 0;
+}
+
+
+.nivoSlider{
+	position:relative;
+}
+
+.nivoSlider img{
+	left:0;
+	position: absolute;
+	top:0;
+}
+
+.welcome-bar{
+	background: #FFFFFF;
+	border-radius: 10px 10px 10px 10px;
+	box-shadow: 0 1px 6px #685C4C;
+	margin-top: 40px;
+	margin-bottom: 30px;
+}
+
+.bar-top{
+	border-radius: 10px 10px 10px 10px;
+	padding:23px 30px;
+}
+
+.bar-title{
+	float:left;
+	width: 720px;
+}
+
+.bar-title{
+	color: #000000;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	font-style: italic;
+	letter-spacing: 0;
+	line-height: 1.5em;
+	margin: 0;
+}
+
+.bar-button{
+	float: right;
+	height: 42px;
+	margin-top: 7px;
+}
+
+.button{
+	background: #0AC7B3;
+	border-radius: 10px 10px 10px 10px;
+	color:#FFFFFF;
+	cursor: pointer;
+	display: inline-block;
+	font: 12px/100% Arial,Helvetica,sans-serif;
+	outline: medium none;
+	padding: 0.6em 1.5em;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: baseline;
+}
+
+.medium{
+	font-size:16px;
+	padding:0.8em 1.4em 0.7em;
+		
+}
+
+.clear{
+	clear:both;
+}
+
+#content-bottom{
+	margin : 0 auto;
+	width: 960px;
+}
+
+.content-bottom-inner{
+	padding:20px 0 30px;
+}
+
+#content-bottom .content-bottom-inner ul{
+	background-color: #FFFFFF;
+	border-radius: 10px 10px 10px 10px;
+	box-shadow: 0 1px 6px #685C4C;
+	float: left;
+	list-style: none outside none;
+	margin:0 30px 30px 0;
+	padding:15px;
+	width:280px;
+}
+
+#content-bottom .content-bottom-inner li{
+	padding:7px 5px;
+}
+
+#content-bottom .content-bottom-inner h4{
+	border-bottom: 1px solid #CCCCCC;
+	color:#0AC7B3;
+	font-size: 25px;
+	font-weight: normal;
+	padding-bottom: 0;
+}
+
+#content-bottom .content-bottom-inner li a{
+	background-color: #0AC7B3;
+	border-radius: 5px 5px 5px 5px;
+	color : #FFFFFF;
+	padding : 7px;
+	text-decoration: none;
+}
+
+.footer {
+	border-top: 1px solid #cccccc;
+	padding: 10px;
+	text-align: center;
+}
+
+.footer p {
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.footer p, #footer p a {
+	color: #666666;
+	font-size: 10px;
+}
+
+.menubar{
+border:none;
+border:0px;
+margin:0px;
+padding:0px;
+font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+font-size:14px;
+font-weight:bold;
+}
+
+.menubar ul{
+background: rgb(109,109,109);
+height:50px;
+list-style:none;
+margin:0;
+padding:0;
+}
+
+.menubar li{
+float:left;
+padding:0px;
+}
+
+.menubar li a{
+background: rgb(109,109,109);
+color:#cccccc;
+display:block;
+font-weight:normal;
+line-height:50px;
+margin:0px;
+padding:0px 25px;
+text-align:center;
+text-decoration:none;
+}
+
+.menubar li a:hover, .menubar ul li:hover a{
+background: rgb(71,71,71);
+color:#FFFFFF;
+text-decoration:none;
+}
+
+.menubar li ul{
+background: rgb(109,109,109);
+display:none; /* 평상시에는 드랍메뉴가 안보이게 하기 */
+height:auto;
+padding:0px;
+margin:0px;
+border:0px;
+position:absolute;
+width:200px;
+z-index:200;
+/*top:1em;
+/*left:0;*/
+}
+
+.menubar li:hover ul{
+display:block; /* 마우스 커서 올리면 드랍메뉴 보이게 하기 */
+}
+
+.menubar li li {
+background: rgb(109,109,109);
+display:block;
+float:none;
+margin:0px;
+padding:0px;
+width:200px;
+}
+
+.menubar li:hover li a{
+background:none;
+}
+
+.menubar li ul a{
+display:block;
+height:50px;
+font-size:12px;
+font-style:normal;
+margin:0px;
+padding:0px 10px 0px 15px;
+text-align:left;
+}
+
+.menubar li ul a:hover, .menubar li ul li:hover a{
+background: rgb(71,71,71);
+border:0px;
+color:#ffffff;
+text-decoration:none;
+}
+
+.menubar p{
+clear:left;
+}
+
+.loginForm{position:relative;width:435px}
+.loginForm .box{width:400px}
+.loginForm .box .iText{width:250px;margin:3px 0;padding:10px 12px;border:1px solid #e1e1e1}
+.loginForm .box p{margin-top:1em}
+.loginForm .box p span,
+.loginForm .box p input{height:18px;font-size:11px;color:#737373;line-height:18px;vertical-align:middle}
+.loginForm .loginBtn{display:block;position:absolute;top:0;right:-25px;width:100px;height:95px;padding:10px;border-radius:5px;
+font-size:14px;font-weight:700;color:#fff;line-height:60px;text-align:center;text-shadow:1px 1px 1px #004773;background:#333}
+
