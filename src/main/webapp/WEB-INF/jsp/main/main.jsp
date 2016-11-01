@@ -14,6 +14,7 @@
 				<h1>
 					<a href="/main/main.do"><div id="mainpage"><font color="black">SIST LIBRARY</font></div></a>
 				</h1>
+				<!-- 로그인 시 회원가입 창이 없어지고, 로그아웃 및 마이페이지로 변경되어야 합니다. -->
 				<div align="right">
 					<a href="/login/login.do"><img src="<c:url value='/images/headLogin.gif'/>" ></a>&nbsp;&nbsp;
 					<a href="/login/join.do"><img src="<c:url value='/images/headRegist.gif'/>" id="mjoin"></a>
@@ -50,7 +51,7 @@
 					</li>
 					<li><a href="#" id="current">이용안내</a>
 						<ul>
-							<li><a href="#">오시는길</a></li>
+							<li><a href="/librarymap/library_map.do">오시는길</a></li>
 							<li><a href="#">도서관 이용시간</a></li>
 						</ul>
 					</li>
