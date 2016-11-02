@@ -16,4 +16,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="login_ok" parameterType="hashmap" resultType="int">
 		select count(*) from member where id=#{id} and pwd=#{pwd}
 	</select>
+	
+<!-- 	<select id="pcheck_pwd" parameterType="String" resultType="int">
+		select count(*) from member where pwd=#{pwd}
+	</select>
+	
+	<select id="pcheck_ok" parameterType="String" resultType="int">
+		select count(*) from member where pwd=#{pwd}  -->
+	</select>
 </mapper>

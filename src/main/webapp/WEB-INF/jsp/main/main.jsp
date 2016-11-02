@@ -25,7 +25,7 @@
 					
 					<c:if test="${session_id ne 'xxx'}">
 						<a href="/login/logout.do"><img src="<c:url value='/images/headLogout.gif'/>" ></a>&nbsp;&nbsp;
-						<a href=""><img src="<c:url value='/images/headMypage.gif'/>"></a>
+						<a href="/mypage/mypage.do"><img src="<c:url value='/images/headMypage.gif'/>"></a>
 					</c:if>
 				</div>
 				<div class="clear"></div>

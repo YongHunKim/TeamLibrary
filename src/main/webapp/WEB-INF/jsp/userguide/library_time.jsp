@@ -5,36 +5,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/css/mypage.css">
 </head>
 <body>
+	<br/>
+	<br/>
+	<br/>
+
 	<div align="center">
-		이용시간(자료실, 열람실)
-		<table border="1" width="900">
+		<p>이용시간(자료실, 열람실)</p>
+		<table>
 			<tr>
 				<th>구분</th>
 				<th>평일</th>
 				<th>주말</th>
 			</tr>
 			<tr>
-				<td align="center">종합자료실</td>
-				<td align="center">09:00 ~ 22:00</td>
-				<td rowspan="3" align="center">09:00 ~ 17:00</td>
+				<td>종합자료실</td>
+				<td>09:00 ~ 22:00</td>
+				<td rowspan="3">09:00 ~ 17:00</td>
 			</tr>
 			<tr>
-				<td align="center">디지털자료실<br /> 간행물실
+				<td>디지털자료실<br /> 간행물실
 				</td>
-				<td rowspan="2" align="center">09:00 ~ 18:00</td>
+				<td rowspan="2">09:00 ~ 18:00</td>
 			</tr>
 			<tr>
-				<td align="center">어린이자료실</td>
+				<td>어린이자료실</td>
 			</tr>
 			<tr>
-				<td align="center">일반열람실</td>
-				<td colspan="2" align="center">06:00 ~ 23:00</td>
+				<td>일반열람실</td>
+				<td colspan="2">06:00 ~ 23:00</td>
 			</tr>
 		</table>
-		<br /> 휴관일
-		<table border="1" width="900">
+		<br /> 
+		<br />
+		<br />
+		<p>휴관일</p>
+		<table>
 			<tr>
 				<th>정기휴관일</th>
 				<td>매월 일요일</td>
