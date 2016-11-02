@@ -4,12 +4,9 @@
 
 <c:choose>
 	<c:when test="${ pCheck eq true }">
-		<c:redirect url="member_update.do" />
+	
 	</c:when>
 	<c:otherwise>
-	<script>
-			alert("비밀번호가 틀립니다.");
-			history.back();
-		</script>
+	
 	</c:otherwise>
 </c:choose>

@@ -30,7 +30,7 @@
 		var email = $('#mem_email').val();
 		var tel = $('#mem_tel').val();
 		
-		if (id == '' || id.length < 4 || id.length >12) {
+		if (id == '' || id.length < 4 || id.length>12) {
 			alert('회원ID를 알맞게 입력해주세요. 아이디는 4~12자리입니다.');
 			return;
 		}
