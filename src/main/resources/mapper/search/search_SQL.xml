@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="search">
+	<select id="search" parameterType="hashmap" resultType="bookvo">
+		<![CDATA[
+        	SELECT book_code,book_name,book_author,book_publish,book_publish_date,book_info,
+        	rent_yn,reserve_yn,book_rent_count,book_image,book_storage_date,book_category
+        	FROM book
+        	WHERE book_name like '%'||#{searchWord}||'%' 
+        	AND rownum BETWEEN #{start} AND #{end}          
+    	]]>		
+	</select>
+</mapper>

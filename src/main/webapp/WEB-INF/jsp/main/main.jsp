@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+	String session_id = session.getAttribute("id")==null ? "xxx" : (String)session.getAttribute("id");
 	System.out.println(session.getAttribute("id"));
 %>
 <!DOCTYPE html>
@@ -16,8 +17,16 @@
 				</h1>
 				<!-- 로그인 시 회원가입 창이 없어지고, 로그아웃 및 마이페이지로 변경되어야 합니다. -->
 				<div align="right">
-					<a href="/login/login.do"><img src="<c:url value='/images/headLogin.gif'/>" ></a>&nbsp;&nbsp;
-					<a href="/login/join.do"><img src="<c:url value='/images/headRegist.gif'/>" id="mjoin"></a>
+					<c:set var="session_id" value="<%=session_id %>"/>
+					<c:if test="${session_id eq 'xxx'}">
+						<a href="/login/login.do"><img src="<c:url value='/images/headLogin.gif'/>" ></a>&nbsp;&nbsp;
+						<a href="/login/join.do"><img src="<c:url value='/images/headRegist.gif'/>" id="mjoin"></a>
+					</c:if>
+					
+					<c:if test="${session_id ne 'xxx'}">
+						<a href="/login/logout.do"><img src="<c:url value='/images/headLogout.gif'/>" ></a>&nbsp;&nbsp;
+						<a href=""><img src="<c:url value='/images/headMypage.gif'/>"></a>
+					</c:if>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -25,14 +34,14 @@
 				<ul>					
 					<li><a href="#" id="current">자료신청 및 예약</a>
 						<ul>
-							<li><a href="/rent/delay.do">대출조회 및 연기</a></li>
+							<li><a href="">대출조회 및 연기</a></li>
 							<li><a href="#">대출예약 및 연기</a></li>
 							<li><a href="#">희망도서신청</a></li>
 						</ul>
 					</li>
 					<li><a href="#" id="current">자료검색</a>
 						<ul>
-							<li><a href="#">자료검색</a></li>
+							<li><a href="/search/search.do">자료검색</a></li>
 							<li><a href="#">신간자료 검색</a></li>
 							<li><a href="#">인기자료 검색</a></li>
 						</ul>
@@ -58,8 +67,10 @@
 				</ul>
 			</div>
 			<!-- include -->
-			<jsp:include page="${jsp }"></jsp:include>			
-			<div class="footer" style="margin-top: 50px;">
+			<div id="content"> 
+			<jsp:include page="${jsp }"></jsp:include>
+			</div>			
+			<div class="footer" style="margin-top: 20px;">
 				<p>
 					SIST <a href="http://www.sist.co.kr">쌍용교육센터</a>
 				</p>
