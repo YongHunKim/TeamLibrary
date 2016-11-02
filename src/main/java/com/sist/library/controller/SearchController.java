@@ -24,15 +24,17 @@ public class SearchController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/search/search_ok.do")
 	public ModelAndView search_ok(@RequestParam(value="page" ,required=false)String page,String searchWord){
 		ModelAndView mav = new ModelAndView("main/main");
-		
 		page = (page==null) ? "1" : page;
 		int numPage = Integer.parseInt(page);
+		System.out.println(numPage);
+		System.out.println(searchWord);
 		List<BookVO> list = searchService.search(numPage,searchWord);
 		mav.addObject("list", list);
 		mav.addObject("jsp", "/WEB-INF/jsp/search/search.jsp");
-
+		
 		return mav;
 
 	}
