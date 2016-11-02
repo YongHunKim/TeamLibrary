@@ -55,7 +55,7 @@
 
 		// 마커에 클릭 이벤트를 등록한다 (우클릭 : rightclick)
 		daum.maps.event.addListener(marker, 'click', function() {
-		    alert('마커를 클릭했습니다!');
+		    alert('쌍용 도서관입니다.');
 		});
 
 	</script>

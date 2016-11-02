@@ -51,8 +51,8 @@
 					</li>
 					<li><a href="#" id="current">이용안내</a>
 						<ul>
-							<li><a href="/librarymap/library_map.do">오시는길</a></li>
-							<li><a href="#">도서관 이용시간</a></li>
+							<li><a href="/userguide/library_map.do">오시는길</a></li>
+							<li><a href="/userguide/library_time.do">도서관 이용시간</a></li>
 						</ul>
 					</li>
 				</ul>
