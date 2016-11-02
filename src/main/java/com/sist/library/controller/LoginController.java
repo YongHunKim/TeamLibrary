@@ -65,6 +65,7 @@ public class LoginController {
 		int result = memberService.login_ok(id,pwd);
 		if(result>0){
 			request.getSession().setAttribute("id", id);
+			request.getSession().setMaxInactiveInterval(60*30);
 			res="<script type='text/javascript'>"
 					+ "alert('로그인 성공');"
 					+ "location.href = '/main/main.do';"
@@ -77,4 +78,16 @@ public class LoginController {
 		}
 		return res;
 	}
+	
+	@RequestMapping(value="/login/logout.do")
+	public ModelAndView logout(HttpServletRequest request){
+		request.getSession().removeAttribute("id");
+		request.getSession().invalidate();
+		ModelAndView mav = new ModelAndView("main/main");
+
+		mav.addObject("jsp", "/WEB-INF/jsp/main/default.jsp");
+
+		return mav;
+	}
 }	
+	

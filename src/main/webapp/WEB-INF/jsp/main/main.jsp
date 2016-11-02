@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String session_id = session.getAttribute("id")==null ? "xxx" : (String)session.getAttribute("id");
+	System.out.println(session.getAttribute("id"));
 %>
 <!DOCTYPE html>
 <html lang="ko">

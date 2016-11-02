@@ -1,17 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 <style>
-/* body {
-padding:0px; 
-margin:60px;
-background: url("http://4.bp.blogspot.com/-YNR7ZZ5GW3Q/UtNf5yl8WdI/AAAAAAAABUw/cLolwiFHXqk/s320/How+To+Create+CSS+Search+Box+Form+Design+Tutorial+3.png") repeat;
-} */
 h1{
 text-align:center;
 color:#533515;
@@ -57,14 +52,26 @@ input[type=button]{
     border-radius:5px;
 }
 </style>
+<script>
+	function search_check(){
+		var search = $('#search_val').val();
+		if(search == ''){
+			alert('ê²€ìƒ‰ê°’ì„ ì…ë ¥í•˜ì„¸ìš”');
+			return;
+		}
+		$('#search_form').submit();
+	}
+</script>
+
 </head>
 <body>
-<h1>ÀÚ ·á °Ë »ö</h1>
+<h1>ì ë£Œ ê²€ ìƒ‰</h1>
 <div id="search_div">
-<form action="" method="post">
-	<input type="text" name="name" placeholder="°Ë»öÇÏ¼¼¿ä."/>
-	<input value="°Ë»ö" type="button" />
+<form action="/search/search_ok.do" method="post" id="search_form">
+	<input type="text" name="name" placeholder="ê²€ìƒ‰í•˜ì„¸ìš”." id="search_val"/>
+	<input value="ê²€ìƒ‰" type="button" id="search_btn" onclick="search_check()"/>
 </form>
 </div>
+${list.size() }
 </body>
 </html>
