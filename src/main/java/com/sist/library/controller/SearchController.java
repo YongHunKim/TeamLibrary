@@ -18,7 +18,7 @@ public class SearchController {
 	@RequestMapping(value = "/search/search.do")
 	public ModelAndView delay_form() {
 		ModelAndView mav = new ModelAndView("main/main");
-
+		mav.addObject("type","search");
 		mav.addObject("jsp", "/WEB-INF/jsp/search/search.jsp");
 
 		return mav;
@@ -85,6 +85,7 @@ public class SearchController {
 		
 		List<BookVO> list = searchService.popularBook();
 		mav.addObject("list", list);
+		mav.addObject("type","popular");
 		mav.addObject("jsp", "/WEB-INF/jsp/search/search.jsp");
 		
 		return mav;

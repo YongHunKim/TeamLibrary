@@ -67,7 +67,8 @@ input[type=button]{
 
 </head>
 <body>
-${list.size() }
+<c:choose>
+<c:when test="${type=='search' }">
 <h1>자 료 검 색</h1>
 <div id="search_div">
 <form action="/search/search_ok.do" method="post" id="search_form">
@@ -75,6 +76,14 @@ ${list.size() }
 	<input value="검색" type="button" id="search_btn" onclick="search_check()"/>
 </form>
 </div>
+</c:when>
+<c:when test="${type=='newbook' }">
+<h1>신 간 도 서</h1>
+</c:when>
+<c:when test="${type=='popular' }">
+<h1>인 기 도 서</h1>
+</c:when>
+</c:choose>
 <c:choose>
 	<c:when test="${list.size() > 0 }">
 		<div class="result_group">
