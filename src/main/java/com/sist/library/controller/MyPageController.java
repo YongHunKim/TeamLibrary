@@ -21,7 +21,7 @@ public class MyPageController {
 	@RequestMapping(value="/mypage/mypage.do")
     public ModelAndView mypage(){
     	ModelAndView mv = new ModelAndView("main/main");
-    	//log.debug("인터셉터 테스트");
+    
     	mv.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
     	
     	return mv;
