@@ -20,4 +20,34 @@ public class SearchServiceImpl implements SearchService {
 		return bookDAO.search(page,searchWord);
 	}
 
+	@Override
+	public int pageCount(String searchWord) {
+		return bookDAO.pageCount(searchWord);
+	}
+
+	@Override
+	public int totalRow(String searchWord) {
+		return bookDAO.totalRow(searchWord);
+	}
+
+	@Override
+	public List<BookVO> newbook(int curPage) {
+		return bookDAO.newbook(curPage);
+	}
+
+	@Override
+	public int newBookCount() {
+		return bookDAO.newBookCount();
+	}
+
+	@Override
+	public int newBookRow() {
+		return bookDAO.newBookRow();
+	}
+
+	@Override
+	public List<BookVO> popularBook() {
+		return bookDAO.popularBook();
+	}
+
 }

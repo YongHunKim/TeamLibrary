@@ -153,8 +153,8 @@ a{color:#0836A3; text-decoration:none}
 
 /*결과없음*/
 
-.noresult{ background:url(../../images/gr/no_result.gif) no-repeat;color:#AD1C01; height:150px; }
-.noresult ul{ margin-left:150px; padding-top:10px;}
+.noresult{ /* background:url(../../images/gr/no_result.gif) no-repeat; */color:#AD1C01; height:150px; }
+.noresult ul{ margin-left:300px; padding-top:10px;}
 .noresult ol{ font-size:16px; font-weight: bold; color:#000000; margin-bottom:10px;font-size:16px;}
 .noresult ol span{ color:#d64100}
 .noresult li{ font-size:12px; color:#000000; line-height:25px}

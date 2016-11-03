@@ -2,7 +2,6 @@
 <%@ page session="true"%>
 <%
 	String session_id = session.getAttribute("id")==null ? "xxx" : (String)session.getAttribute("id");
-	System.out.println(session.getAttribute("id"));
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -42,8 +41,8 @@
 					<li><a href="#" id="current">자료검색</a>
 						<ul>
 							<li><a href="/search/search.do">자료검색</a></li>
-							<li><a href="#">신간자료 검색</a></li>
-							<li><a href="#">인기자료 검색</a></li>
+							<li><a href="/search/newbook.do">신간자료</a></li>
+							<li><a href="/search/popularbook.do">인기자료</a></li>
 						</ul>
 					</li>
 					<li><a href="#" id="current">좌석예약</a>
