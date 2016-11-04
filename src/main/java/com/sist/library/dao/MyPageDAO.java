@@ -1,13 +1,17 @@
 package com.sist.library.dao;
 
+import org.springframework.stereotype.Repository;
+
+@Repository("mypageDAO")
 public class MyPageDAO extends AbstractDAO{
-	/*	// 다시 한번 더 보자
+		// 다시 한번 더 보자
 	public int pcheck_pwd(String pwd){
-		return (int) selectOne("member.pcheck_pwd", pwd);
+		return (int) selectOne("mypage.pcheck_pwd", pwd);
 	}
+	
 	
 	// 다시 한번 더 보자.
 	public int pcheck_ok(String pwd){
-		return (int)selectOne("member.pcheck_ok", pwd);
-	}*/
+		return (int)selectOne("mypage.pcheck_ok", pwd);
+	}
 }

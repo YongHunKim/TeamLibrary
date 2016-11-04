@@ -15,17 +15,36 @@ import com.sist.library.service.PcheckService;
 public class MyPageController {
 	Logger log = Logger.getLogger(this.getClass());
 	
-	@Resource(name = "pcheckService")
-	private PcheckService pcheckService;
+	@Resource(name = "mypageService")
+	private PcheckService mypageService;
 	
 	@RequestMapping(value="/mypage/mypage.do")
     public ModelAndView mypage(){
     	ModelAndView mv = new ModelAndView("main/main");
     
     	mv.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
-    	
+    	mv.addObject("submenu", "/WEB-INF/jsp/mypage/mypage_submenu.jsp");
+    	mv.addObject("subpage", "/WEB-INF/jsp/mypage/member_pcheck.jsp");
     	return mv;
     }
+	
+	@RequestMapping(value="/mypage/mypage_submenu.do")
+	public ModelAndView mypage_submenu(){
+		ModelAndView mv = new ModelAndView("main/main");
+		
+		mv.addObject("jsp", "/WEB-INF/jsp/mypage/mypage_submenu.jsp");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/mypage/member_update.do")
+	public ModelAndView member_update(){
+		ModelAndView mv = new ModelAndView("main/main");
+		
+		mv.addObject("jsp", "/WEB-INF/jsp/mypage/member_update.jsp");
+	
+		return mv;
+	}
 	
 	@RequestMapping(value="/mypage/member_pcheck.do")
 	public ModelAndView member_pcheck(){
@@ -36,24 +55,25 @@ public class MyPageController {
 		return mv;
 	}
 
-/*	@RequestMapping(value="/mypage/member_pcheck_ok.do")
+	
+	@RequestMapping(value="/mypage/member_pcheck_ok.do")
 	public @ResponseBody String pcheck_ok(HttpServletRequest request){
 		StringBuffer sb = new StringBuffer();
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
-		int result = pcheckService.pcheck_ok(pwd);
+		int result = mypageService.pcheck_ok(pwd);
 		if(result > 0){
 			request.getSession().setAttribute("id", id);
-			request.getSession().setAttribute("pwd", pwd);
 			sb.append("<script type='text/javascript'>");
-			sb.append("location.href = 'mypage/member_update.do';");
+			sb.append("location.href = '/mypage/member_update.do';");
 			sb.append("</script>");
 		}else{
 			sb.append("<script type='text/javascript'>");
 			sb.append("alert('보안암호를 확인하세요.');");
+			sb.append("location.href = '/mypage/member_pcheck.do';");
 			sb.append("</script>");
 		}
 		
 		return sb.toString();
-	}*/
+	}
 }

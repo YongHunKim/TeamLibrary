@@ -7,6 +7,16 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserguideController {
 
+	@RequestMapping(value = "/userguide/guidemenu.do")
+	public ModelAndView guide_menu(){
+		ModelAndView mv = new ModelAndView("main/main");
+		
+		mv.addObject("jsp", "/WEB-INF/jsp/userguide/guidemenu.jsp");
+		mv.addObject("usersubmenu", "/WEB-INF/jsp/userguide/library_time.jsp");
+		
+		return mv;
+	}
+	
 	@RequestMapping(value = "/userguide/library_map.do")
 	public ModelAndView library_map() {
 		ModelAndView mv = new ModelAndView("main/main");
