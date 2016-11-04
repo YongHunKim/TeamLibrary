@@ -6,14 +6,14 @@ import org.springframework.stereotype.Repository;
 
 @Repository("bookmanagerDAO")
 public class BookManagerDAO extends AbstractDAO {
-	
-/*	public List<BookManagerVO> rentalHistory(){
 		
+	public List<BookManagerVO> rental_history(String id){
+		return selectList("rental.rental_history", id);
 	}
 	
-	public List<BookManagerVO> reservationHistory(){
-		
-	}*/
+	public List<BookManagerVO> reservation_history(String id){
+		return selectList("rental.reservation_history", id);
+	}
 	
 	
 }

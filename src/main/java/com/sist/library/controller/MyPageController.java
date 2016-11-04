@@ -1,5 +1,7 @@
 package com.sist.library.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sist.library.dao.BookManagerVO;
 import com.sist.library.service.PcheckService;
 
 @Controller
@@ -76,4 +79,5 @@ public class MyPageController {
 		
 		return sb.toString();
 	}
+
 }

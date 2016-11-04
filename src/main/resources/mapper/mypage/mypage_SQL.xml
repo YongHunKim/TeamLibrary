@@ -12,17 +12,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from member where pwd=#{pwd}  
 	</select>
 	
-	<select id="rentalHistory" parameterType="String" resultType="bookmanagervo">
-		select bm.book_code,b.book_name,b.book_author,bm.rent_date,bm.return_date
-  		from book b, book_management bm where b.book_code = bm.book_code and id=#{id}
-	</select>
-	
-	<select id="reservationHistory" parameterType="String" resultType="bookmanagervo">
-		select bm.book_code,b.book_name,b.book_author,bm.reserve_date
-  		from book b, book_management bm where b.book_code = bm.book_code and id=#{id}
-	</select>
-	
-	
-	
-	
 </mapper>
