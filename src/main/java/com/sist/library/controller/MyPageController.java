@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -41,8 +42,11 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value="/mypage/member_update.do")
-	public ModelAndView member_update(){
+	public ModelAndView member_update(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView("main/main");
+		String id = request.getParameter("id");
+		HttpSession session = request.getSession(true);
+		session.setAttribute("id", id);
 		
 		mv.addObject("jsp", "/WEB-INF/jsp/mypage/member_update.jsp");
 	
@@ -63,10 +67,11 @@ public class MyPageController {
 	public @ResponseBody String pcheck_ok(HttpServletRequest request){
 		StringBuffer sb = new StringBuffer();
 		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");
+		String pwd = request.getParameter("check_pwd");
 		int result = mypageService.pcheck_ok(pwd);
 		if(result > 0){
-			request.getSession().setAttribute("id", id);
+			HttpSession session = request.getSession(true);
+			session.setAttribute("id", id);
 			sb.append("<script type='text/javascript'>");
 			sb.append("location.href = '/mypage/member_update.do';");
 			sb.append("</script>");

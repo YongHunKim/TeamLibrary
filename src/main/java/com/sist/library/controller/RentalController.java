@@ -28,22 +28,24 @@ public class RentalController {
 	}
 	
 	@RequestMapping(value="/mypage/retal.do")
-	public ModelAndView rental_history(String id){
+	public ModelAndView rental_history(String id) throws Exception{
 		ModelAndView mv = new ModelAndView("main/main");
 
 		List<BookManagerVO> list = rentalService.rental_history(id);
 		mv.addObject("rental", list);
+		
 		mv.addObject("jsp", "/WEB-INF/jsp/mypage/rental.jsp");
 		
 		return mv;
 	}
 	
 	@RequestMapping(value="/mypage/reservation.do")
-	public ModelAndView reservation_history(String id){
+	public ModelAndView reservation_history(String id) throws Exception{
 		ModelAndView mv = new ModelAndView("main/main");
 		
 		List<BookManagerVO> list = rentalService.reservation_history(id);
 		mv.addObject("reservation", list);
+		
 		mv.addObject("jsp", "/WEB-INF/jsp/mypage/reservation.jsp");
 		
 		return mv;

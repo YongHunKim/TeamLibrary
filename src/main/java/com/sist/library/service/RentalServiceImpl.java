@@ -16,13 +16,13 @@ public class RentalServiceImpl implements RentalService{
 	private BookManagerDAO bookmanagerDAO;
 
 	@Override
-	public List<BookManagerVO> rental_history(String id) {
+	public List<BookManagerVO> rental_history(String id) throws Exception{
 		// TODO Auto-generated method stub
 		return bookmanagerDAO.rental_history(id);
 	}
 
 	@Override
-	public List<BookManagerVO> reservation_history(String id) {
+	public List<BookManagerVO> reservation_history(String id) throws Exception{
 		// TODO Auto-generated method stub
 		return bookmanagerDAO.reservation_history(id);
 	}

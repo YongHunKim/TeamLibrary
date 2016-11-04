@@ -11,7 +11,7 @@
 		<h3>회원정보 수정</h3>
 			<p>비밀번호를 입력하세요</p>
 			<form action="member_pcheck_ok.do" method="post">
-			<input type="password" size="16" maxlength="16" name="pwd" />
+			<input type="password" size="16" maxlength="16" name="check_pwd" />
 			<input type="submit" value="확인" />
 			<form>
 			<br/>
