@@ -2,6 +2,7 @@ package com.sist.library.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -66,8 +67,9 @@ public class LoginController {
 		String pwd = request.getParameter("login_pwd");		
 		int result = memberService.login_ok(id,pwd);
 		if(result>0){
-			request.getSession().setAttribute("id", id);
-			request.getSession().setMaxInactiveInterval(60*30);
+			HttpSession session = request.getSession(true);
+			session.setAttribute("id", id);
+			session.setMaxInactiveInterval(60*30);
 			res="<script type='text/javascript'>"
 					+ "alert('로그인 성공');"
 					+ "location.href = '/main/main.do';"

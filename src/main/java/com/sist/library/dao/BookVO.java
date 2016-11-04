@@ -3,7 +3,7 @@ package com.sist.library.dao;
 import java.util.Date;
 
 public class BookVO {
-	private int book_code;
+	private Long book_code;
 	private String book_name;
 	private String book_author;
 	private String book_publish;
@@ -16,11 +16,12 @@ public class BookVO {
 	private Date book_storage_date;
 	private String book_category;
 
-	public int getBook_code() {
+
+	public Long getBook_code() {
 		return book_code;
 	}
 
-	public void setBook_code(int book_code) {
+	public void setBook_code(Long book_code) {
 		this.book_code = book_code;
 	}
 
