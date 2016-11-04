@@ -9,9 +9,11 @@
 </head>
 <body>
 	<br/><br/><br/>
-
-	<jsp:include page="${submenu}"></jsp:include>
-	<jsp:include page="${subpage}"></jsp:include>
-	
+	<table>
+	<tr>
+		<td align="left"><jsp:include page="${submenu}"></jsp:include></td>
+		<td align="right"><jsp:include page="${subpage}"></jsp:include></td>
+	</tr>
+	</table>
 </body>
 </html>
