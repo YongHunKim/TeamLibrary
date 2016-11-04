@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BookManagerVO {
 	private int book_management_code;
-	private String id;
+//	private String id;
 	private int book_code;
 	private Date rent_date;
 	private Date return_date;
@@ -19,13 +19,13 @@ public class BookManagerVO {
 		this.book_management_code = book_management_code;
 	}
 
-	public String getId() {
+/*	public String getId() {
 		return id;
 	}
 
 	public void setId(String id) {
 		this.id = id;
-	}
+	}*/
 
 	public int getBook_code() {
 		return book_code;
