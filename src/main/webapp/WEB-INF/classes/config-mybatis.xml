@@ -9,6 +9,7 @@
         <typeAlias type="com.sist.library.dao.MemberVO" alias="membervo" />
         <typeAlias type="com.sist.library.dao.BookVO" alias="bookvo"/>
         <typeAlias type="com.sist.library.dao.BookManagerVO" alias="bookmanagervo" />
+        <typeAlias type="com.sist.library.dao.ListVO" alias="listvo"/>
     </typeAliases>
     
 </configuration> 

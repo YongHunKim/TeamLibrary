@@ -12,7 +12,7 @@
 	<div id="container">
 		<div id="inner">
 			<div id="header">
-				<h1>
+				<h1>   
 					<a href="/main/main.do"><div id="mainpage"><font color="black">SIST LIBRARY</font></div></a>
 				</h1>
 				<!-- 로그인 시 회원가입 창이 없어지고, 로그아웃 및 마이페이지로 변경되어야 합니다. -->
@@ -55,7 +55,7 @@
 					<li><a href="#" id="current">참여마당</a>
 						<ul>
 							<li><a href="#">공지사항</a></li>
-							<li><a href="#">분실물 게시판</a></li>
+							<li><a href="/list/list.do">분실물 게시판</a></li>
 						</ul>
 					</li>
 					<li><a href="/userguide/guidemenu.do" id="current">이용안내</a>

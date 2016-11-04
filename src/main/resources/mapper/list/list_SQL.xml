@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="list">
+<!-- 	<insert id="insertList" parameterType="listvo">
+		insert into list(lb_no,lb_id,lb_subject,lb_content,lb_hit,lb_root,lb_depth,lb_regdate,lb_group_id,lb_group_step,lb_group_tab)
+		values(#{lb_no},#{lb_id},#{lb_subject},#{lb_content},#{lb_hit},#{lb_root},#{lb_depth},#{lb_regdate},#{lb_group_id},#{lb_group_step},#{lb_group_tab})
+	</insert> -->
+	
+	
+	<select id="boardlist" resultType="listvo">
+	<![CDATA[
+		SELECT lb_no,id,lb_subject,lb_content,lb_hit,lb_root,lb_depth,
+		lb_regdate, lb_group_id,lb_group_step,lb_group_tab FROM lostboard 
+	]]>
+	 
+	</select>
+	
+	<select id="getlostcontent" resultType="listvo" parameterType="int">
+	<![CDATA[
+		SELECT lb_no,id,lb_subject,lb_content,lb_hit,lb_regdate 
+		FROM lostboard WHERE lb_no=#{content_no}
+	]]>
+	</select>
+</mapper>

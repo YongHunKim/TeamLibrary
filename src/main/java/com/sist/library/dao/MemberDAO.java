@@ -16,9 +16,7 @@ public class MemberDAO extends AbstractDAO{
 	}
 
 	public int login_ok(String id, String pwd) {
-		Map map = new HashMap<>();
-		System.out.println(id);
-		System.out.println(pwd);
+		Map map = new HashMap<>();		
 		map.put("id", id);
 		map.put("pwd", pwd);	
 		return (int) selectOne("member.login_ok",map);
