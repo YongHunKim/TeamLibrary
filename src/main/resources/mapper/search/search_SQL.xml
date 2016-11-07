@@ -51,4 +51,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         FROM book WHERE book_rent_count>0 order by book_rent_count desc,book_code))
         WHERE num BETWEEN 1 AND 10
 	</select>
+	
+	<select id="bookInfo" parameterType="String" resultType="bookvo">
+		SELECT book_code,book_name,book_author,book_publish,book_publish_date,book_info,rent_yn,reserve_yn,book_rent_count,book_image,book_storage_date,book_category
+		FROM book
+		WHERE book_code=#{book_code}
+	</select>
+	
 </mapper>

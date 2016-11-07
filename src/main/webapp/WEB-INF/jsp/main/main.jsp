@@ -68,6 +68,10 @@
 			<!-- include -->
 			<div id="content"> 
 			<jsp:include page="${jsp }"></jsp:include>
+			<div id="modal-message">
+				<div class="modal-close" onclick="closeMessage();">×</div>
+				<div id="modal-message-text"> </div>
+			</div>
 			</div>			
 			<div class="footer" style="margin-top: 20px;">
 				<p>

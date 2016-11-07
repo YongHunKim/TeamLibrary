@@ -53,4 +53,15 @@ public class BookDAO extends AbstractDAO{
 		return selectList("search.popular",map);
 	}
 
+	public BookVO bookInfo(String book_code) {		
+		return (BookVO) selectOne("book.bookInfo",book_code);
+	}
+
+	public int bookRent(String book_code, String id) {
+		Map map = new HashMap<>();
+		map.put("book_code", book_code);
+		map.put("id", id);
+		return (int) insert("book.bookRent", map);
+	}
+
 }

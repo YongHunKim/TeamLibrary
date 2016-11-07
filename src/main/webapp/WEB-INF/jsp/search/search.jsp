@@ -58,10 +58,16 @@ input[type=button]{
 	function search_check(){
 		var search = $('#search_val').val();
 		if(search == ''){
-			alert('검색값을 입력하세요');
+			showMessage('검색값을 입력하세요');
 			return;
 		}
 		$('#search_form').submit();
+	}
+	
+	function goRent(rentform_id){
+		//alert(rentform_id);
+		var f = document.getElementById(rentform_id);
+		f.submit();
 	}
 </script>
 
@@ -92,7 +98,7 @@ input[type=button]{
 			</div>
 			<!-- foreach -->
 			<c:forEach var="i" begin="0" end="${list.size()-1 }">
-				<form name="subFormInfo${i}" id="subFormInfo${i}" method="post" action="/book/bookinfo.do">
+				<form name="subFormInfo${i}" id="subFormInfo${i}" method="get" action="/book/rent.do">
 					<input type="hidden" name="book_code" id="book_code" value="${list.get(i).book_code }"/>
 				</form>
 				<ul class="resultsty1" style="left:80px;">
@@ -100,14 +106,14 @@ input[type=button]{
 					<li>
 					<dl>
 					<dt>
-					<p class="fl"><a href="#nolink" onclick="goSelectedPage('subFormInfo0');"><font color="red" style="font-size: 12px;">${list.get(i).book_category }</font>, <font style="font-size: 12px;">${list.get(i).book_name }</font></a></p>
+					<p class="fl"><a href="#nolink" onclick="goRent('subFormInfo${i}');"><font color="red" style="font-size: 12px;">${list.get(i).book_category }</font>, <font style="font-size: 12px;">${list.get(i).book_name }</font></a></p>
 					<p class="book_state">
 						<c:choose>
 							<c:when test="${list.get(i).rent_yn == 'y' }">
-								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/reservation_ok.gif" width="58" height="17" title="대출상태" onclick="goSelectedPage('subFormInfo0');">
+								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/reservation_ok.gif" width="58" height="17" title="대출상태" onclick="goRent('subFormInfo${i}');">
 							</c:when>
 							<c:otherwise>
-								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/rental_ok.gif" width="58" height="17" title="대출상태" onclick="goSelectedPage('subFormInfo0');">
+								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/rental_ok.gif" width="58" height="17" title="대출상태" onclick="goRent('subFormInfo${i}');">
 							</c:otherwise>
 						</c:choose>
 					</p>

@@ -15,8 +15,10 @@
 			success : function(data) {
 				check.innerHTML = data;
 				if (data == "사용할 수 없는 ID입니다.") {
+					$('#check').attr("value","false");
 					$('#check').attr("style", "color:red");
 				} else {
+					$('#check').attr("value","true");
 					$('#check').attr("style", "color:blue");
 				}
 			}
@@ -31,33 +33,40 @@
 		var tel = $('#mem_tel').val();
 		
 		if (id == '' || id.length < 4 || id.length>12) {
-			alert('회원ID를 알맞게 입력해주세요. 아이디는 4~12자리입니다.');
+			showMessage('회원ID를 알맞게 입력해주세요. 아이디는 4~12자리입니다.');
 			return;
 		}
 		if (pwd == '' || pwd.length < 4 || pwd.length >12) {
-			alert('비밀번호를 알맞게 입력해주세요. 비밀번호는 4~12자리입니다.');
+			showMessage('비밀번호를 알맞게 입력해주세요. 비밀번호는 4~12자리입니다.');
 			return;
 		}
 		if ($('#mem_name').val() == '') {
-			alert('이름을 입력해주세요.');
+			showMessage('이름을 입력해주세요.');
 			return;
 		}
 		
 		var regId = new RegExp("(^[a-zA-Z][a-zA-Z0-9]{3,11}$)");
 		if(!regId.test(id)){
-			alert('아이디 형식이 올바르지 않습니다.');
+			showMessage('아이디 형식이 올바르지 않습니다.');
 			return;
 		}
 		
 		var regTel = new RegExp("(^[0][1][0,1,6,7,9]-[0-9]{3,4}-[0-9]{4}$)");
 		if(tel != '' && !regTel.test(tel)){
-			alert('전화번호 형식이 올바르지 않습니다.');
+			showMessage('전화번호 형식이 올바르지 않습니다.');
 			return;
 		}
 		
 		var regEmail = new RegExp("(^[a-zA-Z][a-zA-Z0-9]{1,}@[a-zA-Z0-9]{1,}.[a-z]{1,}$)");
 		if(email != '' && !regEmail.test(email)){
-			alert('이메일 형식이 올바르지 않습니다.');
+			showMessage('이메일 형식이 올바르지 않습니다.');
+			return;
+		}
+		
+		var check = $('#check').attr("value");
+		
+		if(check == "false"){
+			showMessage('사용할 수 없는 ID입니다.');
 			return;
 		}
 		
