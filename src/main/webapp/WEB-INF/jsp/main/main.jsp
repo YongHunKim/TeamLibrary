@@ -15,7 +15,6 @@
 				<h1>   
 					<a href="/main/main.do"><div id="mainpage"><font color="black">SIST LIBRARY</font></div></a>
 				</h1>
-				<!-- 로그인 시 회원가입 창이 없어지고, 로그아웃 및 마이페이지로 변경되어야 합니다. -->
 				<div align="right">
 					<c:set var="session_id" value="<%=session_id %>"/>
 					<c:if test="${session_id eq 'xxx'}">

@@ -6,17 +6,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="rental">
 
 	<select id="rental_history" parameterType="String" resultType="bookmanagervo">
-	<![CDATA[ 	select
-		bm.book_code,b.book_name,b.book_author,bm.rent_date,bm.return_date
+	 	select bm.book_code,b.book_name,b.book_author,bm.rent_date,bm.return_date
 		from book b, book_management bm where b.book_code = bm.book_code and
-		id=#{id}  ]]>
+		id='kyh' 
 	</select>
 
 	<select id="reservation_history" parameterType="String"
 		resultType="bookmanagervo">
-	<![CDATA[	select
-		bm.book_code,b.book_name,b.book_author,bm.reserve_date
+		select bm.book_code,b.book_name,b.book_author,bm.reserve_date
 		from book b, book_management bm where b.book_code = bm.book_code and
-		id=#{id} ]]>
+		id=#{id}
 	</select>
 </mapper>

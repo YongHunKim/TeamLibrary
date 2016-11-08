@@ -12,4 +12,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from member where pwd=#{pwd}  
 	</select>
 	
+	<select id="select_member" parameterType="String" resultType="int">
+		select id,pwd,name,tel,email,addr1,addr2 from member where id=#{id} and pwd=#{pwd}
+	</select>
+	
 </mapper>

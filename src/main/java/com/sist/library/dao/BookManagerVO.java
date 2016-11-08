@@ -11,7 +11,7 @@ public class BookManagerVO {
 	private Date rent_date;
 	private Date return_date;
 	private Date reserve_date;
-	//private BookVO book;
+//	private BookVO book;
 
 	public int getBook_management_code() {
 		return book_management_code;
@@ -78,4 +78,13 @@ public class BookManagerVO {
 	public void setReserve_date(Date reserve_date) {
 		this.reserve_date = reserve_date;
 	}
+
+/*	public BookVO getBook() {
+		return book;
+	}
+
+	public void setBook(BookVO book) {
+		this.book = book;
+	}*/
+	
 }

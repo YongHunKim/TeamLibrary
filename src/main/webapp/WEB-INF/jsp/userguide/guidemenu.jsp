@@ -11,17 +11,14 @@
 <body>
 	<div>
 		<p>이용안내</p>
-		<table>
-		<tr>
-			<td align="left">
+		<div align="left">
 		<ul>
 			<li><a href="/userguide/library_map.do">오시는길</a></li>
 			<li><a href="/userguide/library_time.do">도서관 이용시간</a></li>
 		</ul>
-			</td>
-			<td><jsp:include page="${ usersubmenu }"></jsp:include></td>
-		</tr>
-		</table>
+		</div>
+		
+		<div align="center"><jsp:include page="${ usersubmenu }"></jsp:include></div>
 	</div>
 
 </body>

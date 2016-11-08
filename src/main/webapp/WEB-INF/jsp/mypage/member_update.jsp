@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-<%
-	String session_id = session.getAttribute("id")==null ? "xxx" : (String)session.getAttribute("id");
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,7 +42,7 @@ function updatecancel(){
 			<table>
 				<tr>
 					<th style="line-height: 2.2;">회원ID</th>
-					<td class="lLine"><!-- 아이디 --></td>
+					<td class="lLine">${id}</td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">비밀번호</th>
@@ -60,7 +57,7 @@ function updatecancel(){
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">이름</th>
-					<td class="lLine"><!-- 이름 -->
+					<td class="lLine">${name}
 					</td>
 				</tr>
 				<tr>

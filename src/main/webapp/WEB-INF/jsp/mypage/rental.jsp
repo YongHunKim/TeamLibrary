@@ -12,23 +12,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="1">
-		<tr>
-			<th width="10%" align="center">도서코드</th>
-			<th width="60%" align="left">도서명</th>
-			<th width="10%" align="center">저자</th>
-			<th width="10%" align="center">대출일</th>
-			<th width="10%" align="center">반납일</th>
-		</tr>
-		<c:forEach var="vo" items="${rental}">
-			<tr>
-				<td width="10%" align="center">${vo.book_code}</td>
-				<td width="60%" align="left">${vo.book_name}</td>
-				<td width="10%" align="center">${vo.book_author}</td>
-				<td width="10%" align="center">${vo.rent_date}</td>
-				<td width="10%" align="center">${vo.return_date}</td>
-			</tr>
-		</c:forEach>
-	</table>
+
+
+	<jsp:include page="/mypage/rental.do"></jsp:include>
+	
+	<jsp:include page="/mypage/reservation.do"></jsp:include>
 </body>
 </html>
