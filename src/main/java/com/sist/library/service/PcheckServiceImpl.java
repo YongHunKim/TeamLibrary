@@ -21,9 +21,15 @@ public class PcheckServiceImpl implements PcheckService {
 	}
 
 	@Override
-	public int pcheck_ok(String pwd) {
+	public int pcheck_ok(String id, String pwd) {
 		// TODO Auto-generated method stub
-		return mypageDAO.pcheck_ok(pwd);
+		return mypageDAO.pcheck_ok(id, pwd);
+	}
+
+	@Override
+	public int select_member(String id) {
+		// TODO Auto-generated method stub
+		return mypageDAO.select_member(id);
 	}
 
 }

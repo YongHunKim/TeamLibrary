@@ -26,7 +26,6 @@ public class MyPageController {
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
 		
 		mav.addObject("submenu", "/WEB-INF/jsp/mypage/mypage_submenu.jsp");
-		mav.addObject("subpage", "/WEB-INF/jsp/mypage/member_pcheck.jsp");
 		return mav;
 	}
 
@@ -53,7 +52,7 @@ public class MyPageController {
 		StringBuffer sb = new StringBuffer();
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("check_pwd");
-		int result = mypageService.pcheck_ok(pwd);
+		int result = mypageService.pcheck_ok(id, pwd);
 		if (result > 0) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id", id);
@@ -67,7 +66,7 @@ public class MyPageController {
 			sb.append("location.href = '/mypage/mypage.do';");
 			sb.append("</script>");
 		}
-
+		
 		return sb.toString();
 	}
 
@@ -75,11 +74,9 @@ public class MyPageController {
 	public ModelAndView member_update(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("main/main");
 
-		
-
 		HttpSession session = request.getSession(true);
 		String id = request.getParameter("id");
-
+		
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/member_update.jsp");
 
 		return mav;

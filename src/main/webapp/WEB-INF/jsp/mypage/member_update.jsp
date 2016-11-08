@@ -57,8 +57,7 @@ function updatecancel(){
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">이름</th>
-					<td class="lLine">${name}
-					</td>
+					<td class="lLine">${name}</td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">휴대폰번호</th>
@@ -68,46 +67,45 @@ function updatecancel(){
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">이메일</th>
-					<td class="lLine"><input type="text" name="email" id="mem_email" value="${ email }"
-						class="form-controll" size="16" maxlength="16"></td>
+					<td class="lLine"><input type="text" name="email"
+						id="mem_email" value="${ email }" class="form-controll" size="16"
+						maxlength="16"></td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">우편번호 <span class="essential"></span></th>
-					<td class="lLine"><input type="text" name="post"
-						id="mem_post" value="" class="form-controll" size="16"
-						maxlength="16" readonly> <input type="button"
-						class="btn btn-diable" value="우편번호 찾기"
+					<td class="lLine"><input type="text" name="post" id="mem_post"
+						value="" class="form-controll" size="16" maxlength="16" readonly>
+						<input type="button" class="btn btn-diable" value="우편번호 찾기"
 						onclick="getpostcode('mem_post','mem_addr1');" /></td>
 				</tr>
-				
+
 				<tr>
 					<th style="line-height: 2.2;">주소 <span class="essential"></span></th>
 					<td class="lLine"><input type="text" name="addr1"
 						id="mem_addr1" value="${ addr2 }" class="form-controll" size="30"
-						maxlength="25" readonly>&nbsp;&nbsp;
-						<input type="text"
-						name="addr2" id="mem_addr2" value="${ addr2 }" class="form-controll"
-						size="30" maxlength="25"></td>
+						maxlength="25" readonly>&nbsp;&nbsp; <input type="text"
+						name="addr2" id="mem_addr2" value="${ addr2 }"
+						class="form-controll" size="30" maxlength="25"></td>
 				</tr>
-					<tr>
+				<tr>
 					<td colspan="2"><input type="button" value="수정"
 						class="btn btn-primary" id="update_submit_btn"
 						onclick="check_field()" />&nbsp;&nbsp; <input type="button"
-						value="취소" class="btn btn-primary" onclick="updatecancel()"/></td>
+						value="취소" class="btn btn-primary" onclick="updatecancel()" /></td>
 				</tr>
-				
+
 			</table>
 		</form>
 	</div>
-		<div id="postcode-layer"
-					style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
-					<img
-						src="//i1.daumcdn.net/localimg/localimages/07/postcode/320/close.png"
-						id="btnCloseLayer"
-						style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
-						onclick="closeDaumPostcode()" alt="닫기 버튼">
+	<div id="postcode-layer"
+		style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+		<img
+			src="//i1.daumcdn.net/localimg/localimages/07/postcode/320/close.png"
+			id="btnCloseLayer"
+			style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+			onclick="closeDaumPostcode()" alt="닫기 버튼">
 	</div>
-	
+
 </body>
 <script>
 // 우편번호 찾기 화면을 넣을 element

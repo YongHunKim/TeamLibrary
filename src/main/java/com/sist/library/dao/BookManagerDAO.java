@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 public class BookManagerDAO extends AbstractDAO {
 		
 	public List<BookManagerVO> rental_history(String id){
-		System.out.println(id);
 		return selectList("rental.rental_history", id);
 	}
 	

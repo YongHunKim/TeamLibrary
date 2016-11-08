@@ -8,14 +8,14 @@
 </head>
 <body>
 	<div align="left">
-		<h3>회원정보 수정</h3>
+		<span style="color:blue; font-weight: bold; font-size: 20pt;">회원정보 수정</span>
 			<p>비밀번호를 입력하세요</p>
-			<form action="member_pcheck_ok.do" method="post">
-			<input type="password" size="16" maxlength="16" name="check_pwd" />
+			<form action="member_pcheck_ok.do?id=<%= session.getAttribute("id") %>" method="post">
+			<input type="password" size="16" maxlength="16" name="check_pwd" />&nbsp;
 			<input type="submit" value="확인" />
 			<form>
 			<br/>
-			외부로부터 <!-- id --> 님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한 번 확인 합니다.<br/>
+			외부로부터 ${id } 님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한 번 확인 합니다.<br/>
 			항상 비밀번호는 타인에게 노출되지 않도록 주의해 주세요.
 	</div>
 </body>

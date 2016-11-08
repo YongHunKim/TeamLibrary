@@ -19,37 +19,16 @@ public class RentalController {
 	private RentalService rentalService;
 	
 	@RequestMapping(value="/mypage/rental_guide.do")
-	public ModelAndView rental_guide(@RequestParam(value="id", required=true)String id){
+	public ModelAndView rental_guide(@RequestParam(value="id", required=true)String id) throws Exception{
 		ModelAndView mav = new ModelAndView("main/main");
+		
+		List<BookManagerVO> rentalList = rentalService.rental_history(id);		
+		List<BookManagerVO> reservationList = rentalService.reservation_history(id);
+		
+		mav.addObject("rental", rentalList);
+		mav.addObject("reservation", reservationList);
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/rental_guide.jsp");
-		mav.addObject("rentalpage", "/WEB-INF/jsp/mypage/rental.jsp");
-		mav.addObject("reservationpage", "/WEB-INF/jsp/mypage/reservation.jsp");
 		return mav;
 	}
 	
-	@RequestMapping(value="/mypage/retal.do")
-	public ModelAndView rental_history(String id) throws Exception{
-		ModelAndView mav = new ModelAndView("main/main");
-		
-		
-		
-		List<BookManagerVO> list = rentalService.rental_history(id);
-		mav.addObject("rental", list);
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/rental.jsp");
-		
-		return mav;
-	}
-	
-	@RequestMapping(value="/mypage/reservation.do")
-	public ModelAndView reservation_history(@RequestParam(value="id", required=true)String id) throws Exception{
-		ModelAndView mav = new ModelAndView("main/main");
-		System.out.println(id);
-		
-		List<BookManagerVO> list = rentalService.reservation_history(id);
-		mav.addObject("reservation", list);
-		
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/reservation.jsp");
-		
-		return mav;
-	}
 }
