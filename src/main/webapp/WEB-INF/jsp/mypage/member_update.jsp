@@ -11,7 +11,7 @@ function check_field() {
 	var email = $('#mem_email').val();
 	var tel = $('#mem_tel').val();
 	var pwd = $('#mem_pwd').val();
-	if (pwd == '' || pwd.length < 4 || pwd.length >12) {
+	if (pwd == '' || pwd.length < 4 || pwd.length > 12) {
 		alert('비밀번호를 알맞게 입력해주세요. 비밀번호는 4~12자리입니다.');
 		return;
 	}
@@ -42,7 +42,7 @@ function updatecancel(){
 			<table>
 				<tr>
 					<th style="line-height: 2.2;">회원ID</th>
-					<td class="lLine">${id}</td>
+					<td class="lLine">${ vo.id}</td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">비밀번호</th>
@@ -52,29 +52,29 @@ function updatecancel(){
 				</tr>
 				<tr>
 					<th>비밀번호 재입력</th>
-					<td><input type="password" name="pwd" value="" size="16"
+					<td><input type="password" name="pwd" size="16"
 						maxlength="16" /></td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">이름</th>
-					<td class="lLine">${name}</td>
+					<td class="lLine">${vo.name}</td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">휴대폰번호</th>
 					<td class="lLine"><input type="text" name="tel" id="mem_tel"
-						value="${ tel }" class="form-controll" size="16" maxlength="16">
+						value="${vo.tel}" class="form-controll" size="16" maxlength="16">
 					</td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">이메일</th>
 					<td class="lLine"><input type="text" name="email"
-						id="mem_email" value="${ email }" class="form-controll" size="16"
+						id="mem_email" value="${vo.email}" class="form-controll" size="16"
 						maxlength="16"></td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">우편번호 <span class="essential"></span></th>
 					<td class="lLine"><input type="text" name="post" id="mem_post"
-						value="" class="form-controll" size="16" maxlength="16" readonly>
+						value="${vo.post}" class="form-controll" size="16" maxlength="16" readonly>
 						<input type="button" class="btn btn-diable" value="우편번호 찾기"
 						onclick="getpostcode('mem_post','mem_addr1');" /></td>
 				</tr>
@@ -82,9 +82,9 @@ function updatecancel(){
 				<tr>
 					<th style="line-height: 2.2;">주소 <span class="essential"></span></th>
 					<td class="lLine"><input type="text" name="addr1"
-						id="mem_addr1" value="${ addr2 }" class="form-controll" size="30"
+						id="mem_addr1" value="${vo.addr1}" class="form-controll" size="30"
 						maxlength="25" readonly>&nbsp;&nbsp; <input type="text"
-						name="addr2" id="mem_addr2" value="${ addr2 }"
+						name="addr2" id="mem_addr2" value="${vo.addr2}"
 						class="form-controll" size="30" maxlength="25"></td>
 				</tr>
 				<tr>

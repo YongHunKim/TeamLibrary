@@ -21,8 +21,7 @@ public class MyPageDAO extends AbstractDAO{
 		return (int)selectOne("mypage.pcheck_ok", map);
 	}
 	
-	public int select_member(String id){
-		return (int) selectOne("mypage.select_member", id);
-		
+	public MemberVO member_update(String id) throws Exception{
+		return (MemberVO) selectOne("mypage.member_update", id);
 	}
 }

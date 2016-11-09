@@ -7,9 +7,11 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sist.library.dao.MemberVO;
 import com.sist.library.service.PcheckService;
 
 @Controller
@@ -71,12 +73,16 @@ public class MyPageController {
 	}
 
 	@RequestMapping(value = "/mypage/member_update.do")
-	public ModelAndView member_update(HttpServletRequest request) {
+	public ModelAndView member_update(HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("main/main");
 
-		HttpSession session = request.getSession(true);
 		String id = request.getParameter("id");
+		HttpSession session = request.getSession(true);
+		session.getAttribute(id);
 		
+		MemberVO vo = mypageService.member_update(id);
+		
+		mav.addObject("vo", vo);
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/member_update.jsp");
 
 		return mav;

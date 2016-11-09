@@ -7,19 +7,20 @@
 <title>이용안내</title>
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="/css/libraryguide.css">
+<link rel="stylesheet" type="text/css" href="/css/mypage.css"
 </head>
 <body>
-	<div>
+	<div id="left">
 		<p>이용안내</p>
-		<div align="left">
+		<div id="leftmenuinneri">
 		<ul>
 			<li><a href="/userguide/library_map.do">오시는길</a></li>
 			<li><a href="/userguide/library_time.do">도서관 이용시간</a></li>
 		</ul>
 		</div>
-		
-		<div align="center"><jsp:include page="${ usersubmenu }"></jsp:include></div>
-	</div>
 
+
+		<div id="center"><jsp:include page="${ usersubmenu }"></jsp:include></div>
+	</div>
 </body>
 </html>
