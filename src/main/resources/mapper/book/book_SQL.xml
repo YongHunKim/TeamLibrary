@@ -51,4 +51,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE book SET reserve_yn='y'
 		WHERE book_code=#{book_code}
 	</update>
+	
+	<insert id="insertRec" parameterType="recommendvo">
+		INSERT INTO book_recommend(book_recommend_code,book_code,book_recommend_subject,id)
+		VALUES((SELECT NVL(MAX(book_recommend_code)+1,1) FROM book_recommend),#{book_code},#{book_recommend_subject},#{id})
+	</insert>
+	
+	<select id="bookRecommed" parameterType="String" resultType="recommendvo">
+		SELECT book_recommend_code,book_code,id,book_recommend_subject
+		FROM book_recommend
+		WHERE book_code = #{book_code}
+		ORDER BY book_recommend_code
+	</select>
+	
+	<select id="bookRecommedCount" >
+	</select>
 </mapper>

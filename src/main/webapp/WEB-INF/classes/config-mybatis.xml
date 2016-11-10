@@ -10,6 +10,7 @@
         <typeAlias type="com.sist.library.dao.BookVO" alias="bookvo"/>
         <typeAlias type="com.sist.library.dao.MailVO" alias="mailvo"/>
         <typeAlias type="com.sist.library.dao.ReserveVO" alias="reservevo"/>
+        <typeAlias type="com.sist.library.dao.BookRecommendVO" alias="recommendvo"/>
     </typeAliases>
     
 </configuration> 

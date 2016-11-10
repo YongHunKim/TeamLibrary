@@ -1,5 +1,8 @@
 package com.sist.library.service;
 
+import java.util.List;
+
+import com.sist.library.dao.BookRecommendVO;
 import com.sist.library.dao.BookVO;
 import com.sist.library.dao.MailVO;
 import com.sist.library.dao.ReserveVO;
@@ -21,5 +24,11 @@ public interface BookService {
 	int bookRentyn(String book_code);
 
 	int bookReserveyn(String book_code);
+
+	int insertRec(BookRecommendVO vo);
+
+	List<BookRecommendVO> bookRecommed(String book_code);
+
+	int bookRecommedCount(String book_code);
 
 }

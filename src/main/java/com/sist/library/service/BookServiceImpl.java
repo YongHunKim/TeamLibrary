@@ -1,10 +1,13 @@
 package com.sist.library.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.sist.library.dao.BookDAO;
+import com.sist.library.dao.BookRecommendVO;
 import com.sist.library.dao.BookVO;
 import com.sist.library.dao.MailVO;
 import com.sist.library.dao.ReserveVO;
@@ -62,6 +65,24 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public int bookReserveyn(String book_code) {
 		return bookDAO.bookReserveyn(book_code);
+	}
+
+
+	@Override
+	public int insertRec(BookRecommendVO vo) {
+		return bookDAO.insertRec(vo);
+	}
+
+
+	@Override
+	public List<BookRecommendVO> bookRecommed(String book_code) {
+		return bookDAO.bookRecommed(book_code);
+	}
+
+
+	@Override
+	public int bookRecommedCount(String book_code) {
+		return bookDAO.bookRecommedCount(book_code);
 	}
 
 }

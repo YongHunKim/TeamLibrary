@@ -74,7 +74,12 @@ input[type=button]{
 		var f = document.getElementById(reserveform_id);
 		$(f).attr("action","/book/reserve.do");
 		f.submit();
-		
+	}
+	
+	function goDetail(detailform_id){
+		var f = document.getElementById(detailform_id);
+		$(f).attr("action","/book/detail.do");
+		f.submit();
 	}
 	
 </script>
@@ -106,15 +111,17 @@ input[type=button]{
 			</div>
 			<!-- foreach -->
 			<c:forEach var="i" begin="0" end="${list.size()-1 }">
-				<form name="subFormInfo${i}" id="subFormInfo${i}" method="get" action="/book/rent.do">
+				<form name="subFormInfo${i}" id="subFormInfo${i}" method="post" action="/book/rent.do">
 					<input type="hidden" name="book_code" id="book_code" value="${list.get(i).book_code }"/>
+					<input type="hidden" name="curPage" id="curPage" value="${curPage} }"/>
+					<input type="hidden" name="searchWord" id="searchWord" value="${searchWord} }"/>
 				</form>
 				<ul class="resultsty1" style="left:80px;">
 					<li class="book_cover"><img src="${list.get(i).book_image }" width="60" height="83" alt="책표지" /></li>
 					<li>
 					<dl>
 					<dt>
-					<p class="fl"><a href="#nolink" onclick="goRent('subFormInfo${i}');"><font color="red" style="font-size: 12px;">${list.get(i).book_category }</font>, <font style="font-size: 12px;">${list.get(i).book_name }</font></a></p>
+					<p class="fl"><a href="#nolink" onclick="goDetail('subFormInfo${i}');"><font color="red" style="font-size: 12px;">${list.get(i).book_category }</font>, <font style="font-size: 12px;">${list.get(i).book_name }</font></a></p>
 					<p class="book_state">
 						<c:choose>
 							<c:when test="${list.get(i).rent_yn == 'n' }">

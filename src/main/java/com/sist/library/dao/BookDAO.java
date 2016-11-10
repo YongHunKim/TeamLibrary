@@ -97,4 +97,16 @@ public class BookDAO extends AbstractDAO{
 		return (int) update("book.bookReserveyn",book_code);
 	}
 
+	public int insertRec(BookRecommendVO vo) {
+		return (int) insert("book.insertRec",vo);
+	}
+
+	public List<BookRecommendVO> bookRecommed(String book_code) {
+		return selectList("book.bookRecommed", book_code);
+	}
+
+	public int bookRecommedCount(String book_code) {
+		return (int) selectOne("book.bookRecommedCount", book_code);
+	}
+
 }

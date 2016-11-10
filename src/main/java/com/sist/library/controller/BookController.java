@@ -1,13 +1,12 @@
 package com.sist.library.controller;
 
+import java.util.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.sist.library.dao.BookRecommendVO;
 import com.sist.library.dao.BookVO;
 import com.sist.library.dao.MailVO;
 import com.sist.library.dao.ReserveVO;
@@ -108,4 +107,32 @@ public class BookController {
 		
 		return str_result;
 	}
+	
+	@RequestMapping(value="/book/detail.do")
+	public ModelAndView bookDetail(@RequestParam(value="book_code" ,required=true)String book_code,
+			@RequestParam(value="curPage" ,required=true)String curPage,
+			@RequestParam(value="searchWord" ,required=true)String searchWord){
+		ModelAndView mav = new ModelAndView("main/main");
+		
+		BookVO vo = bookService.bookInfo(book_code);
+		System.out.println(book_code);
+		//한줄평 가져오기
+		List<BookRecommendVO> reclist = bookService.bookRecommed(book_code);		
+		mav.addObject("reclist", reclist);
+		mav.addObject("vo",vo);
+		mav.addObject("curPage",curPage);
+		mav.addObject("searchWord",searchWord);
+		mav.addObject("jsp", "/WEB-INF/jsp/book/book_detail.jsp");
+		return mav;
+	}
+	
+	@RequestMapping(value="/book/recInsert.do")
+	public @ResponseBody String recInsert(BookRecommendVO vo){
+		String res = "";
+		int result = bookService.insertRec(vo);
+		List<BookRecommendVO> list = bookService.bookRecommed(vo.getBook_code()+""); 
+		
+		return "";
+	}
+	
 }
