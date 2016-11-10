@@ -69,6 +69,14 @@ input[type=button]{
 		var f = document.getElementById(rentform_id);
 		f.submit();
 	}
+	
+	function goReserve(reserveform_id){
+		var f = document.getElementById(reserveform_id);
+		$(f).attr("action","/book/reserve.do");
+		f.submit();
+		
+	}
+	
 </script>
 
 </head>
@@ -109,11 +117,14 @@ input[type=button]{
 					<p class="fl"><a href="#nolink" onclick="goRent('subFormInfo${i}');"><font color="red" style="font-size: 12px;">${list.get(i).book_category }</font>, <font style="font-size: 12px;">${list.get(i).book_name }</font></a></p>
 					<p class="book_state">
 						<c:choose>
-							<c:when test="${list.get(i).rent_yn == 'y' }">
-								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/reservation_ok.gif" width="58" height="17" title="대출상태" onclick="goRent('subFormInfo${i}');">
+							<c:when test="${list.get(i).rent_yn == 'n' }">
+								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/rental_ok.gif" width="58" height="17" title="대출상태" onclick="goRent('subFormInfo${i}');">
+							</c:when>
+							<c:when test="${list.get(i).rent_yn == 'y' and list.get(i).reserve_yn =='n' }">
+								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/reservation_ok.gif" width="58" height="17" title="대출상태" onclick="goReserve('subFormInfo${i}');" style="height:30px;">
 							</c:when>
 							<c:otherwise>
-								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/rental_ok.gif" width="58" height="17" title="대출상태" onclick="goRent('subFormInfo${i}');">
+								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/reservation_x.png" width="58" height="17" title="대출상태" style="height:22px; width:62px;">
 							</c:otherwise>
 						</c:choose>
 					</p>

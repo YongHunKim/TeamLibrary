@@ -8,6 +8,8 @@
     <typeAliases>
         <typeAlias type="com.sist.library.dao.MemberVO" alias="membervo" />
         <typeAlias type="com.sist.library.dao.BookVO" alias="bookvo"/>
+        <typeAlias type="com.sist.library.dao.MailVO" alias="mailvo"/>
+        <typeAlias type="com.sist.library.dao.ReserveVO" alias="reservevo"/>
     </typeAliases>
     
 </configuration> 
