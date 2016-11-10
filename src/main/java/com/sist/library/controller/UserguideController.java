@@ -12,8 +12,6 @@ public class UserguideController {
 		ModelAndView mv = new ModelAndView("main/main");
 		
 		mv.addObject("jsp", "/WEB-INF/jsp/userguide/guidemenu.jsp");
-		mv.addObject("usersubmenu", "/WEB-INF/jsp/userguide/library_time.jsp");
-		
 		return mv;
 	}
 	

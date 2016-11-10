@@ -13,7 +13,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="member_update" parameterType="String" resultType="membervo">
-		select id,name,tel,post,addr1,addr2,email from member where id=#{id}
+		select id,name,tel,post,addr1,addr2,email from member where id=#{id,jdbcType=VARCHAR}
 	</select>
+	
+	<update id="member_update_ok" parameterType="membervo">
+		update member set tel=#{tel,jdbcType=VARCHAR},
+		post=#{post,jdbcType=VARCHAR},
+		addr1=#{addr1,jdbcType=VARCHAR},
+		addr2=#{addr2,jdbcType=VARCHAR},
+		email=#{email,jdbcType=VARCHAR} 
+		where id=#{id}
+	</update>
 	
 </mapper>

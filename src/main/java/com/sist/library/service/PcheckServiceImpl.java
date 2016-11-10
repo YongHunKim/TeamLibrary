@@ -1,8 +1,5 @@
 package com.sist.library.service;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -19,11 +16,6 @@ public class PcheckServiceImpl implements PcheckService {
 	private MyPageDAO mypageDAO;
 	
 	@Override
-	public int pcheck_pwd(String pwd) {
-		return mypageDAO.pcheck_pwd(pwd);
-	}
-
-	@Override
 	public int pcheck_ok(String id, String pwd) {
 		return mypageDAO.pcheck_ok(id, pwd);
 	}
@@ -33,5 +25,12 @@ public class PcheckServiceImpl implements PcheckService {
 		return mypageDAO.member_update(id);
 	}
 
+	@Override
+	public void member_update_ok(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		mypageDAO.member_update_ok(vo);
+	}
+
+	
 
 }

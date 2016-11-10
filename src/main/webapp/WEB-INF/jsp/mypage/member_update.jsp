@@ -42,7 +42,7 @@ function updatecancel(){
 			<table>
 				<tr>
 					<th style="line-height: 2.2;">회원ID</th>
-					<td class="lLine">${ vo.id}</td>
+					<td class="lLine">${vo.id}</td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">비밀번호</th>
