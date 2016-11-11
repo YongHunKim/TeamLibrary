@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/csslist/table.css">
+<link rel="stylesheet" type="text/css" href="/css/csslostBoard/table.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 	
@@ -37,7 +37,7 @@
 <body>
 	<center>
 		<h3>글쓰기</h3>
-		<form:form method="post" action="/list/insert_ok.do" name="frm">
+		<form:form method="post" action="/lostBoard/insert_ok.do" name="frm">
 			<table width="700" id="table_content">
 				<tr height="27">
 					<td width="20%" align="center">제목</td>

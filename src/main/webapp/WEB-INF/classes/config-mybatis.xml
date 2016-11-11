@@ -7,7 +7,7 @@
 
     <typeAliases>
         <typeAlias type="com.sist.library.dao.MemberVO" alias="membervo" />
-        <typeAlias type="com.sist.library.dao.ListVO" alias="listvo"/>
+        <typeAlias type="com.sist.library.dao.lostBoardVO" alias="listvo"/>
     </typeAliases>
     
 </configuration> 

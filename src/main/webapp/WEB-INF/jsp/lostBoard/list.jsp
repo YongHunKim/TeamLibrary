@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/csslist/table.css">
+<link rel="stylesheet" type="text/css" href="/css/csslostBoard/table.css">
 </head>
 <body>
 	<center>
@@ -16,7 +16,7 @@
 		<table border="0" width="960">
 			<tr>
 				<td align="left">
-					<a href="insert.do"><img src="/imagelist/btn_write.gif" border="0"></a>
+					<a href="insert.do"><img src="/images/imagelist/btn_write.gif" border="0"></a>
 				</td>
 				<td><a href="/main/main.do">메인</a></td>
 			</tr>
@@ -40,7 +40,7 @@
 						 	<img src="/imagelist/icon_reply.gif">
 						 </c:if>
 					</td> --%>
-					<td width="45%" class="tdcenter"><a href="/list/content.do?lb_no=${vo.lb_no }">${vo.lb_subject}</a></td>
+					<td width="45%" class="tdcenter"><a href="/lostBoard/content.do?lb_no=${vo.lb_no }">${vo.lb_subject}</a></td>
 					<td width="15%" class="tdcenter">${vo.id}</td>
 					<td width="20%" class="tdcenter">
 					<fmt:formatDate value="${vo.lb_regdate}" pattern="yyyy-MM-dd"/>
@@ -54,18 +54,18 @@
 				<td align="right">
 					 <c:if test="${curPage > block}">
 					 	<a href="list.do?page=1">
-					 		<img src="/imagelist/begin.gif" border="0">
+					 		<img src="/images/imagelist/begin.gif" border="0">
 					 	</a>&nbsp;
 					 	<a href="list.do?page=${fromPage-1}">
-					 		<img src="/imagelist/prev.gif" border="0">
+					 		<img src="/images/imagelist/prev.gif" border="0">
 					 	</a>
 					 </c:if>
 					 <c:if test="${curPage <= block}">
 					 	<a href="list.do?page=1">
-					 		<img src="/imagelist/begin.gif" border="0">
+					 		<img src="/images/imagelist/begin.gif" border="0">
 					 	</a>&nbsp;
 					 	<a href="list.do?page=${curPage>1?curPage-1:curPage}">
-					 		<img src="/imagelist/prev.gif" border="0">
+					 		<img src="/images/imagelist/prev.gif" border="0">
 					 	</a>
 					 </c:if>
 					 
@@ -82,18 +82,18 @@
 					 
 					 <c:if test="${toPage >= totalPage}">
 					 	<a href="list.do?page=${curPage<totalPage?curPage+1:curPage}">
-					 		<img src="/imagelist/next.gif" border="0">
+					 		<img src="/images/imagelist/next.gif" border="0">
 					 	</a>&nbsp;
 					 	<a href="list.do?page=${totalPage}">
-					 		<img src="/imagelist/end.gif" border="0">
+					 		<img src="/images/imagelist/end.gif" border="0">
 					 	</a>
 					 </c:if>
 					 <c:if test="${toPage < totalPage}">
 					 	<a href="list.do?page=${toPage+1}">
-					 		<img src="/imagelist/next.gif" border="0">
+					 		<img src="/images/imagelist/next.gif" border="0">
 					 	</a>&nbsp;
 					 	<a href="list.do?page=${totalPage}">
-					 		<img src="/imagelist/end.gif" border="0">
+					 		<img src="/images/imagelist/end.gif" border="0">
 					 	</a>
 					 </c:if>
 					 &nbsp;&nbsp;

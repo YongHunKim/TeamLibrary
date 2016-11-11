@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/csslist/table.css">
+<link rel="stylesheet" type="text/css" href="/css/csslostBoard/table.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -51,7 +51,7 @@
 	<center>
 		<h3>수정하기</h3>
 		<form:form method="post"
-			action="/list/update_ok.do" name="frm">
+			action="/lostBoard/update_ok.do" name="frm">
 
 			<table width="700" id="table_content">
 

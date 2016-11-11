@@ -1,6 +1,7 @@
 package com.sist.library.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,98 +13,98 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sist.library.dao.ListVO;
-import com.sist.library.service.ListService;
+import com.sist.library.dao.lostBoardVO;
+import com.sist.library.service.lostBoardService;
 
 @Controller
 public class LostBoardController {
 	Logger log = Logger.getLogger(this.getClass());
 	
 	
-	@Resource(name="listservice")
-	private ListService listservice;
+	@Resource(name="lostservice")
+	private lostBoardService lostservice;
 	
-	@RequestMapping(value="/list/list.do")
+	@RequestMapping(value="/lostBoard/list.do")
     public ModelAndView board_form() throws Exception{
     	ModelAndView mv = new ModelAndView("main/main");
-    	
-    	List<ListVO> list = listservice.boardList();
+    
+    	List<lostBoardVO> list = lostservice.boardList();
     	mv.addObject("list", list);
     	
     	
     	
     	//log.debug("인터셉터 테스트");
-    	mv.addObject("jsp", "/WEB-INF/jsp/list/list.jsp");
+    	mv.addObject("jsp", "/WEB-INF/jsp/lostBoard/list.jsp");
     	
     	return mv;
     }
 	
-	@RequestMapping(value="/list/insert.do")
+	@RequestMapping(value="/lostBoard/insert.do")
     public ModelAndView insert(Map<String,Object> commandMap) throws Exception{
     	ModelAndView mv = new ModelAndView("main/main");
     	//log.debug("인터셉터 테스트");
     	
-    	mv.addObject("jsp", "/WEB-INF/jsp/list/insert.jsp");
+    	mv.addObject("jsp", "/WEB-INF/jsp/lostBoard/insert.jsp");
     	
     	return mv;
     }
 	
-	@RequestMapping(value="/list/insert_ok.do")
-    public ModelAndView lostboard_insert_ok(ListVO vo) throws Exception{
+	@RequestMapping(value="/lostBoard/insert_ok.do")
+    public ModelAndView lostboard_insert_ok(lostBoardVO vo) throws Exception{
     	ModelAndView mv = new ModelAndView("main/main");
     	
     	System.out.println(vo.getLb_subject());
-    	listservice.insertList(vo);
+    	lostservice.insertList(vo);
     	
     	
-    	mv.addObject("jsp", "/WEB-INF/jsp/list/insert_ok.jsp");
+    	mv.addObject("jsp", "/WEB-INF/jsp/lostBoard/insert_ok.jsp");
     	
     	return mv;
     }
 	
-	@RequestMapping(value="/list/delete.do")
+	@RequestMapping(value="/lostBoard/delete.do")
     public ModelAndView lostboard_delete(int lb_no) throws Exception{
     	ModelAndView mv = new ModelAndView("main/main");
-    	listservice.getlostdelete(lb_no);
-    	mv.addObject("jsp", "/WEB-INF/jsp/list/delete_ok.jsp");
+    	lostservice.getlostdelete(lb_no);
+    	mv.addObject("jsp", "/WEB-INF/jsp/lostBoard/delete_ok.jsp");
     	
     	return mv;
     }
 
-	@RequestMapping(value="/list/content.do")
+	@RequestMapping(value="/lostBoard/content.do")
     public ModelAndView content(@RequestParam(value="lb_no")String lb_no) throws Exception{
     	ModelAndView mv = new ModelAndView("main/main");
     	//log.debug("인터셉터 테스트");
     	int content_no = Integer.parseInt(lb_no);
-    	ListVO vo = listservice.getlostcontent(content_no);    	
+    	lostBoardVO vo = lostservice.getlostcontent(content_no);    	
     	mv.addObject("vo", vo);
-    	mv.addObject("jsp", "/WEB-INF/jsp/list/content.jsp");
+    	mv.addObject("jsp", "/WEB-INF/jsp/lostBoard/content.jsp");
     	
     	return mv;
     }
 	
-	@RequestMapping(value="/list/update.do")
+	@RequestMapping(value="/lostBoard/update.do")
     public ModelAndView lostboard_update(@RequestParam(value="lb_no")String lb_no) throws Exception{
     	ModelAndView mv = new ModelAndView("main/main");
     	int Update_no = Integer.parseInt(lb_no);
-    	ListVO vo = listservice.getlostupdate(Update_no); 	
+    	lostBoardVO vo = lostservice.getlostupdate(Update_no); 	
     	mv.addObject("vo", vo);
-    	mv.addObject("jsp", "/WEB-INF/jsp/list/update.jsp");
+    	mv.addObject("jsp", "/WEB-INF/jsp/lostBoard/update.jsp");
     	
     	return mv;
     }
 	
 	
-	@RequestMapping(value="/list/update_ok.do")
-    public ModelAndView getlostupdate_ok(ListVO vo) throws Exception{
+	@RequestMapping(value="/lostBoard/update_ok.do")
+    public ModelAndView getlostupdate_ok(lostBoardVO vo) throws Exception{
     	ModelAndView mv = new ModelAndView("main/main");
     	System.out.println(vo.getLb_no());
     	System.out.println(vo.getLb_subject());
     	System.out.println(vo.getLb_content());
-    	listservice.getlostupdate_ok(vo);
+    	lostservice.getlostupdate_ok(vo);
     	System.out.println(vo.getLb_subject());
     	mv.addObject("vo", vo);
-    	mv.addObject("jsp", "/WEB-INF/jsp/list/update_ok.jsp");
+    	mv.addObject("jsp", "/WEB-INF/jsp/lostBoard/update_ok.jsp");
     	
     	return mv;
     }
