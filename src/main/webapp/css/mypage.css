@@ -18,18 +18,20 @@ ul, li{
 	padding: 0;
 } 
 
-#leftmenuinneri {
-	float:left;
-	height: 100%;
-	width: 20%;
-	overflow-x: hidden;
-	padding-top: 20px;	
-	color: #000 !important;
-	background-color: #f1f1f1 !important;
+#left_layer {
+	float: left;
+	padding: 10px;
+	background-color: #999;
+	border: 1px solid #000;
+	width: 200px;
 }
 
-#center{
+#content {
 	float: right;
-	
+	padding: 10px;
+	background-color: #CCC;
+	border: 1px solid #000;
+	width: 500px;
+	margin-bottom: 10px;
 }
 
