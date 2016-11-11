@@ -149,13 +149,13 @@
 		</dependency>
 
 		<!-- Oracle -->
+		<!-- https://mvnrepository.com/artifact/oracle/ojdbc14 -->
 		<dependency>
-			<groupId>ojdbc</groupId>
-			<artifactId>ojdbc</artifactId>
-			<version>14</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc14-10.2.0.4.0.jar</systemPath>
+			<groupId>oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0.4</version>
 		</dependency>
+
 
 		<!-- AspectJ -->
 		<dependency>
@@ -327,7 +327,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
+	
 
 	<build>
 		<defaultGoal>install</defaultGoal>
