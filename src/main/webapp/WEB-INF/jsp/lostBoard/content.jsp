@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/csslist/table.css">
+<link rel="stylesheet" type="text/css" href="/css/csslostBoard/table.css">
 </head>
 <body>
 	<center>
@@ -44,8 +44,10 @@
 			<table id="table_content" width="700">
 				<tr>
 					<td align="right">
-						<a href="update.do?no=${vo.lb_no }">수정</a>&nbsp;
-						<a href="delete.do?no=${vo.lb_no }">삭제</a>&nbsp;
+					<c:if test="${vo.id == 'kyh'}">
+						<a href="/lostBoard/update.do?lb_no=${vo.lb_no }">수정</a>&nbsp;
+						<a href="/lostBoard/delete.do?lb_no=${vo.lb_no }">삭제</a>&nbsp;
+					</c:if>
 						<a href="list.do">목록</a>&nbsp;
 					</td>
 				</tr>

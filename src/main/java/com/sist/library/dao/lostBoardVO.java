@@ -1,7 +1,7 @@
 package com.sist.library.dao;
 
 import java.util.*;
-public class ListVO {	
+public class lostBoardVO {	
 	private int lb_no;
 	private String id;
 	private String lb_subject;
