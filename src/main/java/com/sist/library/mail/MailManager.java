@@ -2,20 +2,20 @@ package com.sist.library.mail;
 
 import java.util.Properties;
 
-import javax.mail.Message;
+/*import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMessage;*/
 
 import com.sist.library.dao.MailVO;
 
 public class MailManager{
 	
-	public void sendMail(MailVO vo,String type) throws AddressException, MessagingException{
+	public void sendMail(MailVO vo,String type) /*throws AddressException, MessagingException*/{
 		
 		 String host = "smtp.naver.com";
 	     final String username = "bellroyalpha";
@@ -55,7 +55,7 @@ public class MailManager{
 	     props.put("mail.smtp.ssl.enable", "true");
 	     props.put("mail.smtp.ssl.trust", host);
 	       
-	     Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+	   /*  Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 	         String un=username;
 	         String pw=password;
 	         protected PasswordAuthentication getPasswordAuthentication() {
@@ -69,6 +69,6 @@ public class MailManager{
 	     mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 	     mimeMessage.setSubject(subject);
 	     mimeMessage.setText(body);
-	     Transport.send(mimeMessage);
+	     Transport.send(mimeMessage);*/
 	}
 }
