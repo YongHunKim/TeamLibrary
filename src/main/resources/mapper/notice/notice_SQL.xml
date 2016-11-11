@@ -31,7 +31,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select nt_no,id,nt_subject,nt_content,nt_hit,nt_regdate FROM NOTICE where nt_no=#{content_no}
 		]]>
 	</select>
-	
 		
 	<select id="updateNotice" parameterType="int" resultType="noticevo">
 		<![CDATA[	
@@ -54,6 +53,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</delete>
 	
+	<select id="update_hit" parameterType="int" resultType="noticevo">
+		<![CDATA[
+		UPDATE notice set hit = hit + 1  WHERE nt_no=#{nt_no}
+		]]>
+	</select>
 	
 	
 	

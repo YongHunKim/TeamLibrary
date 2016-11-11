@@ -109,6 +109,7 @@ public class NoticeController {
 		mav.addObject("vo",vo);
 		mav.addObject("jsp", "/WEB-INF/jsp/notice/update.jsp");
 		
+		
 		return mav;
 	}
 	@RequestMapping(value = "/notice/update_ok.do")
