@@ -38,9 +38,10 @@
 		</repository>
 
 		<repository>
-			<id>oracle</id>
-			<name>ORACLE JDBC Repository</name>
-			<url>http://mesir.googlecode.com/svn/trunk/mavenrepo</url>
+			<id>mesir-repo</id>
+			<!-- <url>http://mesir.googlecode.com/svn/trunk/mavenrepo</url> -->
+			<url>http://maven.jahia.org/maven2</url>
+			<!-- <url>https://mvnrepository.com/artifact/cn.guoyukun.jdbc/oracle-ojdbc6</url> -->
 		</repository>
 	</repositories>
 
@@ -150,11 +151,9 @@
 
 		<!-- Oracle -->
 		<dependency>
-			<groupId>ojdbc</groupId>
-			<artifactId>ojdbc</artifactId>
-			<version>14</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc14.jar</systemPath>
+			<groupId>oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0.4</version>
 		</dependency>
 
 		<!-- AspectJ -->
@@ -325,9 +324,9 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>				
+		</dependency>
 	</dependencies>
-	
+
 
 	<build>
 		<defaultGoal>install</defaultGoal>
