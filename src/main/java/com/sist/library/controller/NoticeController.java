@@ -35,18 +35,18 @@ public class NoticeController {
 		int curpage=Integer.parseInt(page);
 		
 		Map map=new HashMap();
-	  //  int rowSize=10;
-	  //  int start=(curpage*rowSize)-(rowSize-1);
-	  //  int end=curpage*rowSize;
+	    int rowSize=10;
+	    int start=(curpage*rowSize)-(rowSize-1);
+	    int end=curpage*rowSize;
 	    int block=5;
 	    int frompage=((curpage-1)/block*block)+1;
 	    int topage=((curpage-1)/block*block);
 	    
 
 	    map.put("page", page);
-	   // map.put("start", start);
-	   // map.put("end",end);
-	   // map.put("rowSize", rowSize);
+	    map.put("start", start);
+	    map.put("end",end);
+	    map.put("rowSize", rowSize);
 	    
 	    
     	List<NoticeVO> list=noticeService.getAllNotice(map);
@@ -74,7 +74,6 @@ public class NoticeController {
 	public ModelAndView notice_insert_ok(NoticeVO vo) throws Exception{
 		//List<NoticeVO> list= noticeService.getAllNotice();
 		ModelAndView mav=new ModelAndView("main/main");
-		System.out.println(vo.getNt_subject());
 		noticeService.insertNotice(vo);
 		mav.addObject("jsp", "/WEB-INF/jsp/notice/insert_ok.jsp");
 		return mav;

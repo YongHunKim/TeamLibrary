@@ -13,25 +13,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/css/table.css">
+<link rel="stylesheet" type="text/css" href="../css/notice/table.css">
 </head>
 <body>
 	<center>
 		<h3>공지사항</h3>
-		<table border="0" width="700">
+		<table border="0" width="700" id="crud">
 			<tr>
-				<td align="left">
-					<a href="/notice/insert.do">글쓰기</a>
+				<td>
+					<a href="/notice/insert.do?type=${type }"><img src="/images/notice/btn_write.gif" border="0"></a>
 				</td>
 			</tr>
 		</table>
 		<table id="table_content" width="700" > 
 			<tr>
-				<th width="10%">번호</th>
-				<th width="45%">제목</th>
-				<th width="15%">아이디</th>
-				<th width="20%">작성일</th>
-				<th width="10%">조회수</th>
+				<th width="10%" id="menubar">번호</th>
+				<th width="45%" id="menubar">제목</th>
+				<th width="15%" id="menubar">아이디</th>
+				<th width="20%" id="menubar">작성일</th>
+				<th width="10%" id="menubar">조회수</th>
 			</tr>
 		
 		<c:forEach var="vo" items="${list }">

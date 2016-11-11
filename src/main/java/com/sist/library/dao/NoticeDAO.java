@@ -32,12 +32,10 @@ public class NoticeDAO extends AbstractDAO{
 
 
 	public NoticeVO getNoticecontent(int content_no) {
-		System.out.println(content_no);
 		return (NoticeVO) selectOne("notice.getNoticecontent",content_no);
 	}
 	
 	public void getNoticedelete(int nt_no) {
-		System.out.println(nt_no);
 		delete("notice.getNoticedelete", nt_no);
 	}
 

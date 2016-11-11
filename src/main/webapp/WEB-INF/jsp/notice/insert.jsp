@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/css/table.css">
+<link rel="stylesheet" type="text/css" href="../css/notice/table.css">
 <script type="text/javascript">
 $(function(){
 	$('#insert_submit_btn').click(function(){
@@ -47,7 +47,7 @@ $(function(){
 		<tr>
 					<th style="line-height: 1.2;" >이름<span class="essential"></span></th>
 					<td class="1Line"><input type="text" name="name" id="name"
-						class="form-controll" size="45" maxlength="10" value="">
+						class="form-controll" size="45" maxlength="30" value="">
 					<input type="hidden" name="id" id="id" value="<%=session.getAttribute("id") %>">
 					</td>
 				</tr>
@@ -57,8 +57,8 @@ $(function(){
 				<tr>
 					<th style="line-height: 1.2;" >제목<span class="essential"></span></th>
 					<td class="1Line"><input type="text" name="nt_subject" id="nt_subject"
-						class="form-controll" size="45" maxlength="10" value="">
-					<input type="hidden" name="nt_subject" id="nt_subject" value="<%=session.getAttribute("nt_subject") %>">
+						class="form-controll" size="45" maxlength="45">  
+					<%-- <input type="hidden" name="nt_subject" id="nt_subject" value="<%=session.getAttribute("nt_subject") %>"> --%>
 					</td>
 				</tr>
 	

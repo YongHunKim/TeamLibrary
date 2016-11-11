@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/css/table.css">
+<link rel="stylesheet" type="text/css" href="../css/notice/table.css">
 <script type="text/javascript">
 $(function(){
 	$('#insert_submit_btn').click(function(){
