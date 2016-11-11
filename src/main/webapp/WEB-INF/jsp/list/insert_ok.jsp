@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+	pageEncoding="EUC-KR"%>
 <script>
 	location.href="/list/list.do";
 </script>

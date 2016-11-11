@@ -4,16 +4,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="list">
-<!-- 	<insert id="insertList" parameterType="listvo">
-		insert into list(lb_no,lb_id,lb_subject,lb_content,lb_hit,lb_root,lb_depth,lb_regdate,lb_group_id,lb_group_step,lb_group_tab)
-		values(#{lb_no},#{lb_id},#{lb_subject},#{lb_content},#{lb_hit},#{lb_root},#{lb_depth},#{lb_regdate},#{lb_group_id},#{lb_group_step},#{lb_group_tab})
-	</insert> -->
+	<insert id="insertList" parameterType="listvo">
+	<![CDATA[
+		insert into lostboard (lb_no, id, lb_subject, lb_content, lb_hit, LB_GROUP_ID,LB_GROUP_STEP, LB_GROUP_TAB)
+		values((select NVL(max(lb_no)+1,1) from lostboard), 'kyh', #{lb_subject, jdbcType=VARCHAR}, #{lb_content, jdbcType=VARCHAR}, 0, 0,0,0)
+	]]>
+	</insert> 
 	
 	
 	<select id="boardlist" resultType="listvo">
 	<![CDATA[
 		SELECT lb_no,id,lb_subject,lb_content,lb_hit,lb_root,lb_depth,
 		lb_regdate, lb_group_id,lb_group_step,lb_group_tab FROM lostboard 
+		order by lb_no desc
 	]]>
 	 
 	</select>
@@ -24,4 +27,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM lostboard WHERE lb_no=#{content_no}
 	]]>
 	</select>
+	
+	<select id="getlostupdate" resultType="listvo" parameterType="int">
+	<![CDATA[
+		SELECT lb_no,id,lb_subject,lb_content
+		FROM lostboard WHERE lb_no=#{update_no}
+	]]>
+	</select>
+	<select id="getlostupdate_ok" parameterType="listvo">
+	<![CDATA[
+   		update lostboard SET lb_subject=#{lb_subject,jdbcType=VARCHAR},
+   		lb_content=#{lb_content,jdbcType=VARCHAR}
+   		WHERE lb_no=#{lb_no,jdbcType=VARCHAR}   		
+	]]>
+	</select>
+	<delete id="getlostdelete" parameterType="int">
+	<![CDATA[
+		DELETE lostboard WHERE lb_no=#{lb_no}
+	
+	]]>
+	</delete>
 </mapper>

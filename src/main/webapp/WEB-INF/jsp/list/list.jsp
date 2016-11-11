@@ -42,7 +42,9 @@
 					</td> --%>
 					<td width="45%" class="tdcenter"><a href="/list/content.do?lb_no=${vo.lb_no }">${vo.lb_subject}</a></td>
 					<td width="15%" class="tdcenter">${vo.id}</td>
-					<td width="20%" class="tdcenter">${vo.lb_regdate}</td>
+					<td width="20%" class="tdcenter">
+					<fmt:formatDate value="${vo.lb_regdate}" pattern="yyyy-MM-dd"/>
+					</td>
 					<td width="10%" class="tdcenter">${vo.lb_hit}</td>
 				</tr>
 			</c:forEach>
