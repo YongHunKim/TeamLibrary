@@ -85,4 +85,16 @@ public class BookServiceImpl implements BookService{
 		return bookDAO.bookRecommedCount(book_code);
 	}
 
+
+	@Override
+	public int bookRecommendModify(BookRecommendVO vo) {
+		return bookDAO.bookRecommendModify(vo);
+	}
+
+
+	@Override
+	public int bookRecommendDelete(String book_code, String book_recommend_code) {
+		return bookDAO.bookRecommendDelete(book_code,book_recommend_code);
+	}
+
 }

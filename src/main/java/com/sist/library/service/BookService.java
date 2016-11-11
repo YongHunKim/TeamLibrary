@@ -31,4 +31,8 @@ public interface BookService {
 
 	int bookRecommedCount(String book_code);
 
+	int bookRecommendModify(BookRecommendVO vo);
+
+	int bookRecommendDelete(String book_code, String book_recommend_code);
+
 }
