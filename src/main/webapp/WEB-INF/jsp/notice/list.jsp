@@ -20,11 +20,12 @@
 		<h3>공지사항</h3>
 		<table border="0" width="700" id="crud">
 			<tr>
-				<td>
-					<a href="/notice/insert.do?type=${type }"><img src="/images/notice/btn_write.gif" border="0"></a>
+				<td align="left">
+				<a href="/notice/insert.do?type=${type }" type="button" class="btn btn-default">글쓰기</a>
 				</td>
 			</tr>
 		</table>
+		
 		<table id="table_content" width="700" > 
 			<tr>
 				<th width="10%" id="menubar">번호</th>
@@ -34,7 +35,8 @@
 				<th width="10%" id="menubar">조회수</th>
 			</tr>
 		
-		<c:forEach var="vo" items="${list }">
+		
+		<c:forEach var="vo" items="${list }">                                                                              
 			<tr id="dataTr">
 				<td width="10%" align="center">${vo.nt_no }</td>
 				<td width="45%" align="center"><a href="/notice/content.do?nt_no=${vo.nt_no }">${vo.nt_subject }</a></td>
@@ -43,6 +45,9 @@
 					<fmt:formatDate value="${vo.nt_regdate }" pattern="yyyy-MM-dd"/>
 				</td>
 				<td width="10%" align="center">${vo.nt_hit }</td>
+				
+				
+				
 			</tr>
 		</c:forEach>
 			</table>
@@ -51,8 +56,12 @@
 		<table border="0" width="700">
 			<tr>
 				<td align="right">
-				<a href="list.do?page=${curpage>1?curpage-1:curpage }">이전</a>&nbsp;
-				<a href="list.do?page=${curpage<totalpage?curpage+1:curpage }">다음</a>&nbsp;&nbsp;
+				 		<img src="/images/notice/begin.gif" border="0">
+				 		<a href="list.do?page=${curpage>1?curpage-1:curpage }">이전</a>&nbsp;
+					 </a>&nbsp;
+				<a href="list.do?page=${curpage<totalpage?curpage+1:curpage }">다음</a>&nbsp;
+					<img src="/images/notice/end.gif" border="0">
+					 	</a>
 				${curpage }page /${totalpage }pages
 				</td> 
 			</tr>
@@ -82,6 +91,9 @@
 					<input type="submit" value="검색">
 				</form>
 				</td>
+				
+				<!-- 페이지 이전/다음 부분  -->
+				
 			<tr>
 		</tr>
 		</table>

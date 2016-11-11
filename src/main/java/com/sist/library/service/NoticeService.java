@@ -23,6 +23,9 @@ public interface NoticeService {
 	public void update_ok_Notice(NoticeVO vo) throws Exception;
 	
 	
+	
+	
+	
 	//리플
 	
 	
