@@ -32,9 +32,71 @@
 			});
 		}		
 		
+		function rec_modify(i){
+			var text = $('#get_subject'+i).html();
+			$('#get_subject'+i).html("<input type='text' value='"+text+"' id='mod_subject"+i+"' size='40'>");
+			$('#rec_modify_btn'+i).attr("src","/images/btn_confirm.gif");
+			$('#rec_modify_btn'+i).attr("onclick","javascript:rec_modify_ok("+i+");")
+		}
+		
+		function rec_modify_ok(i){
+			$.ajax({
+				url : '/book/recModify.do',
+				type : 'post',
+				data : {
+					"id" : $('#book_recommend_id'+i).val(),
+					"book_code" : $('#rec_book_code').val(),
+					"book_recommend_code" : $('#book_recommend_code'+i).val(),
+					"book_recommend_subject" : $('#mod_subject'+i).val()
+				},
+				datatype:"JSON",
+				success : function(data) {
+					if (data == "success") {
+						showMessage('한줄평 수정 성공',1000);
+						setTimeout(function(){
+							location.href="/book/detail.do?book_code=${vo.book_code}&curPage=${curPage}&searchWord=${searchWord}";
+						},1000);
+						
+					} else {
+						showMessage('한줄평 수정에 실패했습니다.');					
+					}
+				}
+			}); 
+		}
+		
+		function rec_delete(i){
+			$.ajax({
+				url : '/book/recDelete.do',
+				type : 'post',
+				data : {
+					"id" : $('#book_recommend_id'+i).val(),
+					"book_code" : $('#rec_book_code').val(),
+					"book_recommend_code" : $('#book_recommend_code'+i).val()					
+				},
+				datatype:"JSON",
+				success : function(data) {
+					if (data == "success") {
+						showMessage('한줄평 삭제 성공',1000);
+						setTimeout(function(){
+							location.href="/book/detail.do?book_code=${vo.book_code}&curPage=${curPage}&searchWord=${searchWord}";
+						},1000);
+						
+					} else {
+						showMessage('한줄평 삭제에 실패했습니다.');					
+					}
+				}
+			}); 
+		}
+		
+		function cancel(i){
+			var origin_text = $('#origin_text'+i).val();
+			$('#get_subject'+i).html(origin_text);
+			$('#rec_modify_btn'+i).attr("src","/images/btn_modify.gif");
+			$('#rec_modify_btn'+i).attr("onclick","javascript:rec_modify("+i+");")
+		}
 	</script>
 </head>
-<body>	
+<body>
 	<table class="table" style="margin-top: 30px;">
 		<tr>
 			<td rowspan="8" width="30%" style="text-align:center;"><img style="width:150px;" src="${vo.book_image }"></td>
@@ -89,19 +151,34 @@
 		</tr>
 	</table>
 	<div style="text-align:right;">
-		<a href="/search/search_ok.do?page=${curPage}&searchWord=${searchWord}">목록으로</a>
+		<a href="/search/search_ok.do?page=${curPage}&searchWord=${searchWord}"><img src="/images/btn_list.gif"></a>
 	</div>
 	<c:if test="${reclist.size()>0 }">
 	<table class="table">
 		<tr><th colspan="2" style="text-align:center;">한줄평</th></tr>		
 		<tr>
-			<th width="30%">아이디</th>
-			<th width="70%">내용</th>
+			<th width="20%">아이디</th>
+			<th width="80%">내용</th>
 		</tr>
 		<c:forEach var="i" begin="0" end="${reclist.size()-1 }">
-			<tr>
-				<td>${reclist.get(i).id }</td>
-				<td>${reclist.get(i).book_recommend_subject }</td>
+			<tr>				
+				<td width="20%">${reclist.get(i).id }
+					<input type="hidden" id="book_recommend_code${i}" value="${reclist.get(i).book_recommend_code}">
+					<input type="hidden" id="book_recommend_id${i}" value="${reclist.get(i).id}">
+				</td>
+				<td width="80%"><span id="get_subject${i}">${reclist.get(i).book_recommend_subject }</span>				
+					<c:set var="sessionid">
+						<%=session.getAttribute("id") %>
+					</c:set>					
+					<c:if test="${reclist.get(i).id == sessionid}">
+					<span style="margin-left: 30px;">
+						<img id="rec_modify_btn${i}" src="/images/btn_modify.gif" onclick="javascript:rec_modify(${i});">
+						<input type="hidden" id="origin_text${i}" value="${reclist.get(i).book_recommend_subject}">
+						<img src="/images/btn_delete.gif" onclick="javascript:rec_delete(${i});">
+						<img src="/images/btn_cancel.gif" onclick="javascript:cancel(${i});">
+					</span>
+					</c:if>				
+				</td>				
 			</tr>
 		</c:forEach>
 	</table>

@@ -142,4 +142,29 @@ public class BookController {
 		return res;
 	}
 	
+	@RequestMapping(value="/book/recModify.do")
+	public @ResponseBody String recModify(BookRecommendVO vo){
+		String res = "";
+		int result = bookService.bookRecommendModify(vo);
+		if(result>0){
+			res="success";
+		}else{
+			res="fail";
+		}
+		return res;
+	}
+	
+	@RequestMapping(value="/book/recDelete.do")
+	public @ResponseBody String recDelete(@RequestParam(value="book_code" ,required=true)String book_code,
+			@RequestParam(value="book_recommend_code" ,required=true)String book_recommend_code){
+		String res = "";
+		int result = bookService.bookRecommendDelete(book_code,book_recommend_code);
+		if(result>0){
+			res="success";
+		}else{
+			res="fail";
+		}
+		return res;
+	}
+	
 }

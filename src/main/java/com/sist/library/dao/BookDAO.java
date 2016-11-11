@@ -109,4 +109,16 @@ public class BookDAO extends AbstractDAO{
 		return (int) selectOne("book.bookRecommedCount", book_code);
 	}
 
+	public int bookRecommendModify(BookRecommendVO vo) {
+		System.out.println(vo.getBook_recommend_subject());
+		return (int) update("book.bookRecommendModify", vo);
+	}
+
+	public int bookRecommendDelete(String book_code, String book_recommend_code) {
+		Map map = new HashMap<>();
+		map.put("book_code", book_code);
+		map.put("book_recommend_code", book_recommend_code);
+		return (int) delete("book.bookRecommendDelete", map);
+	}
+
 }

@@ -66,4 +66,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="bookRecommedCount" >
 	</select>
+	
+	<update id="bookRecommendModify" parameterType="recommendvo">
+		UPDATE book_recommend SET book_recommend_subject=#{book_recommend_subject}
+		WHERE book_code=#{book_code} AND book_recommend_code=#{book_recommend_code} AND id=#{id} 
+	</update>
+	
+	<delete id="bookRecommendDelete" parameterType="hashmap">
+		DELETE FROM book_recommend
+		WHERE book_code=#{book_code} AND book_recommend_code=#{book_recommend_code}
+	</delete>
 </mapper>
