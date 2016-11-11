@@ -129,10 +129,17 @@ public class BookController {
 	@RequestMapping(value="/book/recInsert.do")
 	public @ResponseBody String recInsert(BookRecommendVO vo){
 		String res = "";
-		int result = bookService.insertRec(vo);
-		List<BookRecommendVO> list = bookService.bookRecommed(vo.getBook_code()+""); 
 		
-		return "";
+		int result = bookService.insertRec(vo);
+		
+		if(result>0){
+			res="success";
+		}else{
+			res="fail";
+		}
+		//List<BookRecommendVO> list = bookService.bookRecommed(vo.getBook_code()+""); 
+		
+		return res;
 	}
 	
 }

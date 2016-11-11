@@ -25,7 +25,8 @@ public class SearchController {
 	}
 	
 	@RequestMapping(value="/search/search_ok.do")
-	public ModelAndView search_ok(@RequestParam(value="page" ,required=false)String page,String searchWord){
+	public ModelAndView search_ok(@RequestParam(value="page" ,required=false)String page,
+			@RequestParam(value="searchWord" ,required=false)String searchWord){
 		ModelAndView mav = new ModelAndView("main/main");
 		page = (page==null) ? "1" : page;
 		int curPage = Integer.parseInt(page);
@@ -42,7 +43,7 @@ public class SearchController {
 		mav.addObject("toPage",toPage);
 		mav.addObject("fromPage", fromPage);
 		mav.addObject("totalPage",totalPage);
-		mav.addObject("curPage",curPage );
+		mav.addObject("curPage",curPage);
 		mav.addObject("searchWord", searchWord);
 		mav.addObject("list", list);
 		mav.addObject("type","search");

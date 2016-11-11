@@ -7,7 +7,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
-	<script>
+	<script type="text/javascript">
 		function insert_rec(){
 			$.ajax({
 				url : '/book/recInsert.do',
@@ -20,17 +20,18 @@
 				datatype:"JSON",
 				success : function(data) {
 					if (data == "success") {
-						showMessage('대출 성공',1000);
+						showMessage('한줄평 입력 성공',1000);
 						setTimeout(function(){
-							location.href="/main/main.do";
+							location.href="/book/detail.do?book_code=${vo.book_code}&curPage=${curPage}&searchWord=${searchWord}";
 						},1000);
 						
 					} else {
-						showMessage('대출에 실패했습니다.');					
+						showMessage('한줄평 입력에 실패했습니다.');					
 					}
 				}
 			});
-		}
+		}		
+		
 	</script>
 </head>
 <body>	
@@ -85,8 +86,12 @@
 		<tr>
 			<td>카테고리</td>
 			<td>${vo.book_category}</td>
-		</tr>								
+		</tr>
 	</table>
+	<div style="text-align:right;">
+		<a href="/search/search_ok.do?page=${curPage}&searchWord=${searchWord}">목록으로</a>
+	</div>
+	<c:if test="${reclist.size()>0 }">
 	<table class="table">
 		<tr><th colspan="2" style="text-align:center;">한줄평</th></tr>		
 		<tr>
@@ -100,6 +105,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	</c:if>
 	<form id="rec_form" name="rec_form" method="post" action="/book/recInsert.do">	
 		<!-- 한줄평 리스트 아이디 : 내용 (수정)(삭제) -->
 		<table class="table">
@@ -109,7 +115,7 @@
 				<input type="hidden" name="rec_id" id="rec_id" value="<%=session.getAttribute("id") %>" >
 				<input type="hidden" name="rec_book_code" id="rec_book_code" value="${vo.book_code }">				
 				</td>
-				<td><input type="button" class="btn btn-disabled" value="작성" onclick="javascript:insert_rec();"></td>
+				<td><input type="button" class="btn btn-primary" value="작성" onclick="javascript:insert_rec();"></td>
 			</tr>
 		</table>
 	</form>

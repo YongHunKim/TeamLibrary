@@ -113,8 +113,8 @@ input[type=button]{
 			<c:forEach var="i" begin="0" end="${list.size()-1 }">
 				<form name="subFormInfo${i}" id="subFormInfo${i}" method="post" action="/book/rent.do">
 					<input type="hidden" name="book_code" id="book_code" value="${list.get(i).book_code }"/>
-					<input type="hidden" name="curPage" id="curPage" value="${curPage} }"/>
-					<input type="hidden" name="searchWord" id="searchWord" value="${searchWord} }"/>
+					<input type="hidden" name="curPage" id="curPage" value="${curPage}"/>
+					<input type="hidden" name="searchWord" id="searchWord" value="${searchWord}"/>
 				</form>
 				<ul class="resultsty1" style="left:80px;">
 					<li class="book_cover"><img src="${list.get(i).book_image }" width="60" height="83" alt="책표지" /></li>
