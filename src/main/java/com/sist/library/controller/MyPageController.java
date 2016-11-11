@@ -26,17 +26,8 @@ public class MyPageController {
 		ModelAndView mav = new ModelAndView("main/main");
 
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
-
-		mav.addObject("submenu", "/WEB-INF/jsp/mypage/mypage_submenu.jsp");
-		return mav;
-	}
-
-	@RequestMapping(value = "/mypage/mypage_submenu.do")
-	public ModelAndView mypage_submenu() {
-		ModelAndView mav = new ModelAndView("main/main");
-
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage_submenu.jsp");
-
+		mav.addObject("test", "/WEB-INF/jsp/mypage/member_pcheck.jsp");
+		
 		return mav;
 	}
 

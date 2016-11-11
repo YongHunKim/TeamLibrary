@@ -23,7 +23,7 @@
 	</div>
 	<table>
 	<tr>
-		<td align="right"><jsp:include page="${subpage}"></jsp:include></td>
+		<td id="right_layer"><jsp:include page="${test}"></jsp:include></td>
 	</tr>
 	</table>
 </body>
