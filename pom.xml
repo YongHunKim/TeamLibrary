@@ -41,12 +41,12 @@
 			<!-- <url>http://mesir.googlecode.com/svn/trunk/mavenrepo</url> -->
 			<url>http://maven.jahia.org/maven2</url>
 			<!-- <url>https://mvnrepository.com/artifact/cn.guoyukun.jdbc/oracle-ojdbc6</url> -->
-	   </repository>
 <!-- 		<repository>
 			<id>oracle</id>
 			<name>ORACLE JDBC Repository</name>
 			<url>http://mesir.googlecode.com/svn/trunk/mavenrepo</url>
 		</repository> -->
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -332,8 +332,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
-
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<directory>${basedir}/target</directory>

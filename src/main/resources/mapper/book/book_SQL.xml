@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="book">
+
+	<select id="bookInfo" parameterType="String" resultType="bookvo">
+		SELECT book_code,book_name,book_author,book_publish,book_publish_date,book_info,rent_yn,reserve_yn,book_rent_count,book_image,book_storage_date,book_category
+		FROM book
+		WHERE book_code=#{book_code}
+	</select>
+	
+	<insert id="bookRent" parameterType="hashmap">
+		INSERT INTO book_management(book_management_code,id,book_code,rent_date,return_date)
+		VALUES((SELECT nvl(max(book_management_code)+1,1) FROM book_management),#{id},#{book_code},sysdate,sysdate+7)
+	</insert>
+	
+	<select id="getBookManagementCode" resultType="int" parameterType="hashmap">
+		SELECT MAX(book_management_code) 
+		FROM book_management
+		WHERE id=#{id} and book_code=#{book_code}
+	</select>
+	
+	<select id="getMailInfo" parameterType="hashmap" resultType="mailvo">
+		SELECT m.id,m.email,b.book_name,b.book_code,bm.rent_date,bm.return_date,bm.reserve_date
+		FROM member m,book b,book_management bm
+		WHERE m.id = bm.id AND bm.book_code = b.book_code
+		AND bm.id=#{id} AND bm.book_management_code=#{book_management_code}
+	</select>
+	
+	<select id="getReserveInfo" parameterType="String" resultType="reservevo">
+		SELECT b.book_code,book_name,book_author,book_publish,book_image,TO_CHAR(return_date,'YYYY-MM-DD') AS return_date,TO_CHAR(SYSDATE,'YYYY-MM-DD') AS reserve_date
+		FROM book b,book_management bm
+		WHERE b.book_code = bm.book_code AND
+		book_management_code = (SELECT MAX(book_management_code) FROM book_management
+		WHERE book_code = #{book_code})
+	</select>
+	
+	<insert id="bookReserve" parameterType="hashmap">
+		INSERT INTO book_management(book_management_code,id,book_code,reserve_date)
+		VALUES((SELECT nvl(max(book_management_code)+1,1) FROM book_management),#{id},#{book_code},sysdate)
+	</insert>
+	
+	<update id="bookRentyn" parameterType="String">
+		UPDATE book SET rent_yn='y'
+		WHERE book_code=#{book_code}
+	</update>
+	
+	<update id="bookReserveyn" parameterType="String">
+		UPDATE book SET reserve_yn='y'
+		WHERE book_code=#{book_code}
+	</update>
+	
+	<insert id="insertRec" parameterType="recommendvo">
+		INSERT INTO book_recommend(book_recommend_code,book_code,book_recommend_subject,id)
+		VALUES((SELECT NVL(MAX(book_recommend_code)+1,1) FROM book_recommend),#{book_code},#{book_recommend_subject},#{id})
+	</insert>
+	
+	<select id="bookRecommed" parameterType="String" resultType="recommendvo">
+		SELECT book_recommend_code,book_code,id,book_recommend_subject
+		FROM book_recommend
+		WHERE book_code = #{book_code}
+		ORDER BY book_recommend_code
+	</select>
+	
+	<select id="bookRecommedCount" >
+	</select>
+	
+	<update id="bookRecommendModify" parameterType="recommendvo">
+		UPDATE book_recommend SET book_recommend_subject=#{book_recommend_subject}
+		WHERE book_code=#{book_code} AND book_recommend_code=#{book_recommend_code} AND id=#{id} 
+	</update>
+	
+	<delete id="bookRecommendDelete" parameterType="hashmap">
+		DELETE FROM book_recommend
+		WHERE book_code=#{book_code} AND book_recommend_code=#{book_recommend_code}
+	</delete>
+</mapper>

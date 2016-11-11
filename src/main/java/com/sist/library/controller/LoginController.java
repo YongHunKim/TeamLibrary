@@ -2,11 +2,12 @@ package com.sist.library.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.sist.library.dao.MemberVO;
@@ -27,7 +28,9 @@ public class LoginController {
 		mav.addObject("jsp", "/WEB-INF/jsp/login/join.jsp");
 
 		return mav;
+		
 	}
+	
 
 	@RequestMapping(value = "/login/join_ok.do")
 	public ModelAndView memberJoin(MemberVO vo) throws Exception {
@@ -41,8 +44,7 @@ public class LoginController {
 	public @ResponseBody String check_id(String id) {
 		String result = "";
 		int res = memberService.check_id(id);
-
-		if (res > 0) {
+		if (res > 0) {			
 			result = "사용할 수 없는 ID입니다.";
 		} else {
 			result = "사용가능한 ID입니다.";
@@ -57,24 +59,32 @@ public class LoginController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/login/login_ok.do")
+	@RequestMapping(value="/login/login_ok.do",method=RequestMethod.POST)
 	public @ResponseBody String login_ok(HttpServletRequest request){
 		String res = "";
-		String id = request.getParameter("login_id");
-		String pwd = request.getParameter("login_pwd");		
+		String id = request.getParameter("id");
+		String pwd = request.getParameter("pwd");
 		int result = memberService.login_ok(id,pwd);
 		if(result>0){
-			request.getSession().setAttribute("id", id);
-			res="<script type='text/javascript'>"
-					+ "alert('로그인 성공');"
-					+ "location.href = '/main/main.do';"
-					+ "</script>";
+			HttpSession session = request.getSession(true);
+			session.setAttribute("id", id);
+			session.setMaxInactiveInterval(60*30);
+			res = "success";			
 		}else{
-			res="<script type='text/javascript'>"
-					+ "alert('아이디와 비밀번호를 확인해주세요.');"
-					+ "history.back();"
-					+ "</script>";
+			res = "fail";			
 		}
 		return res;
 	}
+	
+	@RequestMapping(value="/login/logout.do")
+	public ModelAndView logout(HttpServletRequest request){
+		request.getSession().removeAttribute("id");
+		request.getSession().invalidate();
+		ModelAndView mav = new ModelAndView("main/main");
+
+		mav.addObject("jsp", "/WEB-INF/jsp/main/default.jsp");
+
+		return mav;
+	}
 }	
+	

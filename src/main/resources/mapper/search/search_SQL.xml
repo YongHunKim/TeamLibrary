@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="search">
+	<select id="search" parameterType="hashmap" resultType="bookvo">
+		<![CDATA[
+        	SELECT book_code,book_name,book_author,book_publish,book_publish_date,book_info,rent_yn,reserve_yn,book_rent_count,book_image,book_storage_date,book_category
+        	FROM (SELECT book_code,book_name,book_author,book_publish,book_publish_date,book_info,rent_yn,reserve_yn,book_rent_count,book_image,book_storage_date,book_category,num 
+        	FROM (SELECT book_code,book_name,book_author,book_publish,book_publish_date,book_info,rent_yn,reserve_yn,book_rent_count,book_image,book_storage_date,book_category,rownum as num 
+        	FROM book WHERE book_name like '%'||#{searchWord,jdbcType=VARCHAR}||'%' order by book_code))
+        	WHERE num BETWEEN #{start} AND #{end}          
+    	]]>		
+	</select>
+	
+	<select id="pageCount" resultType="int" parameterType="String">
+		<![CDATA[
+			SELECT CEIL(count(*)/10) FROM book
+			WHERE book_name like '%'||#{searchWord,jdbcType=VARCHAR}||'%' 
+		]]>
+	</select>
+	
+	<select id="totalRow" resultType="int" parameterType="String">
+		<![CDATA[
+			SELECT count(*) FROM book
+			WHERE book_name like '%'||#{searchWord,jdbcType=VARCHAR}||'%' 
+		]]>
+	</select>
+	
+	<select id="newbook" parameterType="hashmap" resultType="bookvo">
+		SELECT book_code,book_name,book_author,book_publish,book_publish_date,book_info,rent_yn,reserve_yn,book_rent_count,book_image,book_storage_date,book_category
+        FROM (SELECT book_code,book_name,book_author,book_publish,book_publish_date,book_info,rent_yn,reserve_yn,book_rent_count,book_image,book_storage_date,book_category,num 
+        FROM (SELECT book_code,book_name,book_author,book_publish,book_publish_date,book_info,rent_yn,reserve_yn,book_rent_count,book_image,book_storage_date,book_category,rownum as num 
+        FROM book WHERE book_publish_date BETWEEN add_months(sysdate,-1) and sysdate order by book_publish_date desc)) 
+        WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="newBookCount" resultType="int">
+		SELECT CEIL(count(*)/10) FROM book WHERE book_publish_date BETWEEN add_months(sysdate,-1) AND sysdate
+	</select>
+	
+	<select id="newBookRow" resultType="int">
+		SELECT count(*) FROM book WHERE book_publish_date BETWEEN add_months(sysdate,-1) AND sysdate
+	</select>
+	
+	<select id="popular" parameterType="hashmap" resultType="bookvo">
+		SELECT book_code,book_name,book_author,book_publish,book_publish_date,book_info,rent_yn,reserve_yn,book_rent_count,book_image,book_storage_date,book_category
+        FROM (SELECT book_code,book_name,book_author,book_publish,book_publish_date,book_info,rent_yn,reserve_yn,book_rent_count,book_image,book_storage_date,book_category,num
+        FROM (SELECT book_code,book_name,book_author,book_publish,book_publish_date,book_info,rent_yn,reserve_yn,book_rent_count,book_image,book_storage_date,book_category,rownum as num
+        FROM book WHERE book_rent_count>0 order by book_rent_count desc,book_code))
+        WHERE num BETWEEN 1 AND 10
+	</select>
+	
+	<select id="bookInfo" parameterType="String" resultType="bookvo">
+		SELECT book_code,book_name,book_author,book_publish,book_publish_date,book_info,rent_yn,reserve_yn,book_rent_count,book_image,book_storage_date,book_category
+		FROM book
+		WHERE book_code=#{book_code}
+	</select>
+	
+</mapper>

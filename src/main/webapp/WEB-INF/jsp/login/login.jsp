@@ -12,15 +12,35 @@
 		var pwd = $('#login_pwd').val();
 		
 		if(id == ''){
-			alert('아이디를 입력하세요.');
+			showMessage('아이디를 입력하세요.');
 			return;
 		}
 		if(pwd == ''){
-			alert('비밀번호를 입력하세요.');
+			showMessage('비밀번호를 입력하세요.');
 			return;
 		}
 		
-		f.submit();
+		$.ajax({
+			url : '/login/login_ok.do',
+			type : 'post',
+			data : {
+				"id" : $('#login_id').val(),
+				"pwd" : $('#login_pwd').val()
+			},
+			datatype:"JSON",
+			success : function(data) {
+				//check.innerHTML = data;
+				if (data == "success") {
+					showMessage('로그인 성공',1000);
+					setTimeout(function(){
+						location.href="/main/main.do";
+					},1000);
+					
+				} else {
+					showMessage('아이디와 비밀번호를 확인해주세요.',1000);					
+				}
+			}
+		});
 	}
 </script>
 </head>
