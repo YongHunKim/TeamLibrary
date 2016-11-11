@@ -1,3 +1,19 @@
+function showMessage(msg, closeDelay)
+{
+	$("#modal-message-text").html(msg);
+	$("#modal-message").addClass("active");
+	if(closeDelay > 0)
+	{
+		setTimeout(closeMessage, closeDelay);
+	}
+}
+
+function closeMessage()
+{
+	$("#modal-message").removeClass("active");
+}
+
+
 function gfn_isNull(str) {
 	if (str == null) return true;
 	if (str == "NaN") return true;

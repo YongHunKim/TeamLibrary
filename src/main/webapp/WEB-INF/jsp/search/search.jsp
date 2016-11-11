@@ -58,11 +58,30 @@ input[type=button]{
 	function search_check(){
 		var search = $('#search_val').val();
 		if(search == ''){
-			alert('검색값을 입력하세요');
+			showMessage('검색값을 입력하세요');
 			return;
 		}
 		$('#search_form').submit();
 	}
+	
+	function goRent(rentform_id){
+		//alert(rentform_id);
+		var f = document.getElementById(rentform_id);
+		f.submit();
+	}
+	
+	function goReserve(reserveform_id){
+		var f = document.getElementById(reserveform_id);
+		$(f).attr("action","/book/reserve.do");
+		f.submit();
+	}
+	
+	function goDetail(detailform_id){
+		var f = document.getElementById(detailform_id);
+		$(f).attr("action","/book/detail.do");
+		f.submit();
+	}
+	
 </script>
 
 </head>
@@ -92,22 +111,27 @@ input[type=button]{
 			</div>
 			<!-- foreach -->
 			<c:forEach var="i" begin="0" end="${list.size()-1 }">
-				<form name="subFormInfo${i}" id="subFormInfo${i}" method="post" action="/book/bookinfo.do">
+				<form name="subFormInfo${i}" id="subFormInfo${i}" method="post" action="/book/rent.do">
 					<input type="hidden" name="book_code" id="book_code" value="${list.get(i).book_code }"/>
+					<input type="hidden" name="curPage" id="curPage" value="${curPage}"/>
+					<input type="hidden" name="searchWord" id="searchWord" value="${searchWord}"/>
 				</form>
 				<ul class="resultsty1" style="left:80px;">
 					<li class="book_cover"><img src="${list.get(i).book_image }" width="60" height="83" alt="책표지" /></li>
 					<li>
 					<dl>
 					<dt>
-					<p class="fl"><a href="#nolink" onclick="goSelectedPage('subFormInfo0');"><font color="red" style="font-size: 12px;">${list.get(i).book_category }</font>, <font style="font-size: 12px;">${list.get(i).book_name }</font></a></p>
+					<p class="fl"><a href="#nolink" onclick="goDetail('subFormInfo${i}');"><font color="red" style="font-size: 12px;">${list.get(i).book_category }</font>, <font style="font-size: 12px;">${list.get(i).book_name }</font></a></p>
 					<p class="book_state">
 						<c:choose>
-							<c:when test="${list.get(i).rent_yn == 'y' }">
-								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/reservation_ok.gif" width="58" height="17" title="대출상태" onclick="goSelectedPage('subFormInfo0');">
+							<c:when test="${list.get(i).rent_yn == 'n' }">
+								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/rental_ok.gif" width="58" height="17" title="대출상태" onclick="goRent('subFormInfo${i}');">
+							</c:when>
+							<c:when test="${list.get(i).rent_yn == 'y' and list.get(i).reserve_yn =='n' }">
+								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/reservation_ok.gif" width="58" height="17" title="대출상태" onclick="goReserve('subFormInfo${i}');" style="height:30px;">
 							</c:when>
 							<c:otherwise>
-								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/rental_ok.gif" width="58" height="17" title="대출상태" onclick="goSelectedPage('subFormInfo0');">
+								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/reservation_x.png" width="58" height="17" title="대출상태" style="height:22px; width:62px;">
 							</c:otherwise>
 						</c:choose>
 					</p>

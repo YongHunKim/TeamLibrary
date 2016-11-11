@@ -27,15 +27,29 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 
-	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"
 		p:order="0" />
 	<!-- <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" 
 		/> -->
 
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="mail.mycompany.com" />
+	</bean>
+
+
+	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+		<property name="from" value="customerservice@mycompany.com" />
+		<property name="subject" value="Your order" />
+	</bean>
+
 	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver"
 		p:order="1" p:viewClass="org.springframework.web.servlet.view.JstlView"
 		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp">
+	</bean>
+	
+	<bean id="mailManager" class="com.sist.library.mail.MailManager">		
 	</bean>
 </beans>
