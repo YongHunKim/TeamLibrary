@@ -31,6 +31,4 @@ public class PcheckServiceImpl implements PcheckService {
 		mypageDAO.member_update_ok(vo);
 	}
 
-	
-
 }

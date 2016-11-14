@@ -7,7 +7,7 @@
 <title>회원정보 수정</title>
 <script>
 function check_field() {
-	var f = $('#join_form');
+	var f = $('#update_form');
 	var email = $('#mem_email').val();
 	var tel = $('#mem_tel').val();
 	var pwd = $('#mem_pwd').val();
@@ -38,7 +38,7 @@ function updatecancel(){
 </head>
 <body>
 	<div align="center">
-		<form action="member_update_ok.do" method="post">
+		<form action="/mypage/member_update_ok.do" method="post" id="update_form">
 			<table>
 				<tr>
 					<th style="line-height: 2.2;">회원ID</th>
