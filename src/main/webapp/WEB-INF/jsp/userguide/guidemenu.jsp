@@ -7,7 +7,6 @@
 <title>이용안내</title>
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="/css/libraryguide.css">
-<link rel="stylesheet" type="text/css" href="/css/mypage.css" />
 </head>
 <body>
 	<div id="left_layer">
