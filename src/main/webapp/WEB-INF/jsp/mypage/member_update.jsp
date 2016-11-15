@@ -10,21 +10,28 @@ function check_field() {
 	var f = $('#update_form');
 	var email = $('#mem_email').val();
 	var tel = $('#mem_tel').val();
-	var pwd = $('#mem_pwd').val();
+	var pwd = $('#mem_pwd1').val();
+	var pwd2 = $('#mem_pwd2').val();
 	if (pwd == '' || pwd.length < 4 || pwd.length > 12) {
-		alert('비밀번호를 알맞게 입력해주세요. 비밀번호는 4~12자리입니다.');
+		showMessage('비밀번호를 알맞게 입력해주세요. 비밀번호는 4~12자리입니다.');
+		return;
+	}
+	
+	if(pwd != pwd2){
+		showMessage("비밀번호를 확인해 주십시요.");
+		pwd.focus();
 		return;
 	}
 	
 	var regTel = new RegExp("(^[0][1][0,1,6,7,9]-[0-9]{3,4}-[0-9]{4}$)");
 	if(tel != '' && !regTel.test(tel)){
-		alert('전화번호 형식이 올바르지 않습니다.');
+		showMessage('전화번호 형식이 올바르지 않습니다.');
 		return;
 	}
 	
 	var regEmail = new RegExp("(^[a-zA-Z][a-zA-Z0-9]{1,}@[a-zA-Z0-9]{1,}.[a-z]{1,}$)");
 	if(email != '' && !regEmail.test(email)){
-		alert('이메일 형식이 올바르지 않습니다.');
+		showMessage('이메일 형식이 올바르지 않습니다.');
 		return;
 	}
 	
@@ -42,18 +49,19 @@ function updatecancel(){
 			<table>
 				<tr>
 					<th style="line-height: 2.2;">회원ID</th>
-					<td class="lLine">${vo.id}</td>
+					<td class="lLine">${vo.id}
+					<input type="hidden" name="id" value="<%=session.getAttribute("id") %>"></td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">비밀번호</th>
-					<td class="lLine"><input type="password" name="pwd"
-						id="mem_pwd" value="" class="form-controll" size="16"
-						maxlength="16"></td>
+					<td class="lLine"><input type="password" name="pwd" 
+						id="mem_pwd1" value="" class="form-controll" size="20"
+						maxlength="20"></td>
 				</tr>
 				<tr>
 					<th>비밀번호 재입력</th>
-					<td><input type="password" name="pwd" size="16"
-						maxlength="16" /></td>
+					<td><input type="password"  size="20" id="mem_pwd2"
+						maxlength="20" /></td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">이름</th>
@@ -62,19 +70,19 @@ function updatecancel(){
 				<tr>
 					<th style="line-height: 2.2;">휴대폰번호</th>
 					<td class="lLine"><input type="text" name="tel" id="mem_tel"
-						value="${vo.tel}" class="form-controll" size="16" maxlength="16">
+						value="${vo.tel}" class="form-controll" size="20" maxlength="20">
 					</td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">이메일</th>
 					<td class="lLine"><input type="text" name="email"
-						id="mem_email" value="${vo.email}" class="form-controll" size="16"
-						maxlength="16"></td>
+						id="mem_email" value="${vo.email}" class="form-controll" size="20"
+						maxlength="30"></td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">우편번호 <span class="essential"></span></th>
 					<td class="lLine"><input type="text" name="post" id="mem_post"
-						value="${vo.post}" class="form-controll" size="16" maxlength="16" readonly>
+						value="${vo.post}" class="form-controll" size="20" maxlength="20" readonly>
 						<input type="button" class="btn btn-diable" value="우편번호 찾기"
 						onclick="getpostcode('mem_post','mem_addr1');" /></td>
 				</tr>

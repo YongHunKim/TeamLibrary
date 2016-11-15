@@ -26,7 +26,7 @@ public class MyPageController {
 		ModelAndView mav = new ModelAndView("main/main");
 
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
-		mav.addObject("test", "/WEB-INF/jsp/mypage/member_pcheck.jsp");
+		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
 
 		return mav;
 	}
@@ -37,38 +37,10 @@ public class MyPageController {
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/member_pcheck.jsp");
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/mypage/member_pcheck_ok.do")
-	public ModelAndView pcheck_ok(HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView("main/main");
-
-		StringBuffer sb = new StringBuffer();
-		String id = request.getParameter("id");
-		System.out.println(id);
-		String pwd = request.getParameter("pwd");
-
-		int result = mypageService.pcheck_ok(id, pwd);
-		if (result > 0) {
-			HttpSession session = request.getSession(true);
-			session.setAttribute("id", id);
-			session.setMaxInactiveInterval(60 * 30);
-			sb.append("<script type='text/javascript'>");
-			sb.append("location.href='/mypage/member_update.do?id=" + id + "';");
-			sb.append("</script>");
-		} else {
-			sb.append("<script type='text/javascript'>");
-			sb.append("alert('보안암호를 확인하세요.');");
-			sb.append("location.href = '/mypage/mypage.do';");
-			sb.append("</script>");
-		}
-		return mav;
-	}
-
-	// 백업
-
-/*	@RequestMapping(value = "/mypage/member_pcheck_ok.do")
 	public @ResponseBody String pcheck_ok(HttpServletRequest request) {
-		StringBuffer sb = new StringBuffer();
+		String scripting = "";
 		String id = request.getParameter("id");
 		System.out.println(id);
 		String pwd = request.getParameter("pwd");
@@ -77,18 +49,15 @@ public class MyPageController {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id", id);
 			session.setMaxInactiveInterval(60 * 30);
-			sb.append("<script type='text/javascript'>");
-			sb.append("location.href = '/mypage/member_update.do?id=" + id + "';");
-			sb.append("</script>");
+			scripting = "<script type='text/javascript'>" + "location.href = '/mypage/member_update.do?id=" + id + "';"
+					+ "</script>";
 		} else {
-			sb.append("<script type='text/javascript'>");
-			sb.append("alert('보안암호를 확인하세요.');");
-			sb.append("location.href = '/mypage/mypage.do';");
-			sb.append("</script>");
+			scripting = "<script type='text/javascript'>" + "alert('보안암호를 확인하세요.');"
+					+ "location.href = '/mypage/mypage.do';" + "</script>";
 		}
 
-		return sb.toString();
-	}*/
+		return scripting;
+	}
 
 	@RequestMapping(value = "/mypage/member_update.do")
 	public ModelAndView member_update(HttpServletRequest request) throws Exception {
@@ -96,7 +65,8 @@ public class MyPageController {
 
 		String id = request.getParameter("id");
 		// System.out.println(id);
-		MemberVO vo = mypageService.member_update(id);
+		String pwd = request.getParameter("pwd");
+		MemberVO vo = mypageService.member_update(id, pwd);
 		mav.addObject("vo", vo);
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/member_update.jsp");
 
@@ -104,19 +74,16 @@ public class MyPageController {
 	}
 
 	@RequestMapping(value = "/mypage/member_update_ok.do")
-	public ModelAndView member_update_ok() throws Exception {
-		ModelAndView mav = new ModelAndView("main/main");
-		StringBuffer sb = new StringBuffer();
+	public @ResponseBody String member_update_ok(MemberVO vo) {
 
-		MemberVO vo = new MemberVO();
-		mypageService.member_update_ok(vo);
+		String scripting = "";
 
-		sb.append("<script>");
-		sb.append("alert('수정되었습니다.');");
-		sb.append("location.href='/main/main.do");
-		sb.append("</script>");
+		int result = mypageService.member_update_ok(vo);
+		System.out.println(result);
+		scripting = "<script type='text/javascript'>" + "alert('수정되었습니다.');" + "location.href = '/main/main.do';"
+				+ "</script>";
 
-		return mav;
+		return scripting;
 	}
 
 	@RequestMapping(value = "/mypage/member_leave.do")
@@ -128,4 +95,11 @@ public class MyPageController {
 		return mav;
 	}
 
+	@RequestMapping(value = "/mypage/mypage_menu.do")
+	public ModelAndView mypage_menu(){
+		ModelAndView mav = new ModelAndView("main/main");
+		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
+		
+		return mav;
+	}
 }

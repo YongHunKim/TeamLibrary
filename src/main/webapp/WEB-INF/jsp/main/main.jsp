@@ -54,10 +54,10 @@
 					<li><a href="#" id="current">참여마당</a>
 						<ul>
 							
-							<!-- <li><a href="/lostBoard/list.do">분실물 게시판</a></li> -->
+							<li><a href="/lostBoard/list.do">분실물 게시판</a></li>
 						</ul>
 					</li>
-					<li><a href="/userguide/guidemenu.do" id="current">이용안내</a>
+					<li><a href="/userguide/guide.do" id="current">이용안내</a>
 						<ul>
 							<li><a href="/userguide/library_map.do">오시는길</a></li>
 							<li><a href="/userguide/library_time.do">도서관 이용시간</a></li>

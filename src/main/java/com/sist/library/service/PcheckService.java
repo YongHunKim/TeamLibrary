@@ -6,7 +6,7 @@ public interface PcheckService {
 		
 	public int pcheck_ok(String id, String pwd);
 	
-	public MemberVO member_update(String id) throws Exception;
+	public MemberVO member_update(String id, String pwd) throws Exception;
 	
-	public void member_update_ok(MemberVO vo) throws Exception;
+	public int member_update_ok(MemberVO vo);
 }

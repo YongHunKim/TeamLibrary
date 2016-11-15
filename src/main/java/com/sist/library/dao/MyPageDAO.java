@@ -16,19 +16,15 @@ public class MyPageDAO extends AbstractDAO{
 		return (int)selectOne("mypage.pcheck_ok", map);
 	}
 	
-	public MemberVO member_update(String id) throws Exception{
-		return (MemberVO) selectOne("mypage.member_update", id);
+	public MemberVO member_update(String id, String pwd) throws Exception{
+		Map map = new HashMap();
+		map.put("id", id);
+		map.put("pwd", pwd);
+		return (MemberVO) selectOne("mypage.member_update", map);
 	}
 	
-	public void member_update_ok(MemberVO vo) throws Exception{
-		Map map = new HashMap<>();
-		map.put("id", vo.getId());
-		map.put("pwd", vo.getPwd());
-		map.put("tel", vo.getTel());
-		map.put("post", vo.getPost());
-		map.put("addr1", vo.getAddr1());
-		map.put("addr2", vo.getAddr2());
-		map.put("email", vo.getEmail());
-		selectOne("mypage.member_update_ok", map);
+	public int member_update_ok(MemberVO vo){		
+		return (int) update("mypage.member_update_ok", vo);
 	}
+
 }

@@ -7,31 +7,42 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserguideController {
 
+	@RequestMapping(value = "/userguide/guide.do")
+	public ModelAndView guide(){
+		ModelAndView mav = new ModelAndView("main/main");
+		
+		mav.addObject("jsp", "/WEB-INF/jsp/userguide/guide.jsp");
+		mav.addObject("menu", "/WEB-INF/jsp/userguide/guidemenu.jsp");
+
+		return mav;
+	}
+
 	@RequestMapping(value = "/userguide/guidemenu.do")
 	public ModelAndView guide_menu(){
-		ModelAndView mv = new ModelAndView("main/main");
+		ModelAndView mav = new ModelAndView("main/main");
 		
-		mv.addObject("jsp", "/WEB-INF/jsp/userguide/guidemenu.jsp");
-		mv.addObject("usersubmenu", "/WEB-INF/jsp/userguide/library_map.jsp");
-		return mv;
+		mav.addObject("test", "/WEB-INF/jsp/userguide/library_map.jsp");
+		
+		
+		return mav;
 	}
 	
 	@RequestMapping(value = "/userguide/library_map.do")
 	public ModelAndView library_map() {
-		ModelAndView mv = new ModelAndView("main/main");
+		ModelAndView mav = new ModelAndView("main/main");
 
-		mv.addObject("jsp", "/WEB-INF/jsp/userguide/library_map.jsp");
+		mav.addObject("jsp", "/WEB-INF/jsp/userguide/library_map.jsp");
 
-		return mv;
+		return mav;
 	}
 
 	@RequestMapping(value = "/userguide/library_time.do")
 	public ModelAndView library_time() {
-		ModelAndView mv = new ModelAndView("main/main");
+		ModelAndView mav = new ModelAndView("main/main");
 
-		mv.addObject("jsp", "/WEB-INF/jsp/userguide/library_time.jsp");
+		mav.addObject("jsp", "/WEB-INF/jsp/userguide/library_time.jsp");
 
-		return mv;
+		return mav;
 	}
 
 }
