@@ -29,7 +29,7 @@
 	<div align="left">
 		<span style="color:blue; font-weight: bold; font-size: 20pt;">회원정보 수정</span>
 			<p>비밀번호를 입력하세요</p>
-			<form action="/mypage/member_pcheck_ok.do?id=<%= session.getAttribute("id") %>" method="post" id="update_form">
+			<form action="/mypage/member_pcheck_ok.do" method="post" id="update_form">
 			<input type="hidden" name="id" value="<%=session.getAttribute("id") %>">
 			<input type="password" size="16" maxlength="16" name="pwd" />&nbsp;
 			<input type="submit" value="확인" />

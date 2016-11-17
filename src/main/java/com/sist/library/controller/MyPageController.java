@@ -26,37 +26,32 @@ public class MyPageController {
 		ModelAndView mav = new ModelAndView("main/main");
 
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
-		mav.addObject("test", "/WEB-INF/jsp/mypage/member_pcheck.jsp");
+		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
 		
 		return mav;
 	}
 
-	@RequestMapping(value = "/mypage/member_pcheck.do")
-	public ModelAndView member_pcheck(HttpServletRequest request) {
+	@RequestMapping(value = "/mypage/mypage_menu.do")
+	public ModelAndView mypage_menu() {
 		ModelAndView mav = new ModelAndView("main/main");
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/member_pcheck.jsp");
+		
+		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
+		mav.addObject("test", "/WEB-INF/jsp/mypage/mybook.jsp");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/mypage/member_pcheck.do")
+	public ModelAndView member_pcheck() {
+		ModelAndView mav = new ModelAndView("main/main");
+		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
+		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
+		mav.addObject("test", "/WEB-INF/jsp/mypage/member_pcheck.jsp");
 		return mav;
 	}
 
-	/*
-	 * @RequestMapping(value = "/mypage/member_pcheck_ok.do") public
-	 * ModelAndView pcheck_ok(HttpServletRequest request) {
-	 * 
-	 * ModelAndView mav = new ModelAndView("main/main");
-	 * 
-	 * StringBuffer sb = new StringBuffer(); String id =
-	 * request.getParameter("id"); System.out.println(id); String pwd =
-	 * request.getParameter("pwd");
-	 * 
-	 * 
-	 * return mav; }
-	 */
-
-	// 백업
-
 	@RequestMapping(value = "/mypage/member_pcheck_ok.do")
 	public @ResponseBody String pcheck_ok(HttpServletRequest request) {
-		StringBuffer sb = new StringBuffer();
+		String scripting = "";
 		String id = request.getParameter("id");
 		System.out.println(id);
 		String pwd = request.getParameter("pwd");
@@ -65,17 +60,14 @@ public class MyPageController {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id", id);
 			session.setMaxInactiveInterval(60 * 30);
-			sb.append("<script type='text/javascript'>");
-			sb.append("location.href = '/mypage/member_update.do?id=" + id + "';");
-			sb.append("</script>");
+			scripting = "<script type='text/javascript'>" + "location.href = '/mypage/member_update.do?id=" + id + "';"
+					+ "</script>";
 		} else {
-			sb.append("<script type='text/javascript'>");
-			sb.append("alert('보안암호를 확인하세요.');");
-			sb.append("location.href = '/mypage/mypage.do';");
-			sb.append("</script>");
+			scripting = "<script type='text/javascript'>" + "alert('보안암호를 확인하세요.');"
+					+ "location.href = '/mypage/mypage.do';" + "</script>";
 		}
 
-		return sb.toString();
+		return scripting;
 	}
 
 	@RequestMapping(value = "/mypage/member_update.do")
@@ -84,29 +76,65 @@ public class MyPageController {
 
 		String id = request.getParameter("id");
 		// System.out.println(id);
-		MemberVO vo = mypageService.member_update(id);
+		String pwd = request.getParameter("pwd");
+		MemberVO vo = mypageService.member_update(id, pwd);
 		mav.addObject("vo", vo);
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/member_update.jsp");
+		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
+		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
+		mav.addObject("test", "/WEB-INF/jsp/mypage/member_update.jsp");
 
 		return mav;
 	}
 
 	@RequestMapping(value = "/mypage/member_update_ok.do")
-	public ModelAndView member_update_ok() throws Exception {
-		ModelAndView mav = new ModelAndView("main/main");
+	public @ResponseBody String member_update_ok(MemberVO vo) {
 
-		MemberVO vo = new MemberVO();
-		mypageService.member_update_ok(vo);
+		String scripting = "";
 
-		return mav;
+		int result = mypageService.member_update_ok(vo);
+		System.out.println(result);
+		if (result > 0) {
+			scripting = "<script type='text/javascript'>" + "alert('수정되었습니다.');" + "location.href = '/main/main.do';"
+					+ "</script>";
+		}
+
+		return scripting;
 	}
 
 	@RequestMapping(value = "/mypage/member_leave.do")
 	public ModelAndView member_leave() {
 		ModelAndView mav = new ModelAndView("main/main");
 
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/member_leave.jsp");
+		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
+		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
+		mav.addObject("test", "/WEB-INF/jsp/mypage/member_leave.jsp");
 
+		return mav;
+	}
+
+	@RequestMapping(value = "/mypage/mybook.do")
+	public ModelAndView mybook(@RequestParam(value = "page", required=false)String page){
+		ModelAndView mav = new ModelAndView("main/main");
+		
+		page = (page == null) ? "1" : page;
+		int curPage = Integer.parseInt(page);
+//		List list = mypageService;
+		int totalPage; 
+		int totalRow;
+		int block = 5;
+		int fromPage = ((curPage-1)/block * block)+1;
+		int toPage = ((curPage-1)/block * block)+block;
+	/*	if(toPage > totalPage) toPage = totalPage;
+		
+		mav.addObject("totalRow", totalRow);*/
+		mav.addObject("block", block);
+		mav.addObject("toPage", toPage);
+		mav.addObject("curPage", curPage);
+//		mav.addObject("list", list);
+		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
+		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
+		mav.addObject("test", "/WEB-INF/jsp/mypage/mybook.jsp");
+		
 		return mav;
 	}
 

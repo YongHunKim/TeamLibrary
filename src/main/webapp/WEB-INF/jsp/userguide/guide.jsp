@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>좌석 보기</title>
+<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+<title>이용안내</title>
 </head>
 <body>
-	<jsp:include page="${menu}" />
+	<jsp:include page="${menu }"></jsp:include>
 </body>
 </html>

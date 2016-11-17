@@ -87,31 +87,31 @@
 				<tr>
 					<th style="line-height: 2.2;">회원ID <span class="essential">*</span></th>
 					<td class="lLine"><input type="text" name="id" id="mem_id"
-						class="form-controll" size="16" maxlength="16" value=""
+						class="form-controll" size="20" maxlength="16" value=""
 						onkeyup="check_id();">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="check"></span></td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">비밀번호 <span class="essential">*</span></th>
 					<td class="lLine"><input type="password" name="pwd"
-						id="mem_pwd" value="" class="form-controll" size="16"
+						id="mem_pwd" value="" class="form-controll" size="20"
 						maxlength="16"></td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">이름 <span class="essential">*</span></th>
 					<td class="lLine"><input type="text" name="name" value=""
-						id="mem_name" class="form-controll" size="16" maxlength="16">
+						id="mem_name" class="form-controll" size="20" maxlength="16">
 					</td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">휴대폰번호 <span class="essential"></span></th>
 					<td class="lLine"><input type="text" name="tel" id="mem_tel"
-						value="" class="form-controll" size="16" maxlength="16"> &nbsp;&nbsp;&nbsp;구분자는 -로 구분해주세요.</td> 
+						value="" class="form-controll" size="20" maxlength="16"> &nbsp;&nbsp;&nbsp;구분자는 -로 구분해주세요.</td> 
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">우편번호 <span class="essential"></span></th>
 					<td class="lLine"><input type="text" name="post"
-						id="mem_post" value="" class="form-controll" size="16"
+						id="mem_post" value="" class="form-controll" size="20"
 						maxlength="16" readonly> <input type="button"
 						class="btn btn-diable" value="우편번호 찾기"
 						onclick="getpostcode('mem_post','mem_addr1');" /></td>
@@ -129,7 +129,7 @@
 				<tr>
 					<th style="line-height: 2.2;">이메일 <span class="essential"></span></th>
 					<td class="lLine"><input type="text" name="email" id="mem_email" value=""
-						class="form-controll" size="16" maxlength="16"></td>
+						class="form-controll" size="20" maxlength="30"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="button" value="작성"

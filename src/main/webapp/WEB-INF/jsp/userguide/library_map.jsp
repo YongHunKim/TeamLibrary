@@ -6,13 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link rel="stylesheet" type="text/css"
 	href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
-<link rel="stylesheet" type="text/css" href="/css/libraryguide.css">
 <title>Insert title here</title>
 </head>
 <body>
 	<div align="center">
 		<h3>오시는 길</h3>
-		<table>
+		<table width="700">
 			<tr>
 				<th>주소</th>
 				<td>서울특별시 마포구 백범로 18(노고산동) 미화빌딩 2,3층 쌍용도서관</td>
@@ -45,7 +44,7 @@
 		주소) 봉구스 밥버거 반대편, 현대&기아 자동차 옆. </span> -->
 	</div>
 	<br />
-	<div id="map" style="width: 960px; height: 400px;"></div>
+	<div id="map" style="width: 700px; height: 300px;"></div><!-- width:960px; height: 400px; -->
 
 	<script
 		src="//apis.daum.net/maps/maps3.js?apikey=302a3803f092a28878e4e439f7d96eae"></script>

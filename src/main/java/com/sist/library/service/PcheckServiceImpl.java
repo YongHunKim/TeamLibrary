@@ -21,16 +21,14 @@ public class PcheckServiceImpl implements PcheckService {
 	}
 
 	@Override
-	public MemberVO member_update(String id) throws Exception{
-		return mypageDAO.member_update(id);
+	public MemberVO member_update(String id, String pwd) throws Exception{
+		return mypageDAO.member_update(id, pwd);
 	}
 
 	@Override
-	public void member_update_ok(MemberVO vo) throws Exception {
+	public int member_update_ok(MemberVO vo){
 		// TODO Auto-generated method stub
-		mypageDAO.member_update_ok(vo);
+		return mypageDAO.member_update_ok(vo);
 	}
-
-	
 
 }

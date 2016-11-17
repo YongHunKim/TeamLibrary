@@ -4,25 +4,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mypage">
- 	<select id="pcheck_pwd" parameterType="String" resultType="int">
-		select count(*) from member where pwd=#{pwd}
-	</select>
 	
 	<select id="pcheck_ok" parameterType="hashmap" resultType="int">
-		select count(*) from member where id=#{id} and pwd=#{pwd}  
+		SELECT COUNT(*) FROM member WHERE id=#{id} AND pwd=#{pwd}  
 	</select>
 
 	<select id="member_update" parameterType="String" resultType="membervo">
-		select id,name,tel,post,addr1,addr2,email from member where id=#{id,jdbcType=VARCHAR}
+		SELECT id,pwd,name,tel,post,addr1,addr2,email FROM member WHERE id=#{id}
 	</select>
 	
 	<update id="member_update_ok" parameterType="membervo">
-		update member set tel=#{tel,jdbcType=VARCHAR},
-		post=#{post,jdbcType=VARCHAR},
-		addr1=#{addr1,jdbcType=VARCHAR},
-		addr2=#{addr2,jdbcType=VARCHAR},
-		email=#{email,jdbcType=VARCHAR} 
-		where id=#{id}
+		UPDATE member SET pwd=#{pwd},tel=#{tel},post=#{post},addr1=#{addr1},addr2=#{addr2},email=#{email} WHERE id=#{id}
 	</update>
+
 	
 </mapper>
