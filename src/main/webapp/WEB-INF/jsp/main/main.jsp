@@ -47,7 +47,7 @@
 					</li>
 					<li><a href="#" id="current">좌석예약</a>
 						<ul>
-							<li><a href="#">좌석예약</a></li>
+							<li><a href="/seat/seat_reserve.do">좌석예약</a></li>
 							<li><a href="/seat/seat_view.do">좌석보기</a></li>
 						</ul>
 					</li>

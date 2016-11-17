@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+<title>Insert title here</title>
 </head>
 <body>
 	<br/>
@@ -13,7 +13,7 @@
 	<br/>
 	<div align="center">
 		<p>이용시간(자료실, 열람실)</p>
-		<table>
+		<table class="table table-hover">
 			<tr>
 				<th>구분</th>
 				<th>평일</th>

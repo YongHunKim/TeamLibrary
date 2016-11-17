@@ -17,11 +17,11 @@ function check_field() {
 		return;
 	}
 	
-	if(pwd != pwd2){
+	/* if(pwd != pwd2){
 		showMessage("비밀번호를 확인해 주십시요.");
 		pwd.focus();
 		return;
-	}
+	} */
 	
 	var regTel = new RegExp("(^[0][1][0,1,6,7,9]-[0-9]{3,4}-[0-9]{4}$)");
 	if(tel != '' && !regTel.test(tel)){
@@ -38,6 +38,7 @@ function check_field() {
 	f.submit();
 }
 
+
 function updatecancel(){
 	location.href="/main/main.do";
 }
@@ -46,7 +47,7 @@ function updatecancel(){
 <body>
 	<div align="center">
 		<form action="/mypage/member_update_ok.do" method="post" id="update_form">
-			<table>
+			<table class="table table-hover">
 				<tr>
 					<th style="line-height: 2.2;">회원ID</th>
 					<td class="lLine">${vo.id}

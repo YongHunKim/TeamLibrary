@@ -11,11 +11,6 @@
 	<br />
 	<br />
 	<br />
-
-	<div>
-		<jsp:include page="${menu}"></jsp:include>
-	</div>
-	<div id="content"><jsp:include page=""></jsp:include></div>
-	
+	<jsp:include page="${menu}"></jsp:include>
 </body>
 </html>
