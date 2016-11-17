@@ -25,6 +25,7 @@ import com.sist.library.service.BookService;
 public class BookController {
 	Logger log = Logger.getLogger(this.getClass());
 	
+	
 	@Resource(name="bookService")
 	private BookService bookService;
 	
