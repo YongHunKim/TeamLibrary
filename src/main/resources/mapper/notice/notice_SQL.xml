@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+	<insert id="insertNotice" parameterType="noticevo">
+		<![CDATA[	
+		insert into NOTICE(nt_no,id,nt_subject,nt_content,nt_hit)
+		values((SELECT NVL(MAX(nt_no)+1,1) FROM notice),'123',#{nt_subject,jdbcType=VARCHAR},#{nt_content,jdbcType=VARCHAR},0)
+		]]>
+	</insert>
+	
+	<select id="getAllNotice" resultType="noticevo" parameterType="hashmap">
+	<![CDATA[	
+		select nt_no,id,nt_subject,nt_content,nt_hit,nt_regdate FROM
+		(select nt_no,id,nt_subject,nt_content,nt_hit,nt_regdate,rownum as num FROM
+		(select nt_no,id,nt_subject,nt_content,nt_hit,nt_regdate FROM
+		notice order by nt_no desc))
+		WHERE num between #{start} and #{end}
+	]]>	
+	</select>
+	
+	<select id="divisionNotice" resultType="int" parameterType="int">
+	<![CDATA[	
+	select CEIL((COUNT(*))/#{rowSize}) FROM NOTICE
+	]]>
+	</select>
+	
+	
+	<select id="getNoticecontent" parameterType="int" resultType="noticevo">
+		<![CDATA[
+			select nt_no,id,nt_subject,nt_content,nt_hit,nt_regdate FROM NOTICE where nt_no=#{content_no}
+		]]>
+	</select>
+		
+	<select id="updateNotice" parameterType="int" resultType="noticevo">
+		<![CDATA[	
+		select nt_no,id,nt_subject,nt_content,nt_hit,nt_regdate FROM NOTICE where nt_no=#{nt_no}
+		]]>
+	</select>
+	
+	
+	<select id="update_ok_Notice" parameterType="noticevo">
+		<![CDATA[
+		update NOTICE SET (id,nt_subject,nt_content,nt_hit)
+		values(#{id},#{nt_subject,jdbcType=VARCHAR},#{nt_content,jdbcType=VARCHAR}) WHERE nt_no=#{nt_no}
+		]]>
+	</select>
+	
+	
+	<delete id="getNoticedelete" parameterType="int">
+		<![CDATA[
+		delete from notice where nt_no=#{nt_no}
+		]]>
+	</delete>
+
+	<select id="pageCount" resultType="int">
+		SELECT CEIL(count(*)/10) FROM notice
+	</select>
+	
+	<select id="totalRow" resultType="int">
+		SELECT count(*) FROM notice  
+	</select>
+	
+		
+	<update id="update_hit" parameterType="int" >
+		<![CDATA[
+		UPDATE NOTICE SET 
+		hit = hit + 1 
+		where nt_no=#{content_no}
+		]]>
+	</update> 
+	
+	
+	
+</mapper>
