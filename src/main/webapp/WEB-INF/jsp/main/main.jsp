@@ -33,8 +33,8 @@
 				<ul>					
 					<li><a href="#" id="current">자료신청 및 예약</a>
 						<ul>
-							<li><a href="">대출조회 및 연기</a></li>
-							<li><a href="#">대출예약 및 연기</a></li>
+							<li><a href="/rent/rent.do">대출 연기 및 반납</a></li>
+							<li><a href="">예약 연기 및 반납</a></li>
 							<li><a href="#">희망도서신청</a></li>
 						</ul>
 					</li>
