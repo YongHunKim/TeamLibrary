@@ -59,7 +59,7 @@ li {
 	min-height:650px;
 }
 #container {
-	background: #FFFFF6;
+	/*background: #FFFFF6;*/
 	box-shadow: 0 1px 6px #685C4C;
 	margin: 0 auto;
 	padding: 0;
@@ -379,4 +379,14 @@ clear:left;
 .loginForm .box p input{height:18px;font-size:11px;color:#737373;line-height:18px;vertical-align:middle}
 .loginForm .loginBtn{display:block;position:absolute;top:0;right:-25px;width:100px;height:95px;padding:10px;border-radius:5px;
 font-size:14px;font-weight:700;color:#fff;line-height:60px;text-align:center;text-shadow:1px 1px 1px #004773;background:#333}
+#quick {
+	height: 90%;
+	width: 65px;
+	padding: 0 ;
+	float: right;
+	top: 0px;
+	position: relative;
+}
+#quickMenu ul {background:url("/images_new/jdlib/bg_quickM.gif") repeat-y 0 0;}
+#quickMenu ul li {background:url("/images_new/jdlib/bg_quickl.gif") no-repeat center 0;}
 
