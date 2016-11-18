@@ -1,4 +1,4 @@
-@CHARSET "EUC-KR";
+/* @CHARSET "EUC-KR";
 #table_content{
 	border-collapse: collapse;
 	border-top-width: 2px;
@@ -7,6 +7,8 @@
 	border-bottom-style: solid;
 	border-top-color: #333;
 	border-bottom-color: #333;
+	//Author:Teylor Feliz
+	
 	
 	
 }
@@ -21,20 +23,34 @@
 
 #table_content th{
 	background-color: #12ab72;
+	text-align: left;
+	border-spacing: 0px;
+	//font-family: Georgia, Arial, Helvetica, sans-serif;
 	color: #fff;
 	border-bottom-width: 1px;
 	border-bottom-color: #333;
 	text-align: center;
 
+
 }
 
 #table_content td{
+    border-bottom-color: #000000;
+	border-right-color: #000000;
 	border-bottom-width: 1px;
-	border-bottom-color: #666;
-	border-bottom-style: dotted;
+	border-bottom-style: solid;
+	text-transform: uppercase;
+	font-size: 12px;
+	text-align: left;
+	font-style: normal;
+	color: #b5370e;
+	padding:10px;
+
+	
+  
 
 }
-/* 
+
 #table_content .dataTr:HOVER{
 	background-color: #FC6;
 	cursor: pointer;
@@ -44,7 +60,9 @@
 	background-color: #FC6;
 	cursor: pointer;
 }
- */
+ 
+ 
+ 
 #table_content .tdleft{
 	text-align: left;
 }
@@ -89,7 +107,112 @@ textarea {
 	text-align: right;
 }
 
+ */
 
+
+
+
+
+/*  CSS Table Design
+Author: Stanislav Filev
+Theme: Stainless Steel: Stenli Style
+URL: http://www.stenli.net
+
+----------------------------------------------- */
+
+
+
+
+#table_content{
+	border: 1px solid #000; 
+	background-color: #D4D0C8; 
+	color: #000;
+	 
+}
+ 
+#table_content th, #table_content td {
+	margin: 0px;
+	padding: 8px;
+	font-size: 9pt;
+	color: black;
+	text-align: left;
+	border-right: 1px solid #aaa;
+
+	
+}
+
+#table_content th{
+	background-color: #12ab72;
+	text-align: center;
+	border-spacing: 0px;
+	//font-family: Georgia, Arial, Helvetica, sans-serif;
+	color: #fff;
+	border-bottom-width: 1px;
+	border-bottom-color: #333;
+    border-right: 1px solid #333;
+	border: 1px solid #333;
+
+
+}
+
+#table_content td{
+    border-bottom-color: #000000;
+	border-right-color: #000000;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	font-size: 12px;
+	font-style: normal;
+	//color: #b5370e;
+	padding:10px;
+	text-align: center;
+}
+#table_content .tdleft{
+	text-align: left;
+}
+
+#table_content .tdcenter{
+	text-align: center;	
+}
+
+
+
+thead th, tfoot th, tfoot td ,tbody th,tbody td {
+	color: #000; 
+	font: 8pt Verdana; 
+	//border-right: 1px solid #aaa; 
+	//border-top: 1px solid #eee; 
+	//border-left:1px solid #eee; 
+	//border-bottom: 1px solid #aaa; 
+
+}
+
+#fs{
+	text-align: center;
+	margin-top:2;
+	border:2;
+	padding: 2px; 
+
+   
+  
+}
+
+
+tbody th { white-space: nowrap; font-weight: bold; text-align:left; }
+
+
+thead th, tfoot th, tfoot td { background-color: #ccc; font-weight: bold; text-align:center; }
+
+
+tbody tr:hover td{
+	background-color: silver;
+	border-right: 1px solid #eee; 
+	border-top: 1px solid #999; 
+	border-left: 1px solid #999; 
+	border-bottom: 1px solid #eee; 
+
+	
+
+}
 
 
 

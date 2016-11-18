@@ -11,6 +11,7 @@ import com.sist.library.dao.NoticeVO;
 
 @Service("NoticeService")
 public class NoticeServiceImpl implements NoticeService{
+
 	@Resource(name="noticeDAO")
 	private NoticeDAO noticeDAO;
 	
@@ -26,6 +27,7 @@ public class NoticeServiceImpl implements NoticeService{
 
 	@Override
 	public List<NoticeVO> getAllNotice(Map map) throws Exception {		
+		
 		return noticeDAO.getAllNotice(map);
 	}
 	
@@ -50,6 +52,38 @@ public class NoticeServiceImpl implements NoticeService{
 		noticeDAO.update_ok_Notice(vo);
 	}
 
+	@Override
+	public int divisionNotice(Map map) {
+		return noticeDAO.divisionNotice(map);
+	}
+
+
+
+	@Override
+	public int pageCount() {
+		return noticeDAO.pageCount();
+	}
+
+	@Override
+	public int totalRow() {
+		return noticeDAO.totalRow();
+	}
+	
+	@Override
+	public void update_hit(int content_no){
+		noticeDAO.update_hit(content_no);
+	}
+
+	@Override
+	public List<NoticeVO> topNotice() throws Exception {
+		return noticeDAO.topNotice();
+	}
+
+	@Override
+	public List<NoticeVO> search(Map map){
+		return noticeDAO.search(map);
+		
+	}
 
 
 }

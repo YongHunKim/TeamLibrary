@@ -4,10 +4,16 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.*;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 @Repository("noticeDAO")
 public class NoticeDAO extends AbstractDAO{
+
+	public List<NoticeVO> topNotice(){
+		return selectList("notice.topNotice");
+	}//상단고정
+	
 	
 	public void insertNotice(NoticeVO vo){
 		insert("notice.insertNotice", vo);
@@ -16,17 +22,6 @@ public class NoticeDAO extends AbstractDAO{
 	
 	
 	public List<NoticeVO> getAllNotice(Map map){
-	/*	int total = 0;
-		try {
-		String sql = "SELECT CEIL(COUNT(*)/10) FROM "+nt_no;
-		ps = conn.prepareStatement(sql);
-		ResultSet rs = ps.executeQuery();
-		rs.next();
-		total = rs.getInt(1);
-		rs.close();*/
-		
-		
-		
 		return selectList("notice.getAllNotice", map);
 	}
 
@@ -48,6 +43,28 @@ public class NoticeDAO extends AbstractDAO{
 
 	public void update_ok_Notice(NoticeVO vo) {
 		update("notice.update_ok_Notice", vo);
+	}
+	
+	public int divisionNotice(Map map){
+		return (int) selectOne("notice.divisionNotice", map);
+	}
+	
+    public int totalRow(){
+		return (int) selectOne("notice.totalRow");
+	}
+
+
+	public int pageCount() {
+		return (int) selectOne("notice.pageCount");
+	}
+
+
+	public void update_hit(int content_no) {
+		selectOne("notice.update_hit", content_no);
+	}
+	
+	public List<NoticeVO> search(Map map){
+		return selectList("notice.search", map);
 	}
 }
 		
