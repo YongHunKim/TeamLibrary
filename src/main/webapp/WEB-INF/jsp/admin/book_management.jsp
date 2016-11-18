@@ -53,6 +53,16 @@ input[type=button]{
     padding:0px 7px;
     border-radius:5px;
 }
+
+input[type=button].ud{
+    background:#ccccff;
+    color:#fff;
+	font-size:12px;
+    height:16px;	
+	width:58px;
+    padding:0px 7px;
+    border-radius:5px;
+}
 </style>
 <script>
 	function search_check(){
@@ -81,15 +91,30 @@ input[type=button]{
 		$(f).attr("action","/book/detail.do");
 		f.submit();
 	}
+	
+	function book_update(book_code){
+		   var popUrl="book_update.do?book_code="+book_code;
+		   var popOption="width=880, height=550, resizable=no scrollbars=no status=no;";
+		   window.open(popUrl,"",popOption);
+		};
+		
+	function book_delete(book_code) {
+	      if(confirm("삭제하시겠습니까?") == true) {
+	         window.location.href="/admin/book_delete.do?book_code="+book_code;
+	      } else {
+	         return;
+	      }
+	   }
+	
 </script>
-
+	
 </head>
 <body>
 <c:choose>
 <c:when test="${type=='search' }">
 <h1>자 료 검 색</h1>
 <div id="search_div">
-<form action="/search/search_ok.do" method="post" id="search_form">
+<form action="/admin/book_management_ok.do" method="post" id="search_form">
 	<input type="text" name="searchWord" placeholder="검색하세요." id="search_val" value="${searchWord }"/>
 	<input value="검색" type="button" id="search_btn" onclick="search_check()"/>
 </form>
@@ -147,6 +172,10 @@ input[type=button]{
 								<img id="haveBook${i}" src="<%=application.getContextPath() %>/images/reservation_x.png" width="58" height="17" title="대출상태" style="height:22px; width:62px;">
 							</c:otherwise>
 						</c:choose>
+						<br>
+						<input type="button" value="수정" class="ud" onclick="book_update(${list.get(i).book_code })">
+						<br>
+						<input type="button" value="삭제" class="ud" id="book_delete" onclick="book_delete(${list.get(i).book_code })">
 					</p>
 					</dt>
 					<dd class="summary">저자 : ${list.get(i).book_author } |
@@ -167,17 +196,17 @@ input[type=button]{
 							[1][2][3][4][5][6]
 							fp			tp	
 						 -->
-					 	<a href="/search/search_ok.do?page=1&searchWord=${searchWord }">
+					 	<a href="/admin/book_management_ok.do?page=1&searchWord=${searchWord }">
 					 		<img src="<%=application.getContextPath() %>/images/begin.gif">
 					 	</a>
 					 	<!-- 기본적으로는 5페이지 단위로 페이지 이동, 처음 블록과 마지막 블록에서만 1페이지씩 이동 -->
 						<c:if test="${curPage>block }">
-							<a href="/search/search_ok.do?page=${fromPage-1}&searchWord=${searchWord }">
+							<a href="/admin/book_management_ok.do?page=${fromPage-1}&searchWord=${searchWord }">
 								<img src="<%=application.getContextPath() %>/images/prev.gif">				 		
 						 	</a>
 						</c:if>	
 						<c:if test="${curPage<block }">
-							<a href="/search/search_ok.do?page=${curPage>1 ? curPage-1 : 1 }&searchWord=${searchWord }">
+							<a href="/admin/book_management_ok.do?page=${curPage>1 ? curPage-1 : 1 }&searchWord=${searchWord }">
 								<img src="<%=application.getContextPath() %>/images/prev.gif">				 		
 						 	</a>
 						</c:if>
@@ -189,23 +218,23 @@ input[type=button]{
 								</font>				 	
 						 	</c:if>
 						 	<c:if test="${curPage!=i }">
-						 		<a href="/search/search_ok.do?page=${i }&searchWord=${searchWord }">
+						 		<a href="/admin/book_management_ok.do?page=${i }&searchWord=${searchWord }">
 						 			${i }
 						 		</a>
 						 	</c:if>	
 						 	]
 						</c:forEach>
 						<c:if test="${toPage<totalPage }">
-							<a href="/search/search_ok.do?page=${toPage+1 }&searchWord=${searchWord }">
+							<a href="/admin/book_management_ok.do?page=${toPage+1 }&searchWord=${searchWord }">
 								<img src="<%=application.getContextPath() %>/images/next.gif">				 		
 						 	</a>
 						</c:if>
 						<c:if test="${toPage>=totalPage }">
-							<a href="/search/search_ok.do?page=${curPage<totalPage ? curPage+1 : totalPage }&searchWord=${searchWord }">
+							<a href="/admin/book_management_ok.do?page=${curPage<totalPage ? curPage+1 : totalPage }&searchWord=${searchWord }">
 								<img src="<%=application.getContextPath() %>/images/next.gif">				 		
 						 	</a>
 						</c:if>
-						<a href="/search/search_ok.do?page=${totalPage }&searchWord=${searchWord }">
+						<a href="/admin/book_management_ok.do?page=${totalPage }&searchWord=${searchWord }">
 					 		<img src="<%=application.getContextPath() %>/images/end.gif">
 					 	</a>
 					 	&nbsp;
