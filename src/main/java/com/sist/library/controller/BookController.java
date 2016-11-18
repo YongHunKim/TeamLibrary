@@ -65,7 +65,7 @@ public class BookController {
 		MailVO vo = bookService.mailInfo(book_management_code,id);
 		System.out.println(vo.getEmail());
 		String type="rent";
-		mail.sendMail(vo,type);
+		//mail.sendMail(vo,type);
 		
 		if(result>0){
 			str_result="success";
@@ -98,7 +98,7 @@ public class BookController {
 		MailVO vo = bookService.mailInfo(book_management_code,id);
 		System.out.println(vo.getEmail());
 		String type="reserve";
-		mail.sendMail(vo,type);
+		//mail.sendMail(vo,type);
 		
 		if(result>0){
 			str_result="success";

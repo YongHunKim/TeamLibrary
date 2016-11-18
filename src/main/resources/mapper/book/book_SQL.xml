@@ -43,7 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<update id="bookRentyn" parameterType="String">
-		UPDATE book SET rent_yn='y'
+		UPDATE book SET rent_yn='y', book_rent_count=book_rent_count+1
 		WHERE book_code=#{book_code}
 	</update>
 	

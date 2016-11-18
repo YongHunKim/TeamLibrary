@@ -25,4 +25,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from book b, book_management bm where b.book_code = bm.book_code and
 		bm.id=#{id} and rent_date is null
 	</select>
+	
+	<select id="rentPageCount" parameterType="String" resultType="int">
+		SELECT CEIL(count(*)/5) FROM book_management bm,book b
+		WHERE bm.book_code=b.book_code AND id=#{id} AND b.rent_yn='y' AND sysdate BETWEEN rent_date AND return_date
+	</select>
+	
+	<select id="rentTotalRow" parameterType="String" resultType="int">
+		SELECT count(*) FROM book_management bm, book b
+		WHERE bm.book_code=b.book_code AND id=#{id} AND b.rent_yn='y' AND sysdate BETWEEN rent_date AND return_date 
+	</select>
+	
+	<select id="getRentList" parameterType="hashmap" resultType="bookmanagervo">
+		SELECT bm.book_code,b.book_name,b.book_author,bm.rent_date,bm.return_date,bm.id,num
+		FROM (SELECT book_management_code,id,book_code,rent_date,return_date,rownum as num 
+		FROM (SELECT book_management_code,id,book_code,rent_date,return_date FROM book_management WHERE id=#{id} AND reserve_date is null AND sysdate BETWEEN rent_date AND return_date ORDER BY book_management_code desc)) bm, book b
+		WHERE b.book_code = bm.book_code AND num between #{start} and #{end} AND b.rent_yn='y' 
+	</select>
 </mapper>

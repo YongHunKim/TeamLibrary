@@ -1,6 +1,7 @@
 package com.sist.library.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
@@ -25,6 +26,18 @@ public class MyPageDAO extends AbstractDAO{
 	
 	public int member_update_ok(MemberVO vo){		
 		return (int) update("mypage.member_update_ok", vo);
+	}
+
+	public int rentPageCount(String id) {
+		return (int) selectOne("rental.rentPageCount", id);
+	}
+
+	public int rentTotalRow(String id) {
+		return (int) selectOne("rental.rentTotalRow",id);
+	}
+
+	public List<BookManagerVO> getRentList(Map map) {
+		return selectList("rental.getRentList",map);
 	}
 
 }

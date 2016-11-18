@@ -46,8 +46,7 @@
 	<br />
 	<div id="map" style="width: 700px; height: 300px;"></div><!-- width:960px; height: 400px; -->
 
-	<script
-		src="//apis.daum.net/maps/maps3.js?apikey=302a3803f092a28878e4e439f7d96eae"></script>
+	<script	src="//apis.daum.net/maps/maps3.js?apikey=ce606b46356f12686b9268ec5f9dc35d"></script>
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
