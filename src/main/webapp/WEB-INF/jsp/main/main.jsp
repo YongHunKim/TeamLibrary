@@ -53,7 +53,7 @@
 					</li>
 					<li><a href="#" id="current">참여마당</a>
 						<ul>
-							
+							<li><a href="#">공지사항</a>
 							<li><a href="/lostBoard/list.do">분실물 게시판</a></li>
 						</ul>
 					</li>

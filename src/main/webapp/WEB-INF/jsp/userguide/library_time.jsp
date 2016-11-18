@@ -12,47 +12,46 @@
 	<br/>
 	<br/>
 	<div align="center">
-		<p>이용시간(자료실, 열람실)</p>
+		<p style="font-size: 2.2em">이용시간(자료실, 열람실)</p>
 		<table class="table table-hover">
 			<tr>
-				<th>구분</th>
-				<th>평일</th>
-				<th>주말</th>
+				<th width="20%" valign="middle""text-align: center;">구분</th>
+				<th width="40%" style="text-align: center; border-left:1px solid #ddd; border-right:1px solid #ddd;">평일</th>
+				<th width="40%" style="text-align: center;">주말</th>
 			</tr>
 			<tr>
-				<td>종합자료실</td>
-				<td>09:00 ~ 22:00</td>
-				<td rowspan="3">09:00 ~ 17:00</td>
+				<td width="20%" style="text-align: center;">종합자료실</td>
+				<td width="40%" valign="middle" style="border-left:1px solid #ddd;">09:00 ~ 22:00</td>
+				<td rowspan="3" valign="middle" style="border-left:1px solid #ddd;"width="40%" >09:00 ~ 17:00</td>
 			</tr>
 			<tr>
-				<td>디지털자료실<br /> 간행물실
-				</td>
-				<td rowspan="2">09:00 ~ 18:00</td>
+				<td style="text-align: center;">디지털자료실<br /> 간행물실	</td>
+				<td rowspan="2" style="border-left:1px solid #ddd;" valign="middle">09:00 ~ 18:00</td>
 			</tr>
 			<tr>
-				<td>어린이자료실</td>
+				<td style="text-align: center;">어린이자료실</td>
 			</tr>
 			<tr>
-				<td>일반열람실</td>
-				<td colspan="2">06:00 ~ 23:00</td>
+				<td width="20%" style="text-align: center; border-bottom: 1px solid #ddd;">일반열람실</td>
+				<td colspan="2" width="80%" style="border-left:1px solid #ddd; border-bottom: 1px solid #ddd" valign="middle">06:00 ~ 23:00</td>
 			</tr>
 		</table>
 		<br /> 
 		<br />
 		<br />
-		<p>휴관일</p>
-		<table>
+		<p style="font-size: 2.2em">휴관일</p>
+		<table class="table table-hover">
 			<tr>
-				<th>정기휴관일</th>
+				<th style="border-right: 1px solid #ddd;">정기휴관일</th>
 				<td>매월 일요일</td>
 			</tr>
 			<tr>
-				<th>법정공휴일</th>
+				<th style="border-right: 1px solid #ddd;">법정공휴일</th>
 				<td>일요일을 제외한 법정 공휴일(일요일과 겹칠 경우 월요일 휴관)</td>
 			</tr>
 			<tr>
-				<th>임시휴관일</th>
-				<td>관장이 도서의 정리, 보수공사, 장서점검 및 기타의 사유로 휴관이 필요하다고 인정하는 날</td>
+				<th style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd;">임시휴관일</th>
+				<td style="border-bottom: 1px solid #ddd;">관장이 도서의 정리, 보수공사, 장서점검 및 기타의 사유로 휴관이 필요하다고 인정하는 날</td>
 			</tr>
 		</table>
 	</div>

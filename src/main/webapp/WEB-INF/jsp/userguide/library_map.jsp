@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div align="center">
+	<div id="wrap">
 		<h3>오시는 길</h3>
 		<table width="700">
 			<tr>
@@ -22,32 +22,32 @@
 			</tr>
 		</table>
 		<br />
-		
+
 		<div align="left">
-		지하철 이용시<br/>
-		<ul>
-			<li>2호선 신촌역(6번 출구) 도보 3분 거리</li>
-			<li>경의중앙선 서강대역(2번 출구) 도보 7분 거리</li>
-		</ul>
-		<br />
-		
-		버스 이용시<br/>
-		<ul>
-			<li>신촌 로터리 정류장에서 하차</li>
-			<li>110번 버스, 604번 버스, 753번 버스, 730번 버스, 7711번 버스, 7613번 버스, 7016번 버스, 5714번 버스, 170번 버스</li>
-		</ul> 
+			지하철 이용시<br />
+			<ul>
+				<li>2호선 신촌역(6번 출구) 도보 3분 거리</li>
+				<li>경의중앙선 서강대역(2번 출구) 도보 7분 거리</li>
+			</ul>
+			<br /> 버스 이용시<br />
+			<ul>
+				<li>신촌 로터리 정류장에서 하차</li>
+				<li>110번 버스, 604번 버스, 753번 버스, 730번 버스, 7711번 버스, 7613번 버스,
+					7016번 버스, 5714번 버스, 170번 버스</li>
+			</ul>
 		</div>
-		
+
 		<!-- <span id="map_nav">
 		서울특별시 마포구 백범로 18(노고산동) 미화빌딩 2,3층 쌍용도서관<br /> 02)336-8546~8 <br />
 		<br /> 지하철 이용<br /> 2호선 신촌역 7번, 6번 또는 5번 출구 서강대 방향으로 도보 5분. <br /> 상세
 		주소) 봉구스 밥버거 반대편, 현대&기아 자동차 옆. </span> -->
 	</div>
 	<br />
-	<div id="map" style="width: 700px; height: 300px;"></div><!-- width:960px; height: 400px; -->
+	<div id="map" style="width: 700px; height: 300px;"></div>
+	<!-- width:960px; height: 400px; -->
 
 	<script
-		src="//apis.daum.net/maps/maps3.js?apikey=302a3803f092a28878e4e439f7d96eae"></script>
+		src="//apis.daum.net/maps/maps3.js?apikey=e47c8bea4f2b08491a5fcec4d77bb5ce"></script>
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {

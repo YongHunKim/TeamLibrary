@@ -10,13 +10,14 @@
 	<div style="float: left; width: 20%;">
 		마이페이지
 		<ul>
-			<li><a class="active" href="/mypage/mybook.do">나의 추천도서</a></li>
+			<li><a class="active" href="/mypage/mybook.do">나의 관심도서</a></li>
 			<li><a
 				href="/mypage/member_pcheck.do?id=<%=session.getAttribute("id")%>">회원정보수정</a></li>
 			<li><a href="/mypage/member_leave.do">회원탈퇴</a></li>
 			<li><a
 				href="/mypage/rental_guide.do?id=<%=session.getAttribute("id")%>">대출내역</a></li>
 			<li><a href="/mypage/reserve_guide.do?id=<%= session.getAttribute("id") %>">예약내역</a></li>
+			<li><a href="/mypage/rec_select.do?id=<%= session.getAttribute("id") %>">한줄평모음</a></li>
 		</ul>
 	</div>
 	
