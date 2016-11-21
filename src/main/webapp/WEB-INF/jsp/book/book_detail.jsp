@@ -151,7 +151,7 @@
 		</tr>
 	</table>
 	<div style="text-align:right;">
-		<a href="/search/deltai"></a>
+		<a href="/search/search.do">관심</a>
 		<a href="/search/search_ok.do?page=${curPage}&searchWord=${searchWord}"><img src="/images/btn_list.gif"></a>
 	</div>
 	<c:if test="${reclist.size()>0 }">

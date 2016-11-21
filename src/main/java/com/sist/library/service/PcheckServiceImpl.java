@@ -1,9 +1,12 @@
 package com.sist.library.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.sist.library.dao.BookRecommendVO;
 import com.sist.library.dao.MemberVO;
 import com.sist.library.dao.MyPageDAO;
 
@@ -29,6 +32,30 @@ public class PcheckServiceImpl implements PcheckService {
 	public int member_update_ok(MemberVO vo){
 		// TODO Auto-generated method stub
 		return mypageDAO.member_update_ok(vo);
+	}
+
+	@Override
+	public List<BookRecommendVO> rec_select(int page, String id) {
+		// TODO Auto-generated method stub
+		return mypageDAO.rec_select(page, id);
+	}
+
+	@Override
+	public int recPage(String id) {
+		// TODO Auto-generated method stub
+		return mypageDAO.recPage(id);
+	}
+
+	@Override
+	public int recRow(String id) {
+		// TODO Auto-generated method stub
+		return mypageDAO.recRow(id);
+	}
+
+	@Override
+	public int member_secession(String id, String pwd) {
+		// TODO Auto-generated method stub
+		return mypageDAO.member_secession(id,pwd);
 	}
 
 }

@@ -4,18 +4,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mypage">
-	
+
 	<select id="pcheck_ok" parameterType="hashmap" resultType="int">
-		SELECT COUNT(*) FROM member WHERE id=#{id} AND pwd=#{pwd}  
+		SELECT COUNT(*) FROM member WHERE id=#{id} AND pwd=#{pwd}
 	</select>
 
 	<select id="member_update" parameterType="String" resultType="membervo">
-		SELECT id,pwd,name,tel,post,addr1,addr2,email FROM member WHERE id=#{id}
+		SELECT id,pwd,name,tel,post,addr1,addr2,email FROM member WHERE
+		id=#{id}
 	</select>
-	
+
 	<update id="member_update_ok" parameterType="membervo">
-		UPDATE member SET pwd=#{pwd},tel=#{tel},post=#{post},addr1=#{addr1},addr2=#{addr2},email=#{email} WHERE id=#{id}
+		UPDATE member SET
+		pwd=#{pwd},tel=#{tel},post=#{post},addr1=#{addr1},addr2=#{addr2},email=#{email}
+		WHERE id=#{id}
 	</update>
 
+	<select id="rec_select" parameterType="hashmap" resultType="recommendvo">
+		SELECT book_recommend_code,book_code,id,book_recommend_subject FROM
+		book_recommend WHERE id=#{id} AND book_recommend_code BETWEEN  #{start} AND #{end}
+		ORDER BY book_recommend_code
+	</select>
+
+	<!-- 페이징 처리 -->
+	<select id="recPage" parameterType="String" resultType="int">
+		SELECT CEIL(COUNT(*)/10) FROM book_recommend WHERE id=#{id}
+	</select>
+	
+	<select id="recRow" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM book_recommend WHERE id=#{id}
+	</select>
+	
+	<delete id="member_secession" parameterType="hashmap">
+		DELETE FROM member WHERE id=#{id} and pwd=#{pwd}
+	</delete>
+	
+	<select id="" paramerterType="hashmap" resultType="bookvo">
+		SELECT book_category,book_image,book_name,
+		book_author,book_publish,rent_yn,reserve_yn  FROM book WHERE #{start} AND #{end}
+	</select>
 	
 </mapper>

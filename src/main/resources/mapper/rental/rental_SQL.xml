@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="rental">
 
-	<select id="rental_history" parameterType="String" resultType="bookmanagervo">
+	<select id="rental_history" parameterType="hashmap" resultType="bookmanagervo">
 	 	<!-- select bm.book_code,b.book_name,b.book_author,bm.rent_date,bm.return_date
 		from book b, book_management bm where b.book_code = bm.book_code and
 		id=#{id}  -->
@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</select>
 
-	<select id="reservation_history" parameterType="String"
+	<select id="reservation_history" parameterType="hashmap"
 		resultType="bookmanagervo">
 		<!-- select bm.book_code,b.book_name,b.book_author,bm.reserve_date
 		from book b, book_management bm where b.book_code = bm.book_code and
@@ -38,8 +38,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       where b.book_code = bm.book_code and num between #{start} and #{end}
 		
 	</select>
-	
-	
 	
  	<select id="rentalPage" resultType="int" parameterType="String">
 		SELECT CEIL(COUNT(*)/10) FROM book b, book_management bm WHERE 

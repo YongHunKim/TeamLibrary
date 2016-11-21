@@ -11,21 +11,25 @@
 <body>
 	<table>
 	<tr>
-		<th width="10%">번호</th>
-		<th width="60%">제목</th>
-		<th width="10%">글쓴이</th>
-		<th width="10%">일자</th>
-		<th width="10%">조회</th>
+		<th width="10%">카테고리</th>
+		<th width="20%">그림</th>
+		<th width="30%">제목</th>
+		<th width="10%">저자</th>
+		<th width="10%">출판사</th>
+		<th width="10%">대여상태/th>
+		<th width="10%">예약상태</th>
 	</tr>
 		<c:choose>
 		<c:when test="">
 			<c:forEach var="vo" items="${list}">
 			<tr>
-				<td width="10%">${vo.no}</td>
-				<td width="60%">${vo.subject}</td>
-				<td width="10%">${vo.name}</td>
-				<td width="10%"><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/></td>				
-				<td width="10%">${vo.hit}</td>				
+				<td width="10%">${vo.book_category}</td>
+				<td width="20%">${vo.book_image }</td>
+				<td width="50%">${vo.book_name}</td>
+				<td width="10%">${vo.book_author}</td>
+				<td width="10%">${vo.book_publish}</td>				
+				<td width="10%">${vo.rent_yn}</td>
+				<td width="10%">${vo.reserve_yn}</td>				
 			</tr>
 			</c:forEach>
 		</c:when>
