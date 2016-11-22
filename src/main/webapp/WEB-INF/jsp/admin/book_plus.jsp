@@ -11,11 +11,11 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 <style>
 #bg{
-	background-image: url("/css/admin/background.jpg");
+	background-image: url("/images/admin/book_plus.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: 95% 95%; 
-	background-color:transparent
+	background-size: 90% 90%; 
+	background-color:transparent;
 }
 </style>
 <style>
@@ -26,8 +26,6 @@ text-align:center;
 color:#533515;
 text-shadow: 2px 2px 2px gray;
 }
-
-
 
 th{
 	font-size:15px;
@@ -71,16 +69,17 @@ function send(){
 <body>
 	<table width="960" height="500" id="bg">
 	<tr>
-	<td>
+	<td valign="top">
 		<center>
 			<form:form method="post" action="/admin/book_plus_ok.do" name="frm">
-				<table width="500" id="table_content" border="0" style="background-color:white;">
+			<br><br><br><br><br><br>
+				<table width="500" id="table_content" border="0" style="background-color:white; ">
 					<tr>
 					<td colspan="4">
 					<h2>도서 입력</h2>
 					</td>
 					<tr height="27">
-						<th width="20%" align="left">카테고리 : </th>
+						<th width="20%" align="left">&nbsp;&nbsp;카테고리 : </th>
 						<td width="30%">
 							<select name="book_category">
 								<option value="IT">IT</option>
@@ -93,7 +92,7 @@ function send(){
 						</td>
 					</tr>
 					<tr height="27">
-						<th width="20%" align="left">저자 : </th>
+						<th width="20%" align="left">&nbsp;&nbsp;저자 : </th>
 						<td width="30%">
 						<input type="text" size="20" name="book_author">
 						</td>
@@ -103,14 +102,14 @@ function send(){
 						</td>
 					</tr>
 					<tr height="27">
-						<th width="20%" align="left">책 이미지 : </th>
+						<th width="20%" align="left">&nbsp;&nbsp;책 이미지 : </th>
 						<td width="30%"><input type="text" size="20" name="book_image" ></td>
 						<th width="20%" align="left">발행일 : </th>
 						<td width="30%"'><input type="text" size="20" name="book_publish_date"  placeholder="yy/mm/dd">
 						</td>
 					</tr>	
 					<tr height="27">
-						<th width="20%">책 정보</th>
+						<th width="20%">&nbsp;&nbsp;책 정보</th>
 						<td width="80%" colspan="3"><textarea rows="10" cols="58" name="book_info"></textarea>
 						</td>
 					</tr>

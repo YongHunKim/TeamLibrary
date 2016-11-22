@@ -7,32 +7,46 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
-	<script type="text/javascript">
+<script type="text/javascript">
 
-	</script>
+</script>
+<style type="text/css">
+	td{
+	font-size: 15px;
+	}
+	
+	body{
+		background-image: url('/images/admin/update_con.png');
+		background-size: 100%;
+		background-repeat: no-repeat;
+	}
+</style>
 </head>
 <body>
-	<center><h3>수정하기</h3></center>
-	<table class="table" style="margin-top: 30px;">
+	<table class="table"  style="filter:alpha(opacity=50)">
 		<tr>
-			<td rowspan="8" width="30%" style="text-align:center;"><img style="width:150px;" src="${vo.book_image }"></td>
-			<td width="10%">책 제목</td>
-			<td width="60%">${vo.book_name}</td>
+		<td colspan="3">
+		<center><h3>내용보기</h3></center>
+		</td>
+		<tr>
+			<td rowspan="8" width="25%" style="text-align:center;"><img style="width: 195px; height: 245px;" src="${vo.book_image }"></td>
+			<th width="10%">책 제목</th>
+			<td width="65%">${vo.book_name}</td>
 		</tr>
 		<tr>
-			<td>저자</td>
+			<th>저자</th>
 			<td>${vo.book_author}</td>
 		</tr>
 		<tr>
-			<td>출판사</td>
+			<th>출판사</th>
 			<td>${vo.book_publish}</td>
 		</tr>
 		<tr>
-			<td>출판일</td>
+			<th>출판일</th>
 			<td><fmt:formatDate value="${vo.book_publish_date}" pattern="yyyy-MM-dd"/></td>
 		</tr>
 		<tr>
-			<td>대여상태</td>
+			<th>대여상태</th>
 			<td>
 			<c:choose>
 				<c:when test="${vo.rent_yn == 'y' }">
@@ -45,7 +59,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>예약상태</td>
+			<th>예약상태</th>
 			<td>
 			<c:choose>
 				<c:when test="${vo.reserve_yn == 'y' }">
@@ -58,11 +72,11 @@
 			</td>
 		</tr>
 		<tr>
-			<td>책소개</td>
+			<th valign="top">책소개</th>
 			<td>${vo.book_info}</td>
 		</tr>
 		<tr>
-			<td>카테고리</td>
+			<th>카테고리</th>
 			<td>${vo.book_category}</td>
 		</tr>
 		<tr>

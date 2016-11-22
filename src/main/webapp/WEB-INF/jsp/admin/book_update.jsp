@@ -10,46 +10,65 @@
 	<script type="text/javascript">
 
 	</script>
+	
+	<style>
+body{
+	background-image: url("/images/admin/book_update.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100% 100%; 
+	background-color:transparent;
+}
+
+th{
+	color: #670000;
+	text-align: left;
+	font-size: 14px;
+}
+</style>
+
 </head>
 <body>
-	<form action="/admin/book_update_ok.do" method="post"">
-		<center><h3>수정하기</h3></center>
-		<table class="table">
+	<form action="/admin/book_update_ok.do" method="post">
+		<center><h3>책 정보 변경</h3></center>
+		<table class="table" style="filter:alpha(opacity=50)" align="center" border="0">
 			<tr>
-				<td width="10%">책 이미지</td>
-				<td width="90%"><input type="text" name="book_image" size="100" value="${vo.book_image }"></td>
+				<th width="15%">&nbsp;&nbsp;책 이미지</th>
+				<td width="88%"><input type="text" name="book_image" size="75" value="${vo.book_image }" style="background-color:transparent"></td>
 			</tr>
 			<tr>
-				<td width="10%">책 제목</td>
-				<td width="90%">
-				<input type="text" size="100" name="book_name" value="${vo.book_name }"></td>
+				<th width="10%">&nbsp;&nbsp;책 제목</th>
+				<td width="88%">
+				<input type="text" size="75" name="book_name" value="${vo.book_name }" style="background-color:transparent"></td>
 			</tr>
 			<tr>
-				<td>저자</td>
-				<td><input type="text" size="100" name="book_author"  value="${vo.book_author }"></td>
+				<th>&nbsp;&nbsp;저자</th>
+				<td><input type="text" size="75" name="book_author"  value="${vo.book_author }" style="background-color:transparent"></td>
 			</tr>
 			<tr>
-				<td>출판사</td>
-				<td><input type="text" size="100" name="book_publish" value="${vo.book_publish }"></td>
+				<th>&nbsp;&nbsp;출판사</th>
+				<td><input type="text" size="75" name="book_publish" value="${vo.book_publish }" style="background-color:transparent"></td>
 			</tr>
 			<tr>
-				<td>출판일</td>
+				<th>&nbsp;&nbsp;출판일</th>
 				<fmt:formatDate var="publish_date" value="${vo.book_publish_date}" pattern="yy/MM/dd"/>
-				<td><input type="text" name="book_update_date" placeholder="yy/mm/dd" size="100" value="${publish_date}"></td>
+				<td><input type="text" name="book_update_date" placeholder="yy/mm/dd" size="75" value="${publish_date}"
+				style="background-color:transparent"></td>
 			</tr>
 			<tr>
-				<td>책소개</td>
-				<td><textarea name="book_info" rows="15" cols="102">${vo.book_info }</textarea></td>
+				<th valign="top">&nbsp;&nbsp;책소개</th>
+				<td><textarea name="book_info" rows="10" cols="77" style="background-color:transparent"
+				id="bookinfo">${vo.book_info }</textarea></td>
 			</tr>
 			<tr>
-				<td>카테고리</td>
-				<td><input type="text" size="100" name="book_category" value="${vo.book_category }">
-				<input type="hidden" name="book_code" value="${vo.book_code }">
+				<th>&nbsp;&nbsp;카테고리</th>
+				<td><input type="text" size="75" name="book_category" value="${vo.book_category }">
+				<input type="hidden" name="book_code" value="${vo.book_code }" style="background-color:transparent">
 				</td>
 				
 			</tr>
 			<tr>
-				<td colspan="2" align="center">
+				<td colspan="3" align="center">
 					<input type="submit" value="수정">
 					<input type="button" onclick="javascript:window.close()" value="취소">
 				</td>

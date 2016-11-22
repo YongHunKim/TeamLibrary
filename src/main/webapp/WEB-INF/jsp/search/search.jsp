@@ -172,7 +172,7 @@ input[type=button]{
 					 	</a>
 					 	<!-- 기본적으로는 5페이지 단위로 페이지 이동, 처음 블록과 마지막 블록에서만 1페이지씩 이동 -->
 						<c:if test="${curPage>block }">
-							<a href="/search/search_ok.do?page=${fromPage-1}&searchWord=${searchWord }">
+							<a href=" ">
 								<img src="<%=application.getContextPath() %>/images/prev.gif">				 		
 						 	</a>
 						</c:if>	
