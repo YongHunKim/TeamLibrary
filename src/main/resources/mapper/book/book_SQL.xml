@@ -76,4 +76,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE FROM book_recommend
 		WHERE book_code=#{book_code} AND book_recommend_code=#{book_recommend_code}
 	</delete>
+	
 </mapper>

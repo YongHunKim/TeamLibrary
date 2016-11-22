@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<select id="rec_select" parameterType="hashmap" resultType="recommendvo">
-		SELECT book_recommend_code,book_code,id,book_recommend_subject FROM
+		SELECT book_recommend_code,book_code,book_name,book_author,book_recommend_subject FROM
 		book_recommend WHERE id=#{id} AND book_recommend_code BETWEEN  #{start} AND #{end}
 		ORDER BY book_recommend_code
 	</select>
@@ -39,8 +39,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE FROM member WHERE id=#{id} and pwd=#{pwd}
 	</delete>
 	
-<!-- 	<select id="wishlist" parameterType="hashmap" resultType="bookvo">
-		
+<!--	<select id="wishlist" parameterType="hashmap" resultType="bookvo">
+		 SELECT book_code,book_name,id,book_author,book_publish,book_image,book_category FROM
+		wishlist WHERE id=#{id} AND book_code BETWEEN #{start} AND #{end}
+		ORDER BY book_code 
 	</select> -->
+	
+	<select id="wishlist" parameterType="String" resultType="String">
+			SELECT book_code,book_name,id,book_author,book_publish,book_image,book_category
+		FROM wishlist WHERE id=#{id}
+	
+	</select> 
+	
+	
+	<select id="wishPage" parameterType="String" resultType="int">
+		SELECT CEIL(COUNT(*)/10) FROM wishlist WHERE id=#{id}
+	</select>
+	
+	<select id="wishRow" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM wishlist WHERE id=#{id}
+	</select>
 	
 </mapper>

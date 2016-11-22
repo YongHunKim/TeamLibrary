@@ -24,5 +24,11 @@ public interface PcheckService {
 	
 	public int member_secession(String id, String pwd);
 	
-//	public List<BookVO> wishlist(int page, String id);
+	public List wishlist(String id);
+	
+/*	public List wishlist(int page, String id);
+	
+	public int wishPage(String id);
+	
+	public int wishRow(String id);*/
 }

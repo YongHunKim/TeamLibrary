@@ -1,7 +1,6 @@
 package com.sist.library.controller;
 
 import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -105,24 +104,32 @@ public class MyPageController {
 	}
 
 	@RequestMapping(value = "/mypage/mybook.do")
-	public ModelAndView mybook(@RequestParam(value = "page", required=false)String page){
+	public ModelAndView mybook(@RequestParam(value = "page", required=false)String page,
+			@RequestParam(value = "id", required=false)String id){
 		ModelAndView mav = new ModelAndView("main/main");
 		
-		page = (page == null) ? "1" : page;
+		/*page = (page == null) ? "1" : page;
 		int curPage = Integer.parseInt(page);
-//		List list = mypageService.;
-		int totalPage; 
-		int totalRow;
+		System.out.println(curPage);*/
+		List list = mypageService.wishlist(id);
+//		List list = mypageService.wishlist(curPage, id);
+	/*	int totalPage = mypageService.wishPage(id); 
+		int totalRow = mypageService.wishRow(id);
 		int block = 5;
 		int fromPage = ((curPage-1)/block * block)+1;
+		System.out.println(fromPage);
 		int toPage = ((curPage-1)/block * block)+block;
-	/*	if(toPage > totalPage) toPage = totalPage;
+		System.out.println(toPage);
+		if(toPage > totalPage) toPage = totalPage;*/
 		
-		mav.addObject("totalRow", totalRow);*/
+		/*mav.addObject("totalRow", totalRow);
 		mav.addObject("block", block);
 		mav.addObject("toPage", toPage);
-		mav.addObject("curPage", curPage);
-//		mav.addObject("list", list);
+		mav.addObject("fromPage", fromPage);
+		mav.addObject("totalPage", totalPage);
+		mav.addObject("curPage", curPage);*/
+		mav.addObject("id", id);
+		mav.addObject("list", list);
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
 		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
 		mav.addObject("test", "/WEB-INF/jsp/mypage/mybook.jsp");
@@ -175,17 +182,20 @@ public class MyPageController {
 
 	
 	@RequestMapping(value = "/mypage/member_leave_ok.do")
-	public @ResponseBody String member_leave_ok(@RequestParam(value="id",required=true)String id,
+	public @ResponseBody String member_leave_ok(HttpServletRequest request,@RequestParam(value="id",required=true)String id,
 			@RequestParam(value="pwd",required=true)String pwd){
-	
+		
 		String res = "";
 		int result = mypageService.member_secession(id, pwd);
-		System.out.println(result);
-		if(result >= 0){
+		
+		if(result > 0){
+			request.getSession().removeAttribute("id");
+			request.getSession().invalidate();
 			res = "success";
 		}else{
 			res = "fail";
 		}
+		
 		return res;
 	}
 }

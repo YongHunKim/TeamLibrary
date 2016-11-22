@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.sist.library.dao.BookRecommendVO;
+import com.sist.library.dao.BookVO;
 import com.sist.library.dao.MemberVO;
 import com.sist.library.dao.MyPageDAO;
 
@@ -57,5 +58,28 @@ public class PcheckServiceImpl implements PcheckService {
 		// TODO Auto-generated method stub
 		return mypageDAO.member_secession(id,pwd);
 	}
+
+	@Override
+	public List wishlist(String id){
+		return mypageDAO.wishlist(id);
+	}
+	
+/*	@Override
+	public List<BookVO> wishlist(int page, String id) {
+		// TODO Auto-generated method stub
+		return mypageDAO.wishlist(page, id);
+	}
+
+	@Override
+	public int wishPage(String id) {
+		// TODO Auto-generated method stub
+		return mypageDAO.wishPage(id);
+	}
+
+	@Override
+	public int wishRow(String id) {
+		// TODO Auto-generated method stub
+		return mypageDAO.wishRow(id);
+	}*/
 
 }

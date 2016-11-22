@@ -159,6 +159,7 @@ public class BookController {
 			@RequestParam(value="book_recommend_code" ,required=true)String book_recommend_code){
 		String res = "";
 		int result = bookService.bookRecommendDelete(book_code,book_recommend_code);
+		
 		if(result>0){
 			res="success";
 		}else{
@@ -167,5 +168,14 @@ public class BookController {
 		return res;
 	}
 	
+	@RequestMapping(value="/wish/wish_add.do")
+	public @ResponseBody String wish_add(@RequestParam(value="id", required=true)String id,
+			@RequestParam(value="book_code", required=true)String book_code){
+		
+		String res = "";
+		
+		return res;
+		
+	}
 
 }

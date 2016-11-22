@@ -88,6 +88,29 @@
 			}); 
 		}
 		
+		function wish_add(id){
+			$.ajax({
+				url : '/wish/wish_add.do',
+				type : 'post',
+				data : {
+					"id" : id,
+					"book_code" : $('#rec_book_code').val(),
+				},
+				datatype:"JSON",
+				success : function(data) {
+					if (data == "success") {
+						showMessage('찜하기 성공',1000);
+						setTimeout(function(){
+							location.href="/book/detail.do?book_code=${vo.book_code}&curPage=${curPage}&searchWord=${searchWord}";
+						},1000);
+						
+					} else {
+						showMessage('에러가 발생되었습니다..');					
+					}
+				}
+			}); 
+		}
+		
 		function cancel(i){
 			var origin_text = $('#origin_text'+i).val();
 			$('#get_subject'+i).html(origin_text);
@@ -151,7 +174,8 @@
 		</tr>
 	</table>
 	<div style="text-align:right;">
-		<a href="/search/search.do">관심</a>
+		<img src="" / onclick="wish_add(<%= session.getAttribute("id") %>)">관심
+		
 		<a href="/search/search_ok.do?page=${curPage}&searchWord=${searchWord}"><img src="/images/btn_list.gif"></a>
 	</div>
 	<c:if test="${reclist.size()>0 }">

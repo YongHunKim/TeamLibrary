@@ -6,8 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript">
-function delete_check(){
-	var f = $('#delete_form');
+function delete_check(){	
 	var id = $('#id').val();
 	var pwd = $('#pwd').val();
 
@@ -20,25 +19,26 @@ function delete_check(){
 		url : '/mypage/member_leave_ok.do',
 		type : 'post',
 		data : {
-			"id" : $('#id').val(),
-			"pwd" : $('#pwd').val()
+			"id" : id,
+			"pwd" : pwd
 		},
 		datatype:"JSON",
 		success : function(data) {
-			//check.innerHTML = data;
-			if (data == "success") {
+			//console.log(data);
+		 	if (data == "success") {
 				showMessage('탈퇴되었습니다.',1000);
 				setTimeout(function(){
 					location.href="/main/main.do";
 				},1000);
 				
-			} else {
+			}
+			else {
 				showMessage('비밀번호를 확인해주세요.',1000);
 				setTimeout(function(){
 					location.href="/mypage/member_leave.do";
-				})
-			}
-		}
+				});
+			} 
+		}		
 	});
 }
 </script>
@@ -47,10 +47,10 @@ function delete_check(){
 	<span style="font-size: 20pt; font-weight: bold;">회원탈퇴</span>
 
 	<p style="font-size: 9pt;">비밀번호를 입력하세요.</p>
-	<form action="/mypage/member_leave_ok.do" id="delete_form">
+	<form action="/mypage/member_leave_ok.do">
 		<input type="hidden" name="id" id="id" value="<%= session.getAttribute("id") %>" />
 		<input type="password" size="20" name="pwd" id="pwd" />&nbsp;<input
-			type="submit" value="확인" onclick="delete_check()"/>
+			type="button" value="확인" onclick="delete_check()"/>
 	</form>
 	<p style="font-size: 9pt;">
 		외부로부터
