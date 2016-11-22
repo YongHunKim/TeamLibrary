@@ -3,6 +3,7 @@ package com.sist.library.service;
 import java.util.List;
 
 import com.sist.library.dao.BookRecommendVO;
+import com.sist.library.dao.BookVO;
 import com.sist.library.dao.MemberVO;
 
 public interface PcheckService {
@@ -23,5 +24,5 @@ public interface PcheckService {
 	
 	public int member_secession(String id, String pwd);
 	
-	
+//	public List<BookVO> wishlist(int page, String id);
 }

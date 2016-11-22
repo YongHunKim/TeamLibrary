@@ -110,7 +110,7 @@ public class MyPageController {
 		
 		page = (page == null) ? "1" : page;
 		int curPage = Integer.parseInt(page);
-//		List list = mypageService;
+//		List list = mypageService.;
 		int totalPage; 
 		int totalRow;
 		int block = 5;

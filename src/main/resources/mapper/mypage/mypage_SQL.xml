@@ -39,9 +39,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE FROM member WHERE id=#{id} and pwd=#{pwd}
 	</delete>
 	
-	<select id="" paramerterType="hashmap" resultType="bookvo">
-		SELECT book_category,book_image,book_name,
-		book_author,book_publish,rent_yn,reserve_yn  FROM book WHERE #{start} AND #{end}
-	</select>
+<!-- 	<select id="wishlist" parameterType="hashmap" resultType="bookvo">
+		
+	</select> -->
 	
 </mapper>

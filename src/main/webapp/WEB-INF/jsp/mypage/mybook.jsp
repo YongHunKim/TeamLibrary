@@ -16,7 +16,7 @@
 		<th width="30%">제목</th>
 		<th width="10%">저자</th>
 		<th width="10%">출판사</th>
-		<th width="10%">대여상태/th>
+		<th width="10%">대여상태</th>
 		<th width="10%">예약상태</th>
 	</tr>
 		<c:choose>
@@ -25,7 +25,7 @@
 			<tr>
 				<td width="10%">${vo.book_category}</td>
 				<td width="20%">${vo.book_image }</td>
-				<td width="50%">${vo.book_name}</td>
+				<td width="30%">${vo.book_name}</td>
 				<td width="10%">${vo.book_author}</td>
 				<td width="10%">${vo.book_publish}</td>				
 				<td width="10%">${vo.rent_yn}</td>
