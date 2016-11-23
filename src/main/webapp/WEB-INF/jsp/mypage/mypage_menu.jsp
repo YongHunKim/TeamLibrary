@@ -9,8 +9,8 @@
 <body>
 	<div style="float: left; width: 20%;">
 		마이페이지
-		<ul>
-			<li><a class="active" href="/mypage/mybook.do?id=<%=session.getAttribute("id")%>">나의 관심도서</a></li>
+		<ul style="list-style: none;">
+			<li><a href="/mypage/mybook.do?id=<%=session.getAttribute("id")%>">나의 관심도서</a></li>
 			<li><a
 				href="/mypage/member_pcheck.do?id=<%=session.getAttribute("id")%>">회원정보수정</a></li>
 			<li><a href="/mypage/member_leave.do">회원탈퇴</a></li>

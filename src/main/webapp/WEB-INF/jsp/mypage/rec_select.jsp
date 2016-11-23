@@ -10,13 +10,12 @@
 <body>
 	<table class="table">
 		<tr>
-			<th colspan="4" style="text-align: center;">한줄평</th>
+			<th colspan="3" style="text-align: center;">한줄평</th>
 		</tr>
 		<tr>
 			<th width="30%">책제목</th>
 			<th width="20%">저자</th>
 			<th width="50%">내용</th>
-			
 		</tr>
 		<c:choose>
 			<c:when test="${rec.size() > 0}">
@@ -30,7 +29,7 @@
 			</c:when>
 			<c:otherwise>
 				<tr>
-					<td colspan="2" align="center" valign="top">등록된 한줄평이 없습니다.</td>
+					<td colspan="3" align="center" valign="top">등록된 한줄평이 없습니다.</td>
 				</tr>
 			</c:otherwise>
 		</c:choose>

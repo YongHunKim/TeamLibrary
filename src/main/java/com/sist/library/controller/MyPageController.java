@@ -54,6 +54,7 @@ public class MyPageController {
 
 	@RequestMapping(value = "/mypage/member_pcheck_ok.do")
 	public @ResponseBody String pcheck_ok(HttpServletRequest request) {
+		String res = "";
 		String scripting = "";
 		String id = request.getParameter("id");
 		System.out.println(id);
@@ -63,13 +64,16 @@ public class MyPageController {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id", id);
 			session.setMaxInactiveInterval(60 * 30);
+			res = "success";
 			scripting = "<script type='text/javascript'>" + "location.href = '/mypage/member_update.do?id=" + id + "';"
 					+ "</script>";
 		} else {
+			res = "fail";
 			scripting = "<script type='text/javascript'>" + "alert('보안암호를 확인하세요.');"
 					+ "location.href = '/mypage/mypage.do';" + "</script>";
 		}
 
+//		return res;
 		return scripting;
 	}
 
