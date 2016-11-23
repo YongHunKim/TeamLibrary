@@ -32,7 +32,6 @@ public class PcheckServiceImpl implements PcheckService {
 
 	@Override
 	public int member_update_ok(MemberVO vo){
-		// TODO Auto-generated method stub
 		return mypageDAO.member_update_ok(vo);
 	}
 
@@ -49,6 +48,36 @@ public class PcheckServiceImpl implements PcheckService {
 	@Override
 	public int rentTotalRow(String id) {
 		return mypageDAO.rentTotalRow(id);
+	}
+
+	@Override
+	public int rentReturn(String book_code) {
+		return mypageDAO.rentReturn(book_code);
+	}
+
+	@Override
+	public List<BookManagerVO> getReserveList(Map map) {
+		return mypageDAO.getReserveList(map);
+	}
+
+	@Override
+	public int reservePageCount(String id) {
+		return mypageDAO.reservePageCount(id);
+	}
+
+	@Override
+	public int reserveTotalRow(String id) {
+		return mypageDAO.reserveTotalRow(id);
+	}
+
+	@Override
+	public int reserveCancel(String book_code) {
+		return mypageDAO.reserveCancel(book_code);
+	}
+
+	@Override
+	public int rentDelay(Map map) {
+		return mypageDAO.rentDelay(map);
 	}
 
 }

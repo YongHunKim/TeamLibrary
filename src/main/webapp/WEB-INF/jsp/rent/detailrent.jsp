@@ -9,7 +9,7 @@
 	<title>Insert title here</title>
 	<script type="text/javascript">
 	function rentReturn(book_code){
-		showMessage(book_code);
+		//showMessage(book_code);
 		$.ajax({
 			url : '/rent/rentreturn.do',
 			type : 'post',
@@ -20,8 +20,35 @@
 			success : function(data) {				
 				if (data == "success") {
 					showMessage("반납에 성공했습니다.");
+					setTimeout(function(){
+						location.reload();
+					},1000);
 				} else {
 					showMessage("반납에 실패했습니다.");
+				}
+			}
+		});
+	}
+	
+	function rentDelay(book_code,i){
+		//showMessage(book_code);		
+		$.ajax({
+			url : '/rent/rentDelay.do',
+			type : 'post',
+			data : {
+				"book_code" : book_code,
+				"book_management_code" : $('#book_management_code'+i).val(),
+				"id" : $('#book_management_id'+i).val()
+			},
+			datatype:"JSON",
+			success : function(data) {				
+				if (data == "success") {
+					showMessage("연기에 성공했습니다.");
+					setTimeout(function(){
+						location.reload();
+					},1000);
+				} else {
+					showMessage("연기에 실패했습니다.");
 				}
 			}
 		});
@@ -46,13 +73,16 @@
 			</tr>
 			<c:forEach var="i" begin="0" end="${rentList.size()-1 }">
 			<tr>
-				<td>${rentList.get(i).book_code }</td>
+				<td>${rentList.get(i).book_code }
+				<iuput type="hidden" id="book_management_code${i}" value="${rentList.get(i).book_management_code }" />				
+				<iuput type="hidden" id="book_management_id${i}" value="${rentList.get(i).id }" />
+				</td>
 				<td>${rentList.get(i).book_name }</td>
 				<td>${rentList.get(i).book_author }</td>
 				<td><fmt:formatDate value="${rentList.get(i).rent_date }" pattern="yyyy-MM-dd" /></td>
 				<td><fmt:formatDate value="${rentList.get(i).return_date }" pattern="yyyy-MM-dd" /></td>
 				<td><input type="button" class="btn btn-disabled" value="반납" onclick="javasciprt:rentReturn(${rentList.get(i).book_code})"/>
-				<input type="button" class="btn btn-disabled" value="연기" id="rentDelayBtn"/></td>
+				<input type="button" class="btn btn-disabled" value="연기" id="rentDelayBtn" onclick="javasciprt:rentDelay(${rentList.get(i).book_code},${i})"/></td>
 			</tr>	
 			</c:forEach>	
 		</table>

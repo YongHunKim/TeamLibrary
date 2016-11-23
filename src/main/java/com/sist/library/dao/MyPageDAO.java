@@ -40,4 +40,28 @@ public class MyPageDAO extends AbstractDAO{
 		return selectList("rental.getRentList",map);
 	}
 
+	public int rentReturn(String book_code) {
+		return (int) update("rental.rentReturn", book_code);
+	}
+
+	public int reservePageCount(String id) {
+		return (int) selectOne("rental.reservePageCount",id);
+	}
+
+	public int reserveTotalRow(String id) {
+		return (int) selectOne("rental.reserveTotalRow",id);
+	}
+
+	public List<BookManagerVO> getReserveList(Map map) {
+		return selectList("rental.getReserveList", map);
+	}
+
+	public int reserveCancel(String book_code) {
+		return (int) update("rental.reserveCancel",book_code);
+	}
+
+	public int rentDelay(Map map) {
+		return (int) update("rental.rentDelay",map);
+	}
+
 }

@@ -138,7 +138,6 @@ public class BookController {
 		}else{
 			res="fail";
 		}
-		//List<BookRecommendVO> list = bookService.bookRecommed(vo.getBook_code()+""); 
 		
 		return res;
 	}

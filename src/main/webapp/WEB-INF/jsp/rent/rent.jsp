@@ -69,49 +69,21 @@ ul.tab li a:focus, .active {
 	<!-- <p>오른쪽 위에 있는 X버튼을 클릭하시면은 탭이 닫혀집니다.</p> -->
 
 	<ul class="tab">
-		<li><a href="javascript:void(0)" class="tablinks"
-			onclick="openSeat(event, 'seat1')" id="defaultOpen">대출 연기 및 반납</a></li>
-		<li><a href="javascript:void(0)" class="tablinks"
-			onclick="openSeat(event, 'seat2')">예약 연기 및 취소</a></li>
-		<li><a href="javascript:void(0)" class="tablinks"
-			onclick="openSeat(event, 'seat3')">희망도서 신청</a></li>
+		<li><a href="/rent/rent.do" class="tablinks"
+			id="defaultOpen">대출 연기 및 반납</a></li>
+		<li><a href="/rent/reserve.do" class="tablinks"
+			>예약 연기 및 취소</a></li>
+		<li><a href="/rent/wishbook.do" class="tablinks"
+			>희망도서 신청</a></li>
 	</ul>
 
-	<div id="seat1" class="tabcontent">
-		<span onclick="this.parentElement.style.display='none'"
+	<div id="seat1" class="tabcontent" style="display:block;">
+		<span onclick="this.parentElement.style.display='block'"
 			class="topright">x</span>		
 		<jsp:include page="${subpage1}" />
 	</div>
-
-	<div id="seat2" class="tabcontent">
-		<span onclick="this.parentElement.style.display='none'"
-			class="topright">x</span>		
-		<jsp:include page="${subpage2}" />
-	</div>
-
-	<div id="seat3" class="tabcontent">
-		<span onclick="this.parentElement.style.display='none'"
-			class="topright">x</span>		
-		<jsp:include page="${subpage3}" />
-	</div>
 	<script>
-		function openSeat(evt, seatName) {
-			var i, tabcontent, tablinks;
-			tabcontent = document.getElementsByClassName("tabcontent");
-			for (i = 0; i < tabcontent.length; i++) {
-				tabcontent[i].style.display = "none";
-			}
-			tablinks = document.getElementsByClassName("tablinks");
-			for (i = 0; i < tablinks.length; i++) {
-				tablinks[i].className = tablinks[i].className.replace(
-						" active", "");
-			}
-			document.getElementById(seatName).style.display = "block";
-			evt.currentTarget.className += " active";
-		}
-
-		// Get the element with id="defaultOpen" and click on it
-		document.getElementById("defaultOpen").click();
+		
 	</script>
 </body>
 </html>

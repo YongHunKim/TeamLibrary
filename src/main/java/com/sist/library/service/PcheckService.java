@@ -18,4 +18,16 @@ public interface PcheckService {
 	public int rentPageCount(String id);
 
 	public int rentTotalRow(String id);
+
+	public int rentReturn(String book_code);
+
+	public List<BookManagerVO> getReserveList(Map map);
+
+	public int reservePageCount(String id);
+
+	public int reserveTotalRow(String id);
+
+	public int reserveCancel(String book_code);
+
+	public int rentDelay(Map map);
 }
