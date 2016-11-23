@@ -54,11 +54,19 @@ public class MyPageDAO extends AbstractDAO{
 		return (int) delete("mypage.member_secession", map);
 	}
 	
-	public List wishlist(String id){
-		return selectList("mypage.wishlist", id);
+	public List<WishListVO> wishlist(int curPage, String id){
+		Map map = new HashMap<>();
+		int pageRow = 10;
+		int start = (curPage * pageRow) - (pageRow - 1);
+		int end = start + (pageRow - 1);
+		map.put("start", start);
+		map.put("end", end);
+		map.put("id", id);
+		return selectList("mypage.wishlist", map);
 	}
 	
-	/*public List wishlist(int curPage, String id){
+	
+/*	public List wishlist(int curPage, String id){
 		Map map = new HashMap<>();
 		int pageRow = 10;
 		int start = (curPage * pageRow) - (pageRow - 1);
@@ -68,7 +76,7 @@ public class MyPageDAO extends AbstractDAO{
 		map.put("id", id);
 		System.out.println(map);
 		return selectList("mypage.wishlist", map);
-	}
+	}*/
 	
 	public int wishPage(String id){
 		return (int) selectOne("mypage.wishPage", id);
@@ -76,5 +84,5 @@ public class MyPageDAO extends AbstractDAO{
 	
 	public int wishRow(String id){
 		return (int) selectOne("mypage.wishRow", id);
-	}*/
+	}
 }

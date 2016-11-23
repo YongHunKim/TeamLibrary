@@ -10,18 +10,21 @@
 <body>
 	<table class="table">
 		<tr>
-			<th colspan="2" style="text-align: center;">한줄평</th>
+			<th colspan="4" style="text-align: center;">한줄평</th>
 		</tr>
 		<tr>
-			<th width="20%">아이디</th>
-			<th width="80%">내용</th>
+			<th width="30%">책제목</th>
+			<th width="20%">저자</th>
+			<th width="50%">내용</th>
+			
 		</tr>
 		<c:choose>
 			<c:when test="${rec.size() > 0}">
 				<c:forEach var="vo" items="${rec}">
 					<tr>
-						<td>${vo.id}</td>
-						<td>${vo.book_recommend_subject }</td>
+						<td width="30%">${vo.book_name}</td>
+						<td width="20%">${vo.book_author }</td>
+						<td width="50%">${vo.book_recommend_subject }</td>
 					</tr>
 				</c:forEach>
 			</c:when>

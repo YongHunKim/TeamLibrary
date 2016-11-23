@@ -5,6 +5,7 @@ import java.util.List;
 import com.sist.library.dao.BookRecommendVO;
 import com.sist.library.dao.BookVO;
 import com.sist.library.dao.MemberVO;
+import com.sist.library.dao.WishListVO;
 
 public interface PcheckService {
 		
@@ -24,11 +25,9 @@ public interface PcheckService {
 	
 	public int member_secession(String id, String pwd);
 	
-	public List wishlist(String id);
-	
-/*	public List wishlist(int page, String id);
-	
+	public List<WishListVO> wishlist(int page, String id);
+		
 	public int wishPage(String id);
 	
-	public int wishRow(String id);*/
+	public int wishRow(String id);
 }

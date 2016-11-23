@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sist.library.dao.BookRecommendVO;
 import com.sist.library.dao.MemberVO;
+import com.sist.library.dao.WishListVO;
 import com.sist.library.service.PcheckService;
 
 @Controller
@@ -108,26 +109,25 @@ public class MyPageController {
 			@RequestParam(value = "id", required=false)String id){
 		ModelAndView mav = new ModelAndView("main/main");
 		
-		/*page = (page == null) ? "1" : page;
+		page = (page == null) ? "1" : page;
 		int curPage = Integer.parseInt(page);
-		System.out.println(curPage);*/
-		List list = mypageService.wishlist(id);
-//		List list = mypageService.wishlist(curPage, id);
-	/*	int totalPage = mypageService.wishPage(id); 
+		System.out.println(curPage);
+		List<WishListVO> list = mypageService.wishlist(curPage, id);
+		int totalPage = mypageService.wishPage(id); 
 		int totalRow = mypageService.wishRow(id);
 		int block = 5;
 		int fromPage = ((curPage-1)/block * block)+1;
 		System.out.println(fromPage);
 		int toPage = ((curPage-1)/block * block)+block;
 		System.out.println(toPage);
-		if(toPage > totalPage) toPage = totalPage;*/
+		if(toPage > totalPage) toPage = totalPage;
 		
-		/*mav.addObject("totalRow", totalRow);
+		mav.addObject("totalRow", totalRow);
 		mav.addObject("block", block);
 		mav.addObject("toPage", toPage);
 		mav.addObject("fromPage", fromPage);
 		mav.addObject("totalPage", totalPage);
-		mav.addObject("curPage", curPage);*/
+		mav.addObject("curPage", curPage);
 		mav.addObject("id", id);
 		mav.addObject("list", list);
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
@@ -198,4 +198,5 @@ public class MyPageController {
 		
 		return res;
 	}
+	
 }

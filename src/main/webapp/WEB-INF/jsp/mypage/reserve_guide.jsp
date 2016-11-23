@@ -13,6 +13,9 @@
 	<c:choose>
 		<c:when test="${reservation.size() > 0}">
 			<table border="1" class="table" style="margin-top: 30px;">
+			<tr>
+				<th colspan="5" style="text-align: center;">예약내역</th>
+			</tr>
 				<tr>
 					<th width="10%" align="center">도서코드</th>
 					<th width="60%" align="left">도서명</th>

@@ -77,4 +77,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE book_code=#{book_code} AND book_recommend_code=#{book_recommend_code}
 	</delete>
 	
+	<insert id="wishInsert" parameterType="wishlistvo">
+	<!-- insert into wishlist(book_code, wish_num, id) VALUES (201610201330,(select nvl(max(wish_num)+1,1) from wishlist where id='kyh'),'kyh'); -->
+		INSERT INTO wishlist(book_code,wish_num,id) 
+		VALUES(#{book_code},(SELECT NVL(MAX(wish_num)+1,1) FROM wishlist WHERE id=#{id}),#{id})
+	</insert>
+	
+	<select id="wishCheck" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*) FROM wishlist WHERE id=#{id} AND book_code=#{book_code}
+	</select>
 </mapper>

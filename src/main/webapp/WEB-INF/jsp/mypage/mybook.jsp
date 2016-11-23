@@ -9,31 +9,31 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table class="table">
 		<tr>
-			<th width="10%">카테고리</th>
-			<th width="20%">그림</th>
-			<th width="30%">제목</th>
-			<th width="10%">저자</th>
-			<th width="10%">출판사</th>
-			<!-- 		<th width="10%">대여상태</th>
-		<th width="10%">예약상태</th> -->
+			<th colspan="4" style="text-align: center;">관심도서</th>
 		</tr>
-		<%-- 		<c:choose>
-		<c:when test=""> --%>
+		<tr>
+			<th width="10%">번호</th>
+			<th width="20%">그림</th>
+			<th width="50%">제목</th>
+			<th width="20%">저자</th>
+		</tr>
+		<c:choose>
+		<c:when test="${list.size() > 0}">
 		<c:forEach var="vo" items="${list}">
 			<tr>
-				<td width="10%"><input type="hidden" value="${vo.book_code}" />
-					<input type="hidden" value="${id}" /> ${vo.book_category}</td>
-				<td width="20%">${vo.book_image }</td>
-				<td width="30%">${vo.book_name}</td>
-				<td width="10%">${vo.book_author}</td>
-				<td width="10%">${vo.book_publish}</td>
-				<%-- 				<td width="10%">${vo.rent_yn}</td>
-				<td width="10%">${vo.reserve_yn}</td>	 --%>
+				<td width="10%">${vo.wish_num}
+					<input type="hidden" value="${vo.book_code}" />
+					<input type="hidden" value="${id}" />
+				</td>
+				<td width="20%"><img src="${vo.book_image}"></td>
+				<td width="50%">${vo.book_name}</td>
+				<td width="20%">${vo.book_author}</td>
+				
 			</tr>
 		</c:forEach>
-		<%--  		</c:when>
+		 		</c:when>
 		<c:otherwise> 
 			<tr>
 				<td colspan="5" align="center" valign="top">
@@ -41,7 +41,7 @@
 				</td>
 			</tr>
 		</c:otherwise>
-		</c:choose> --%>
+		</c:choose>
 	</table>
 	<table class="button_table" width="100%">
 		<tr>

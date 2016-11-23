@@ -14,6 +14,9 @@
 		<c:when test="${rental.size() > 0 }">
 			<table border="1" class="table" style="margin-top: 30px;">
 				<tr>
+					<th colspan="6" style="text-align: center;">대출내역</th>
+				</tr>
+				<tr>
 					<th width="10%" align="center">도서코드</th>
 					<th width="50%" align="left">도서명</th>
 					<th width="10%" align="center">저자</th>

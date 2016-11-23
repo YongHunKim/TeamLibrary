@@ -10,6 +10,7 @@ import com.sist.library.dao.BookRecommendVO;
 import com.sist.library.dao.BookVO;
 import com.sist.library.dao.MemberVO;
 import com.sist.library.dao.MyPageDAO;
+import com.sist.library.dao.WishListVO;
 
 
 // 다시 한번 더 보자
@@ -60,12 +61,7 @@ public class PcheckServiceImpl implements PcheckService {
 	}
 
 	@Override
-	public List wishlist(String id){
-		return mypageDAO.wishlist(id);
-	}
-	
-/*	@Override
-	public List<BookVO> wishlist(int page, String id) {
+	public List<WishListVO> wishlist(int page, String id) {
 		// TODO Auto-generated method stub
 		return mypageDAO.wishlist(page, id);
 	}
@@ -80,6 +76,6 @@ public class PcheckServiceImpl implements PcheckService {
 	public int wishRow(String id) {
 		// TODO Auto-generated method stub
 		return mypageDAO.wishRow(id);
-	}*/
+	}
 
 }

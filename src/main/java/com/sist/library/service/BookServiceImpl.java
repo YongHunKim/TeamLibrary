@@ -11,6 +11,7 @@ import com.sist.library.dao.BookRecommendVO;
 import com.sist.library.dao.BookVO;
 import com.sist.library.dao.MailVO;
 import com.sist.library.dao.ReserveVO;
+import com.sist.library.dao.WishListVO;
 
 @Service("bookService")
 public class BookServiceImpl implements BookService{
@@ -95,6 +96,20 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public int bookRecommendDelete(String book_code, String book_recommend_code) {
 		return bookDAO.bookRecommendDelete(book_code,book_recommend_code);
+	}
+
+
+	@Override
+	public int wishInsert(WishListVO vo) {
+		// TODO Auto-generated method stub
+		return bookDAO.wishInsert(vo);
+	}
+
+
+	@Override
+	public int wishCheck(String id, String book_code) {
+		// TODO Auto-generated method stub
+		return bookDAO.wishCheck(id, book_code);
 	}
 
 }
