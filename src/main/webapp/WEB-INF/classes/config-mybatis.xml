@@ -15,6 +15,7 @@
         <typeAlias type="com.sist.library.dao.MemberVO" alias="membervo" />
         <typeAlias type="com.sist.library.dao.lostBoardVO" alias="listvo"/>
         <typeAlias type="com.sist.library.dao.NoticeVO" alias="noticevo" />
+        <typeAlias type="com.sist.library.dao.WishBookVO" alias="wishbookvo" />
     </typeAliases>
     
 </configuration> 

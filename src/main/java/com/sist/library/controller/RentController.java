@@ -27,8 +27,13 @@ public class RentController {
 	public ModelAndView rentpage(HttpServletRequest request,@RequestParam(value="page" ,required=false)String page){
 		ModelAndView mav = new ModelAndView("main/main");
 		page = (page==null)?"1":page;
-		String id = (String) request.getSession().getAttribute("id");
-		System.out.println(id);
+		String id="";
+		if(request.getSession().getAttribute("id") == null){
+			mav.addObject("sessionnull","로그인 후 이용가능합니다.");
+			return mav;
+		}else{
+			id = (String) request.getSession().getAttribute("id");
+		}
 		
 		int curPage = Integer.parseInt(page);		
 		int totalPage = mypageService.rentPageCount(id);
@@ -143,4 +148,11 @@ public class RentController {
 		return res;
 	}
 	
+	@RequestMapping(value="/rent/wishbook.do")
+	public ModelAndView wishBook(){	
+		ModelAndView mav = new ModelAndView("main/main");
+		mav.addObject("jsp", "/WEB-INF/jsp/rent/rent.jsp");		
+		mav.addObject("subpage1", "/WEB-INF/jsp/rent/wishbook.jsp");		
+		return mav;
+	}
 }

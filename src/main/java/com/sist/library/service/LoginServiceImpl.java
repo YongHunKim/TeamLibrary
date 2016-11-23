@@ -14,8 +14,8 @@ public class LoginServiceImpl implements LoginService {
 	private MemberDAO memberDAO;
 	
 	@Override
-	public void insertMember(MemberVO vo) throws Exception{
-		memberDAO.insertMember(vo);
+	public int insertMember(MemberVO vo) throws Exception{
+		return memberDAO.insertMember(vo);
 	}
 
 	@Override

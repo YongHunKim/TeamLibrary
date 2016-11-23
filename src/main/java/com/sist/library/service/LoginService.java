@@ -3,7 +3,7 @@ package com.sist.library.service;
 import com.sist.library.dao.MemberVO;
 
 public interface LoginService {
-	public void insertMember(MemberVO vo) throws Exception;
+	public int insertMember(MemberVO vo) throws Exception;
 
 	public int check_id(String id);
 

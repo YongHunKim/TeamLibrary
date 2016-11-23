@@ -33,11 +33,17 @@ public class LoginController {
 	
 
 	@RequestMapping(value = "/login/join_ok.do")
-	public ModelAndView memberJoin(MemberVO vo) throws Exception {
-		ModelAndView mav = new ModelAndView("main/main");
-		memberService.insertMember(vo);
-		mav.addObject("jsp", "/WEB-INF/jsp/main/default.jsp");
-		return mav;
+	public @ResponseBody String memberJoin(MemberVO vo) throws Exception {
+		//ModelAndView mav = new ModelAndView("main/main");
+		String res="";
+		int result = memberService.insertMember(vo);
+		//mav.addObject("jsp", "/WEB-INF/jsp/main/default.jsp");
+		if(result>0){
+			res="success";
+		}else{
+			res="fail";
+		}
+		return res;
 	}
 
 	@RequestMapping(value = "/login/check_id.do")	
@@ -77,14 +83,11 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/login/logout.do")
-	public ModelAndView logout(HttpServletRequest request){
+	public @ResponseBody String logout(HttpServletRequest request){
 		request.getSession().removeAttribute("id");
 		request.getSession().invalidate();
-		ModelAndView mav = new ModelAndView("main/main");
 
-		mav.addObject("jsp", "/WEB-INF/jsp/main/default.jsp");
-
-		return mav;
+		return "success";
 	}
 }	
 	
