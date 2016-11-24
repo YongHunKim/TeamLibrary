@@ -2,6 +2,8 @@ package com.sist.library.dao;
 
 public class MailVO {
 	private String id;
+	private String name;
+	private String pwd;
 	private String book_name;
 	private String email;
 	private String rent_date;
@@ -9,8 +11,18 @@ public class MailVO {
 	private String reserve_date;
 	private Long book_code;
 	
-	
-	
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getBook_name() {
 		return book_name;
 	}

@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
 body {
@@ -66,15 +66,15 @@ ul.tab li a:focus, .active {
 </head>
 <body>
 
-	<!-- <p>¿À¸¥ÂÊ À§¿¡ ÀÖ´Â X¹öÆ°À» Å¬¸¯ÇÏ½Ã¸éÀº ÅÇÀÌ ´ÝÇôÁý´Ï´Ù.</p> -->
+	<!-- <p>ì˜¤ë¥¸ìª½ ìœ„ì— ìžˆëŠ” Xë²„íŠ¼ì„ í´ë¦­í•˜ì‹œë©´ì€ íƒ­ì´ ë‹«í˜€ì§‘ë‹ˆë‹¤.</p> -->
 
 	<ul class="tab">
 		<li><a href="/rent/rent.do" class="tablinks"
-			id="defaultOpen">´ëÃâ ¿¬±â ¹× ¹Ý³³</a></li>
+			id="defaultOpen">ëŒ€ì¶œ ì—°ê¸° ë° ë°˜ë‚©</a></li>
 		<li><a href="/rent/reserve.do" class="tablinks"
-			>¿¹¾à ¿¬±â ¹× Ãë¼Ò</a></li>
+			>ì˜ˆì•½ ì—°ê¸° ë° ì·¨ì†Œ</a></li>
 		<li><a href="/rent/wishbook.do" class="tablinks"
-			>Èñ¸Áµµ¼­ ½ÅÃ»</a></li>
+			>í¬ë§ë„ì„œ ì‹ ì²­</a></li>
 	</ul>
 
 	<div id="seat1" class="tabcontent" style="display:block;">

@@ -21,4 +21,24 @@ public class MemberDAO extends AbstractDAO{
 		map.put("pwd", pwd);	
 		return (int) selectOne("member.login_ok",map);
 	}
+
+	public int findId(Map map) {
+		return (int) selectOne("member.findId",map);
+	}
+
+	public MailVO findmail(Map map) {
+		return (MailVO) selectOne("member.findmail", map);
+	}
+
+	public int findPwd(Map map) {
+		return (int) selectOne("member.findPwd",map);
+	}
+
+	public MailVO findPwdMail(Map map) {
+		return (MailVO) selectOne("member.findPwdMail",map);
+	}
+
+	public void changeRandomPwd(Map map) {
+		update("member.changeRandomPwd", map);
+	}
 }
