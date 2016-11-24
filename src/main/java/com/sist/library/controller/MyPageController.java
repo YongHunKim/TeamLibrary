@@ -39,7 +39,9 @@ public class MyPageController {
 		ModelAndView mav = new ModelAndView("main/main");
 		
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
+		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
 		mav.addObject("test", "/WEB-INF/jsp/mypage/mybook.jsp");
+		
 		return mav;
 	}
 	
@@ -53,35 +55,29 @@ public class MyPageController {
 	}
 
 	@RequestMapping(value = "/mypage/member_pcheck_ok.do")
-	public @ResponseBody String pcheck_ok(HttpServletRequest request) {
-		String res = "";
-		String scripting = "";
-		String id = request.getParameter("id");
+	public @ResponseBody String pcheck_ok(@RequestParam(value = "id", required = true) String id,
+			@RequestParam(value = "pwd", required = true) String pwd) {
+		
 		System.out.println(id);
-		String pwd = request.getParameter("pwd");
+		System.out.println(pwd);
+		
+		String res = "";
 		int result = mypageService.pcheck_ok(id, pwd);
+		System.out.println(result);
+		
 		if (result > 0) {
-			HttpSession session = request.getSession(true);
-			session.setAttribute("id", id);
-			session.setMaxInactiveInterval(60 * 30);
 			res = "success";
-			scripting = "<script type='text/javascript'>" + "location.href = '/mypage/member_update.do?id=" + id + "';"
-					+ "</script>";
 		} else {
 			res = "fail";
-			scripting = "<script type='text/javascript'>" + "alert('보안암호를 확인하세요.');"
-					+ "location.href = '/mypage/mypage.do';" + "</script>";
 		}
 
-//		return res;
-		return scripting;
+		return res;
 	}
+	
 
 	@RequestMapping(value = "/mypage/member_update.do")
-	public ModelAndView member_update(HttpServletRequest request) throws Exception {
+	public ModelAndView member_update(@RequestParam(value="id",required=true)String id,HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("main/main");
-
-		String id = request.getParameter("id");
 		// System.out.println(id);
 		String pwd = request.getParameter("pwd");
 		MemberVO vo = mypageService.member_update(id, pwd);
@@ -96,16 +92,17 @@ public class MyPageController {
 	@RequestMapping(value = "/mypage/member_update_ok.do")
 	public @ResponseBody String member_update_ok(MemberVO vo) {
 
-		String scripting = "";
+		String res = "";
 
 		int result = mypageService.member_update_ok(vo);
 		System.out.println(result);
 		if (result > 0) {
-			scripting = "<script type='text/javascript'>" + "alert('수정되었습니다.');" + "location.href = '/main/main.do';"
-					+ "</script>";
+			res = "success";
+		}else{
+			res = "fail";
 		}
 
-		return scripting;
+		return res;
 	}
 
 	@RequestMapping(value = "/mypage/mybook.do")

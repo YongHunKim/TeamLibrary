@@ -129,8 +129,6 @@ public class BookDAO extends AbstractDAO{
 		Map map = new HashMap<>();
 		map.put("id", id);
 		map.put("book_code", book_code);
-		System.out.println(map.get(id));
-		System.out.println(map.get(book_code));
 		return (int) selectOne("book.wishCheck", map);
 	}
 }

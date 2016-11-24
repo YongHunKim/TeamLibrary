@@ -105,8 +105,9 @@
 						},1000);
 						
 					} else {
+						$('#imgbtn').prop("onclick", false);
 						if(data == "fail"){
-							showMessage("찜하기를 할 수가 없습니다.",1000);
+							showMessage("이미 찜이 된 상태입니다.",1000);
 						}else{
 							showMessage('에러가 발생되었습니다..');
 						}
@@ -178,7 +179,7 @@
 		</tr>
 	</table>
 	<div style="text-align:right;">
-		<img src="/images/wish.png" onclick="javascript:wish_add('<%= session.getAttribute("id") %>');" style="width:20px;">
+		<img src="/images/wish.png" onclick="javascript:wish_add('<%= session.getAttribute("id") %>');"  id="imgbtn" style="width:20px;">
 		
 		<a href="/search/search_ok.do?page=${curPage}&searchWord=${searchWord}"><img src="/images/btn_list.gif"></a>
 	</div>
