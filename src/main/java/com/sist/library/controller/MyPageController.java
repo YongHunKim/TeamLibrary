@@ -101,7 +101,6 @@ public class MyPageController {
 		}else{
 			res = "fail";
 		}
-
 		return res;
 	}
 
