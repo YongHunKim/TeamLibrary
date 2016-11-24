@@ -21,9 +21,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<select id="rec_select" parameterType="hashmap" resultType="recommendvo">
-		SELECT br.book_recommend_code,br.book_recommend_subject, b.book_name,b.book_author FROM
-	book b, book_recommend br WHERE br.book_code=b.book_code AND id=#{id} AND book_recommend_code BETWEEN #{start} AND #{end}
-	ORDER BY book_recommend_code
+		SELECT br.book_recommend_code,br.book_recommend_subject, b.book_name,b.book_author 
+		FROM(SELECT book_code,book_recommend_code,book_recommend_subject,rownum as num
+		FROM (SELECT book_code,book_recommend_code,book_recommend_subject FROM book_recommend where id = #{id} order by book_recommend_code desc) ) br,book b
+		WHERE br.book_code=b.book_code AND num BETWEEN #{start} AND #{end}
 	
 		<!-- SELECT book_recommend_code,book_recommend_subject,book_name,book_author,book_info FROM
 		book_recommend WHERE id=#{id} AND book_recommend_code BETWEEN  #{start} AND #{end}

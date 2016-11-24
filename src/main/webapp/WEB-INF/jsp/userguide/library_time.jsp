@@ -22,11 +22,11 @@
 			<tr>
 				<td width="20%" style="text-align: center;">종합자료실</td>
 				<td width="40%" valign="middle" style="border-left:1px solid #ddd;">09:00 ~ 22:00</td>
-				<td rowspan="3" valign="middle" style="border-left:1px solid #ddd;"width="40%" >09:00 ~ 17:00</td>
+				<td rowspan="3" valign="middle" style="border-left:1px solid #ddd; vertical-align: middle;" width="40%" >09:00 ~ 17:00</td>
 			</tr>
 			<tr>
 				<td style="text-align: center;">디지털자료실<br /> 간행물실	</td>
-				<td rowspan="2" style="border-left:1px solid #ddd;" valign="middle">09:00 ~ 18:00</td>
+				<td rowspan="2" style="border-left:1px solid #ddd; vertical-align: middle;" valign="middle">09:00 ~ 18:00</td>
 			</tr>
 			<tr>
 				<td style="text-align: center;">어린이자료실</td>

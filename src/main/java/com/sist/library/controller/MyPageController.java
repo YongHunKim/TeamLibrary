@@ -25,19 +25,31 @@ public class MyPageController {
 	private PcheckService mypageService;
 
 	@RequestMapping(value = "/mypage/mypage.do")
-	public ModelAndView mypage() {
+	public ModelAndView mypage(@RequestParam(value = "page", required=false)String page,
+			HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("main/main");
 
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
-		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
+		page = (page == null) ? "1" : page;
+		int curPage = Integer.parseInt(page);
+		String id = (String) request.getSession().getAttribute("id");
+		List<WishListVO> list = mypageService.wishlist(curPage, id);
+		int totalPage = mypageService.wishPage(id); 
+		int totalRow = mypageService.wishRow(id);
+		int block = 5;
+		int fromPage = ((curPage-1)/block * block)+1;
+		System.out.println(fromPage);
+		int toPage = ((curPage-1)/block * block)+block;
+		System.out.println(toPage);
+		if(toPage > totalPage) toPage = totalPage;
 		
-		return mav;
-	}
-
-	@RequestMapping(value = "/mypage/mypage_menu.do")
-	public ModelAndView mypage_menu() {
-		ModelAndView mav = new ModelAndView("main/main");
-		
+		mav.addObject("totalRow", totalRow);
+		mav.addObject("block", block);
+		mav.addObject("toPage", toPage);
+		mav.addObject("fromPage", fromPage);
+		mav.addObject("totalPage", totalPage);
+		mav.addObject("curPage", curPage);
+		mav.addObject("id", id);
+		mav.addObject("list", list);
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
 		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
 		mav.addObject("test", "/WEB-INF/jsp/mypage/mybook.jsp");
@@ -91,9 +103,7 @@ public class MyPageController {
 
 	@RequestMapping(value = "/mypage/member_update_ok.do")
 	public @ResponseBody String member_update_ok(MemberVO vo) {
-
 		String res = "";
-
 		int result = mypageService.member_update_ok(vo);
 		System.out.println(result);
 		if (result > 0) {
@@ -154,7 +164,7 @@ public class MyPageController {
 		int toPage = ((curPage - 1) / block * block) + block;
 		if(toPage > totalPage)
 			toPage = totalPage;
-		
+		System.out.println(list.size());
 		mav.addObject("totalRow", totalRow);
 		mav.addObject("block", block);
 		mav.addObject("toPage", toPage);

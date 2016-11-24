@@ -17,11 +17,11 @@ function check_field() {
 		return;
 	}
 	
-	/* if(pwd != pwd2){
+	if(pwd != pwd2){
 		showMessage("비밀번호를 확인해 주십시요.");
 		pwd.focus();
 		return;
-	} */
+	}
 	
 	var regTel = new RegExp("(^[0][1][0,1,6,7,9]-[0-9]{3,4}-[0-9]{4}$)");
 	if(tel != '' && !regTel.test(tel)){
@@ -35,7 +35,34 @@ function check_field() {
 		return;
 	}
 	
-	f.submit();
+
+	$.ajax({
+		url : '/mypage/member_update_ok.do',
+		type : 'post',
+		data : {
+			"id" : $('#mem_id').val(),
+			"pwd" : pwd,
+			"name" : $('#mem_name').val(),
+			"tel" : tel,
+			"email" : email,
+			"post" : $('#mem_post').val(),
+			"addr1" : $('#mem_addr1').val(),
+			"addr2" : $('#mem_addr2').val(),
+		},
+		datatype:"JSON",
+		success : function(data) {
+			//check.innerHTML = data;
+			if (data == "success") {
+				showMessage('회원정보가 수정되었습니다. 확인해 주세요',1000);
+				setTimeout(function(){
+					location.href="/mypage/mypage.do";
+				},1000);
+				
+			} else {
+				showMessage('수정에 실패했습니다.',1000);					
+			}
+		}
+	});
 }
 
 
@@ -51,7 +78,7 @@ function updatecancel(){
 				<tr>
 					<th style="line-height: 2.2;">회원ID</th>
 					<td class="lLine">${vo.id}
-					<input type="hidden" name="id" value="<%=session.getAttribute("id") %>"></td>
+					<input type="hidden" name="id" id="mem_id" value="<%=session.getAttribute("id") %>"></td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">비밀번호</th>
@@ -66,7 +93,7 @@ function updatecancel(){
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">이름</th>
-					<td class="lLine">${vo.name}</td>
+					<td class="lLine">${vo.name}<input type="hidden" name="name" id="mem_name" value="<%= session.getAttribute("name") %>"></td>
 				</tr>
 				<tr>
 					<th style="line-height: 2.2;">휴대폰번호</th>
