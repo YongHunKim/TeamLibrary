@@ -105,7 +105,8 @@ function send(){
 						<th width="20%" align="left">&nbsp;&nbsp;책 이미지 : </th>
 						<td width="30%"><input type="text" size="20" name="book_image" ></td>
 						<th width="20%" align="left">발행일 : </th>
-						<td width="30%"'><input type="text" size="20" name="book_publish_date"  placeholder="yy/mm/dd">
+						<!-- <td width="30%"'><input type="text" size="20" name="book_publish_date"  placeholder="yy/mm/dd"> -->
+						<td width="30%"'><input type="text" size="20" name="book_update_date"  placeholder="yy/mm/dd">
 						</td>
 					</tr>	
 					<tr height="27">

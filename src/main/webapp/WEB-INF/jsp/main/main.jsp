@@ -67,7 +67,7 @@
 						<%=session.getAttribute("id") %>
 					</c:set>
 					<c:if test="${sessionid=='admin' }">
-					<li><a href="/userguide/guidemenu.do" id="current">관리자메뉴</a>
+					<li><a href="/" id="current">관리자메뉴</a>
 						<ul>
 							<li><a href="/admin/book_plus.do">도서추가</a></li>
 							<li><a href="/admin/book_management.do">도서관리</a></li>

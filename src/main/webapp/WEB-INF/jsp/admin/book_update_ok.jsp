@@ -11,78 +11,83 @@
 
 </script>
 <style type="text/css">
-	td{
+	th{
+	
+	}
+	#righttable{
 	font-size: 15px;
+	border: thin;
 	}
 	
 	body{
-		background-image: url('/images/admin/update_con.png');
+		background-image: url('/images/admin/update_cont.PNG');
 		background-size: 100%;
 		background-repeat: no-repeat;
 	}
 </style>
 </head>
-<body>
+<body onresize="parent.resizeTo(900,515)">
 	<table class="table"  style="filter:alpha(opacity=50)">
 		<tr>
-		<td colspan="3">
+		<td colspan="2">
+		<br>
 		<center><h3>내용보기</h3></center>
 		</td>
 		<tr>
-			<td rowspan="8" width="25%" style="text-align:center;"><img style="width: 195px; height: 245px;" src="${vo.book_image }"></td>
-			<th width="10%">책 제목</th>
-			<td width="65%">${vo.book_name}</td>
-		</tr>
-		<tr>
-			<th>저자</th>
-			<td>${vo.book_author}</td>
-		</tr>
-		<tr>
-			<th>출판사</th>
-			<td>${vo.book_publish}</td>
-		</tr>
-		<tr>
-			<th>출판일</th>
-			<td><fmt:formatDate value="${vo.book_publish_date}" pattern="yyyy-MM-dd"/></td>
-		</tr>
-		<tr>
-			<th>대여상태</th>
+			<th><img style="width: 195px; height: 280px; border-style:outset; border-color:blue; border-width=5;" src="${vo.book_image }"></th>
 			<td>
-			<c:choose>
-				<c:when test="${vo.rent_yn == 'y' }">
-				대출중
-				</c:when>
-				<c:otherwise>
-				대출가능
-				</c:otherwise>
-			</c:choose>
-			</td>
-		</tr>
-		<tr>
-			<th>예약상태</th>
-			<td>
-			<c:choose>
-				<c:when test="${vo.reserve_yn == 'y' }">
-				 예약중
-				</c:when>
-				<c:otherwise>
-				예약가능
-				</c:otherwise>
-			</c:choose>
-			</td>
-		</tr>
-		<tr>
-			<th valign="top">책소개</th>
-			<td>${vo.book_info}</td>
-		</tr>
-		<tr>
-			<th>카테고리</th>
-			<td>${vo.book_category}</td>
-		</tr>
-		<tr>
-			<td colspan="3" align="center">
-			<br>
-				<input type="button" onclick="javascript:window.close()" value="닫기">
+				<table border="1" id="righttable">
+					<tr>
+						<th width="10%">책 제목</th>
+						<td width="65%">${vo.book_name}</td>
+					</tr>
+					<tr>
+						<th>저자</th>
+						<td>${vo.book_author}</td>
+					</tr>
+					<tr>
+						<th>출판사</th>
+						<td>${vo.book_publish}</td>
+					</tr>
+					<tr>
+						<th>출판일</th>
+						<td>${vo.book_update_date}</td>
+					</tr>
+					<tr>
+						<th>대여상태</th>
+						<td>
+						<c:choose>
+							<c:when test="${vo.rent_yn == 'y' }">
+							대출중
+							</c:when>
+							<c:otherwise>
+							대출가능
+							</c:otherwise>
+						</c:choose>
+						</td>
+					</tr>
+					<tr>
+						<th>예약상태</th>
+						<td>
+						<c:choose>
+							<c:when test="${vo.reserve_yn == 'y' }">
+							 예약중
+							</c:when>
+							<c:otherwise>
+							예약가능
+							</c:otherwise>
+						</c:choose>
+						</td>
+					</tr>
+					<tr>
+						<th valign="top">책소개</th>
+						<td width="515" height="105" valign="top">${vo.book_info}</td>
+					</tr>
+					<tr>
+						<th>카테고리</th>
+						<td>${vo.book_category}</td>
+					</tr>
+				</table>
 			</td>
 		</tr>
 	</table>

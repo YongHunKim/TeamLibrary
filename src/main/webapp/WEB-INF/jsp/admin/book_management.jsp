@@ -94,13 +94,13 @@ input[type=button].ud{
 	
 	function book_update(book_code){
 		   var popUrl="book_update.do?book_code="+book_code;
-		   var popOption="width=900, height=450, resizable=no scrollbars=no status=no;";
+		   var popOption="width=900, height=450, resizable=no, scrollbars=no, status=no;";
 		   window.open(popUrl,"",popOption);
 		};
 		
 	function book_delete(book_code) {
 	      if(confirm("삭제하시겠습니까?") == true) {
-	         window.location.href="/admin/book_delete.do?book_code="+book_code;
+	         window.location.href="/admin/book_delete.do?book_code="+book_code+"&page=${curPage}&searchWord=${searchWord}";
 	      } else {
 	         return;
 	      }

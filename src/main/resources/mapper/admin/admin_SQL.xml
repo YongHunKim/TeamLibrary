@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values
 		((select nvl(max(book_code)+1,to_char(sysdate,'YYYYMMDD')||'0001') as book_code from book
 				where to_char(BOOK_STORAGE_DATE,'yymmdd')=to_char(sysdate,'yymmdd')), #{book_name, jdbcType=VARCHAR}, #{book_author, jdbcType=VARCHAR}, 
-				#{book_publish, jdbcType=VARCHAR}, #{book_publish_date}, #{book_info, jdbcType=VARCHAR},
+				#{book_publish, jdbcType=VARCHAR}, to_date(#{book_update_date}, 'YY/MM/DD'), #{book_info, jdbcType=VARCHAR},
 				#{book_image, jdbcType=VARCHAR}, #{book_category, jdbcType=VARCHAR})
 		]]>
 	</insert> 

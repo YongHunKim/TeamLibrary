@@ -47,9 +47,11 @@ public class AdminController {
 	private SearchService searchService;
 	
 	@RequestMapping(value = "/admin/book_management.do")
-	public ModelAndView delay_form() {
+	public ModelAndView delay_form(String page, String searchWord) {
 		ModelAndView mav = new ModelAndView("main/main");
 		mav.addObject("type","search");
+		mav.addObject("page", page);
+		mav.addObject("searchWord", searchWord);
 		mav.addObject("jsp", "/WEB-INF/jsp/admin/book_management.jsp");
 
 		return mav;
@@ -84,13 +86,15 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/book_delete.do")
-    public ModelAndView book_delete(String book_code) throws Exception{
+    public ModelAndView book_delete(String book_code, String page, String searchWord) throws Exception{
     	ModelAndView mv = new ModelAndView("main/main");
     	//log.debug("인터셉터 테스트");
     	
+    	mv.addObject("type","search");
+		mv.addObject("page", page);
+		mv.addObject("searchWord", searchWord);
     	AdminService.book_delete(Long.parseLong(book_code));
     	mv.addObject("jsp", "/WEB-INF/jsp/admin/book_delete.jsp");
-    	
     	return mv;
     }
 	

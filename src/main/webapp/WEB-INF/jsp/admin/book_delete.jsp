@@ -4,5 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <script>
 	alert("삭제가 완료되었습니다");
-	location.href="/admin/book_management.do";
+	/* location.href="/admin/book_management.do"; */
+	location.href="/admin/book_management_ok.do?page=${page }&searchWord=${searchWord }";
 </script>

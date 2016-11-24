@@ -28,7 +28,7 @@ th{
 </style>
 
 </head>
-<body>
+<body onresize="parent.resizeTo(900,510)">
 	<form action="/admin/book_update_ok.do" method="post">
 		<center><h3>책 정보 변경</h3></center>
 		<table class="table" style="filter:alpha(opacity=50)" align="center" border="0">
@@ -57,7 +57,7 @@ th{
 			</tr>
 			<tr>
 				<th valign="top">&nbsp;&nbsp;책소개</th>
-				<td><textarea name="book_info" rows="10" cols="77" style="background-color:transparent"
+				<td valign="top"><textarea name="book_info" rows="10" cols="77" style="background-color:transparent"
 				id="bookinfo">${vo.book_info }</textarea></td>
 			</tr>
 			<tr>
