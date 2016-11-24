@@ -5,17 +5,17 @@ import java.util.*;
 import org.springframework.stereotype.Repository;
 
 @Repository("bookDAO")
-public class BookDAO extends AbstractDAO{
+public class BookDAO extends AbstractDAO {
 
-	public List<BookVO> search(int page,String searchWord) {
+	public List<BookVO> search(int page, String searchWord) {
 		Map map = new HashMap<>();
 		int pageRow = 10;
-		int start = (page*pageRow)-(pageRow-1);
-		int end = start+(pageRow-1);
+		int start = (page * pageRow) - (pageRow - 1);
+		int end = start + (pageRow - 1);
 		map.put("start", start);
 		map.put("end", end);
 		map.put("searchWord", searchWord);
-		return selectList("search.search",map);
+		return selectList("search.search", map);
 	}
 
 	public int pageCount(String searchWord) {
@@ -23,14 +23,14 @@ public class BookDAO extends AbstractDAO{
 	}
 
 	public int totalRow(String searchWord) {
-		return (int) selectOne("search.totalRow",searchWord);
+		return (int) selectOne("search.totalRow", searchWord);
 	}
 
 	public List<BookVO> newbook(int curPage) {
 		Map map = new HashMap<>();
 		int pageRow = 10;
-		int start = (curPage*pageRow)-(pageRow-1);
-		int end = start+(pageRow-1);
+		int start = (curPage * pageRow) - (pageRow - 1);
+		int end = start + (pageRow - 1);
 		map.put("start", start);
 		map.put("end", end);
 		return selectList("search.newbook", map);
@@ -50,11 +50,11 @@ public class BookDAO extends AbstractDAO{
 		int end = 10;
 		map.put("start", start);
 		map.put("end", end);
-		return selectList("search.popular",map);
+		return selectList("search.popular", map);
 	}
 
-	public BookVO bookInfo(String book_code) {		
-		return (BookVO) selectOne("book.bookInfo",book_code);
+	public BookVO bookInfo(String book_code) {
+		return (BookVO) selectOne("book.bookInfo", book_code);
 	}
 
 	public int bookRent(String book_code, String id) {
@@ -93,12 +93,12 @@ public class BookDAO extends AbstractDAO{
 		return (int) update("book.bookRentyn", book_code);
 	}
 
-	public int bookReserveyn(String book_code) {		
-		return (int) update("book.bookReserveyn",book_code);
+	public int bookReserveyn(String book_code) {
+		return (int) update("book.bookReserveyn", book_code);
 	}
 
 	public int insertRec(BookRecommendVO vo) {
-		return (int) insert("book.insertRec",vo);
+		return (int) insert("book.insertRec", vo);
 	}
 
 	public List<BookRecommendVO> bookRecommed(String book_code) {
@@ -125,11 +125,11 @@ public class BookDAO extends AbstractDAO{
 		return (int) insert("book.addWishBook", vo);
 	}
 
-	public int wishInsert(WishListVO vo){
-		return  (int) insert("book.wishInsert", vo);
+	public int wishInsert(WishListVO vo) {
+		return (int) insert("book.wishInsert", vo);
 	}
-	
-	public int wishCheck(String id, String book_code){
+
+	public int wishCheck(String id, String book_code) {
 		Map map = new HashMap<>();
 		map.put("id", id);
 		map.put("book_code", book_code);

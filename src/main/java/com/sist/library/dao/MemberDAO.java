@@ -3,9 +3,8 @@ package com.sist.library.dao;
 import org.springframework.stereotype.Repository;
 import java.util.*;
 
-
 @Repository("memberDAO")
-public class MemberDAO extends AbstractDAO{
+public class MemberDAO extends AbstractDAO {
 
 	public int insertMember(MemberVO vo) {
 		return (int) insert("member.insertMember", vo);
@@ -16,14 +15,14 @@ public class MemberDAO extends AbstractDAO{
 	}
 
 	public int login_ok(String id, String pwd) {
-		Map map = new HashMap<>();		
+		Map map = new HashMap<>();
 		map.put("id", id);
-		map.put("pwd", pwd);	
-		return (int) selectOne("member.login_ok",map);
+		map.put("pwd", pwd);
+		return (int) selectOne("member.login_ok", map);
 	}
 
 	public int findId(Map map) {
-		return (int) selectOne("member.findId",map);
+		return (int) selectOne("member.findId", map);
 	}
 
 	public MailVO findmail(Map map) {
@@ -31,11 +30,11 @@ public class MemberDAO extends AbstractDAO{
 	}
 
 	public int findPwd(Map map) {
-		return (int) selectOne("member.findPwd",map);
+		return (int) selectOne("member.findPwd", map);
 	}
 
 	public MailVO findPwdMail(Map map) {
-		return (MailVO) selectOne("member.findPwdMail",map);
+		return (MailVO) selectOne("member.findPwdMail", map);
 	}
 
 	public void changeRandomPwd(Map map) {

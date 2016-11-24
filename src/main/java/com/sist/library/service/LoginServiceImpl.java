@@ -12,12 +12,12 @@ import com.sist.library.dao.MemberVO;
 
 @Service("memberService")
 public class LoginServiceImpl implements LoginService {
-	
-	@Resource(name="memberDAO")
+
+	@Resource(name = "memberDAO")
 	private MemberDAO memberDAO;
-	
+
 	@Override
-	public int insertMember(MemberVO vo) throws Exception{
+	public int insertMember(MemberVO vo) throws Exception {
 		return memberDAO.insertMember(vo);
 	}
 
@@ -28,7 +28,7 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public int login_ok(String id, String pwd) {
-		return memberDAO.login_ok(id,pwd);
+		return memberDAO.login_ok(id, pwd);
 	}
 
 	@Override

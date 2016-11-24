@@ -21,5 +21,5 @@ public interface LoginService {
 	public MailVO findPwdMail(Map map);
 
 	public void changeRandomPwd(Map map);
-	
+
 }

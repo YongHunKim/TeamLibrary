@@ -11,13 +11,13 @@ import com.sist.library.dao.BookVO;
 
 @Service("searchService")
 public class SearchServiceImpl implements SearchService {
-	
-	@Resource(name="bookDAO")
+
+	@Resource(name = "bookDAO")
 	private BookDAO bookDAO;
-	
+
 	@Override
-	public List<BookVO> search(int page,String searchWord) {
-		return bookDAO.search(page,searchWord);
+	public List<BookVO> search(int page, String searchWord) {
+		return bookDAO.search(page, searchWord);
 	}
 
 	@Override

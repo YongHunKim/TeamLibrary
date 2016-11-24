@@ -7,7 +7,7 @@
 <title>사이트맵</title>
 </head>
 <body>
-	<div style="float: left;">
+	<div style="vertical-align: middle;">
 		<span>자료신청 및 예약</span>
 		<ul>
 			<li><a href="/rent/rent.do">대출연기및반납</a></li>
@@ -16,7 +16,7 @@
 		</ul>
 	</div>
 
-	<div style="float: left;">
+	<div style="vertical-align: middle;">
 		<span>자료검색</span>
 		<ul>
 			<li><a href="/search/search.do">자료검색</a></li>
@@ -25,7 +25,7 @@
 		</ul>
 	</div>
 	
-	<div style="float: left;">
+	<div style="vertical-align: middle;">
 		<span>참여마당</span>
 		<ul>
 			<li><a href="/notice/notice.do">공지사항</a></li>
@@ -33,7 +33,7 @@
 		</ul>
 	</div>
 	
-	<div style="float: left;">
+	<div style="vertical-align: middle;">
 		<span><a href="/userguide/guide.do">이용안내</a></span>
 		<ul>
 			<li><a href="/userguide/library_map.do">이용안내</a></li>
@@ -41,7 +41,7 @@
 		</ul>
 	</div>
 	
-	<div style="float: left;">
+	<div style="vertical-align: middle;">
 		<span><a href="/mypage/mypage.do">마이페이지</a></span>
 		<ul>
 			<li><a href="mypage/mybook.do">나의관심도서</a></li>

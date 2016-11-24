@@ -1,6 +1,5 @@
 package com.sist.library.service;
 
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -8,11 +7,10 @@ import org.springframework.stereotype.Service;
 import com.sist.library.dao.AdminDAO;
 import com.sist.library.dao.BookVO;
 
-
 @Service("AdminService")
 public class AdminServiceImpl implements AdminService {
-	
-	@Resource(name="AdminDAO")
+
+	@Resource(name = "AdminDAO")
 	private AdminDAO AdminDAO;
 
 	@Override
@@ -23,7 +21,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void book_delete(long book_code) throws Exception {
 		AdminDAO.book_delete(book_code);
-		
+
 	}
 
 	@Override
@@ -35,7 +33,5 @@ public class AdminServiceImpl implements AdminService {
 	public void book_update_ok(BookVO vo) throws Exception {
 		AdminDAO.book_update_ok(vo);
 	}
-
-	
 
 }
