@@ -31,8 +31,6 @@
 	}
 	
 	function rentDelay(book_code,i){
-		//showMessage(book_code);
-		alert($('#book_management_id'+i).val());
 		$.ajax({
 			url : '/rent/rentDelay.do',
 			type : 'post',
@@ -75,8 +73,8 @@
 			<c:forEach var="i" begin="0" end="${rentList.size()-1 }">
 			<tr>
 				<td>${rentList.get(i).book_code }
-				<iuput type="hidden" id="book_management_code${i}" value="${rentList.get(i).book_management_code }">				
-				<iuput type="hidden" id="book_management_id${i}" value="${rentList.get(i).id }">
+				<input type="hidden" id="book_management_code${i}" value="${rentList.get(i).book_management_code }" />				
+				<input type="hidden" id="book_management_id${i}" value="${rentList.get(i).id }" />
 				</td>
 				<td>${rentList.get(i).book_name }</td>
 				<td>${rentList.get(i).book_author }</td>

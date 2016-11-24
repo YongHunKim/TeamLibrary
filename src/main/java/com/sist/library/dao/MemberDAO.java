@@ -7,8 +7,8 @@ import java.util.*;
 @Repository("memberDAO")
 public class MemberDAO extends AbstractDAO{
 
-	public void insertMember(MemberVO vo) {
-		insert("member.insertMember", vo);
+	public int insertMember(MemberVO vo) {
+		return (int) insert("member.insertMember", vo);
 	}
 
 	public int check_id(String id) {

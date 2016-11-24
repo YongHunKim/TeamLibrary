@@ -6,9 +6,17 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="/WEB-INF/include/include-header.jspf" %>
+	<%@ include file="/WEB-INF/include/include-header.jspf" %>
+	<script>
+	window.onload = function(){
+		if(${sessionnull == '로그인 후 이용가능합니다.'}){
+			showMessage('로그인하세요.');
+		}
+	}
+	</script>
 </head>
 <body>
+	
 	<div id="container">
 		<div id="inner">
 			<div id="header">
@@ -23,7 +31,7 @@
 					</c:if>
 					
 					<c:if test="${session_id ne 'xxx'}">
-						<a href="/login/logout.do"><img src="<c:url value='/images/headLogout.gif'/>" ></a>&nbsp;&nbsp;
+						<img src="/images/headLogout.gif" onclick="javascript:logout();">&nbsp;&nbsp;
 						<a href="/mypage/mypage.do"><img src="<c:url value='/images/headMypage.gif'/>"></a>
 					</c:if>
 				</div>
@@ -35,7 +43,7 @@
 						<ul>
 							<li><a href="/rent/rent.do">대출 연기 및 반납</a></li>
 							<li><a href="/rent/reserve.do">예약 연기 및 반납</a></li>
-							<li><a href="#">희망도서신청</a></li>
+							<li><a href="/rent/wishbook.do">희망도서신청</a></li>
 						</ul>
 					</li>
 					<li><a href="#" id="current">자료검색</a>

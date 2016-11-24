@@ -71,7 +71,32 @@
 			return;
 		}
 		
-		f.submit();
+		//f.submit();
+		$.ajax({
+			url : '/login/join_ok.do',
+			type : 'post',
+			data : {
+				"id" : $('#mem_id').val(),
+				"pwd" : $('#mem_pwd').val(),
+				"name" : $('#mem_name').val(),
+				"tel" : $('#mem_tel').val(),
+				"post" : $('#mem_post').val(),
+				"addr1" : $('#mem_addr1').val(),
+				"addr2" : $('#mem_addr2').val(),
+				"email" : $('#mem_email').val()
+			},
+			datatype:"JSON",
+			success : function(data) {				
+				if (data == "success") {
+					showMessage("회원가입에 성공했습니다.");
+					setTimeout(function(){
+						location.href="/main/main.do";
+					},1000);
+				} else {
+					showMessage("연기에 실패했습니다.");
+				}
+			}
+		});
 	}
 	
 	function joincancel(){
