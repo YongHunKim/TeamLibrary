@@ -121,4 +121,19 @@ public class BookDAO extends AbstractDAO{
 		return (int) delete("book.bookRecommendDelete", map);
 	}
 
+	public int addWishBook(WishBookVO vo) {
+		return (int) insert("book.addWishBook", vo);
+	}
+
+	public int wishInsert(WishListVO vo){
+		return  (int) insert("book.wishInsert", vo);
+	}
+	
+	public int wishCheck(String id, String book_code){
+		Map map = new HashMap<>();
+		map.put("id", id);
+		map.put("book_code", book_code);
+		return (int) selectOne("book.wishCheck", map);
+	}
+
 }

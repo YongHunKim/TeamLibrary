@@ -36,7 +36,7 @@ public class SeatController {
 		mav.addObject("test1", "/WEB-INF/jsp/seat/seat_select1.jsp");
 		mav.addObject("test2", "/WEB-INF/jsp/seat/seat_select2.jsp");
 		mav.addObject("test3", "/WEB-INF/jsp/seat/seat_select3.jsp");
-
+		
 		return mav;
 	}
 	

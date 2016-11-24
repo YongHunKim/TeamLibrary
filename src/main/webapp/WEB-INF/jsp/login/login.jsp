@@ -56,7 +56,7 @@
             <br>
             <p>
               <span class="fleft"><input type="checkbox" id=""><label for=""> 아이디 저장</label></span> 
-              <span class="fright"><a href="">아이디 찾기</a>&nbsp;|&nbsp;<a href="">비밀번호 찾기</a></span>
+              <span class="fright"><a href="/login/findid.do">아이디 찾기</a>&nbsp;|&nbsp;<a href="/login/findpwd.do">비밀번호 찾기</a></span>
             </p>
           </div>
           <input type="button" class="loginBtn" value="로그인" onclick="login_check()">

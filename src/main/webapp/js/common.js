@@ -1,3 +1,20 @@
+function logout(){
+	$.ajax({
+		url : '/login/logout.do',
+		type : 'post',		
+		success : function(data) {				
+			if (data == "success") {
+				showMessage("로그아웃에 성공했습니다.");
+				setTimeout(function(){
+					location.href="/main/main.do";
+				},1000);
+			} else {
+				showMessage("로그아웃에 실패했습니다.");
+			}
+		}
+	});
+}
+
 function showMessage(msg, closeDelay)
 {
 	$("#modal-message-text").html(msg);

@@ -9,6 +9,7 @@
 <title>이용안내</title>
 </head>
 <body>
-	<jsp:include page="${menu }"></jsp:include>
+<p style="font-size: 2.2em">이용안내</p>
+	<jsp:include page="${test }"/>
 </body>
 </html>

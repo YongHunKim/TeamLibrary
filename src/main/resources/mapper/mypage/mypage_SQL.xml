@@ -4,18 +4,77 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mypage">
-	
+
 	<select id="pcheck_ok" parameterType="hashmap" resultType="int">
-		SELECT COUNT(*) FROM member WHERE id=#{id} AND pwd=#{pwd}  
+		SELECT COUNT(*) FROM member WHERE id=#{id} AND pwd=#{pwd}
 	</select>
 
 	<select id="member_update" parameterType="String" resultType="membervo">
-		SELECT id,pwd,name,tel,post,addr1,addr2,email FROM member WHERE id=#{id}
+		SELECT id,pwd,name,tel,post,addr1,addr2,email FROM member WHERE
+		id=#{id}
 	</select>
-	
+
 	<update id="member_update_ok" parameterType="membervo">
-		UPDATE member SET pwd=#{pwd},tel=#{tel},post=#{post},addr1=#{addr1},addr2=#{addr2},email=#{email} WHERE id=#{id}
+		UPDATE member SET
+		pwd=#{pwd},tel=#{tel},post=#{post},addr1=#{addr1},addr2=#{addr2},email=#{email}
+		WHERE id=#{id}
 	</update>
 
+	<select id="rec_select" parameterType="hashmap" resultType="recommendvo">
+		SELECT br.book_recommend_code,br.book_recommend_subject, b.book_name,b.book_author FROM
+	book b, book_recommend br WHERE br.book_code=b.book_code AND id=#{id} AND book_recommend_code BETWEEN #{start} AND #{end}
+	ORDER BY book_recommend_code
+	
+		<!-- SELECT book_recommend_code,book_recommend_subject,book_name,book_author,book_info FROM
+		book_recommend WHERE id=#{id} AND book_recommend_code BETWEEN  #{start} AND #{end}
+		ORDER BY book_recommend_code -->
+	</select>
+
+	<!-- 페이징 처리 -->
+	<select id="recPage" parameterType="String" resultType="int">
+		SELECT CEIL(COUNT(*)/10) FROM book_recommend WHERE id=#{id}
+	</select>
+	
+	<select id="recRow" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM book_recommend WHERE id=#{id}
+	</select>
+	
+	<delete id="member_secession" parameterType="hashmap">
+		DELETE FROM member WHERE id=#{id} and pwd=#{pwd}
+	</delete>
+	
+<!--	<select id="wishlist" parameterType="hashmap" resultType="bookvo">
+		 SELECT book_code,book_name,id,book_author,book_publish,book_image,book_category FROM
+		wishlist WHERE id=#{id} AND book_code BETWEEN #{start} AND #{end}
+		ORDER BY book_code 
+	</select> -->
+	
+	<select id="wishlist" parameterType="hashmap" resultType="wishlistvo">
+	<!-- 	select b.book_code,book_name,id,book_author,book_image,wish_num
+from (select book_code,wish_num,id,rownum as num from
+	(select book_code,wish_num,id from wishlist order by wish_num desc )) w, book b
+WHERE w.book_code=b.BOOK_CODE and num BETWEEN 1 and 5; -->
+	
+		SELECT b.book_code,book_name,id,book_author,book_image,wish_num
+		FROM (SELECT book_code,wish_num,id,rownum as num
+		FROM (SELECT book_code,wish_num,id
+		FROM wishlist ORDER BY wish_num DESC)) w, book b
+		WHERE w.book_code=b.book_code AND num BETWEEN #{start} AND #{end} AND id=#{id}
+	
+	</select> 
+	
+	<select id="wishPage" parameterType="String" resultType="int">
+		SELECT CEIL(COUNT(*)/10) FROM wishlist WHERE id=#{id}
+	</select>
+	
+	<select id="wishRow" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM wishlist WHERE id=#{id}
+	</select>
+	
+<!-- 	<insert id="wishInsert" parameterType="wishlistvo">
+	insert into wishlist(book_code, wish_num, id) VALUES (201610201330,(select nvl(max(wish_num)+1,1) from wishlist where id='kyh'),'kyh');
+		INSERT INTO wishlist(book_code,wish_num,id) 
+		VALUES(#{book_code},(SELECT NVL(MAX(wish_num)+1,1) FROM wishlist WHERE id=#{id),#{id})
+	</insert> -->
 	
 </mapper>

@@ -6,10 +6,22 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="/WEB-INF/include/include-header.jspf" %>
+	<%@ include file="/WEB-INF/include/include-header.jspf" %>
+	<script>
+	window.onload = function(){
+		if(${sessionnull == '로그인 후 이용가능합니다.'}){
+			showMessage('로그인 후 이용해주세요.',1000);
+			setTimeout(function(){
+				location.href="/login/login.do";
+			},1000);
+		}
+		
+	}
+	</script>
 </head>
 <body>
-	<div id="container">
+	
+	<div id="container" style="min-height:950px;">
 		<div id="inner">
 			<div id="header">
 				<h1>   
@@ -23,7 +35,7 @@
 					</c:if>
 					
 					<c:if test="${session_id ne 'xxx'}">
-						<a href="/login/logout.do"><img src="<c:url value='/images/headLogout.gif'/>" ></a>&nbsp;&nbsp;
+						<img src="/images/headLogout.gif" onclick="javascript:logout();">&nbsp;&nbsp;
 						<a href="/mypage/mypage.do"><img src="<c:url value='/images/headMypage.gif'/>"></a>
 					</c:if>
 				</div>
@@ -34,8 +46,8 @@
 					<li><a href="#" id="current">자료신청 및 예약</a>
 						<ul>
 							<li><a href="/rent/rent.do">대출 연기 및 반납</a></li>
-							<li><a href="">예약 연기 및 반납</a></li>
-							<li><a href="#">희망도서신청</a></li>
+							<li><a href="/rent/reserve.do">예약 연기 및 반납</a></li>
+							<li><a href="/rent/wishbook.do">희망도서신청</a></li>
 						</ul>
 					</li>
 					<li><a href="#" id="current">자료검색</a>
@@ -43,12 +55,6 @@
 							<li><a href="/search/search.do">자료검색</a></li>
 							<li><a href="/search/newbook.do">신간자료</a></li>
 							<li><a href="/search/popularbook.do">인기자료</a></li>
-						</ul>
-					</li>
-					<li><a href="#" id="current">좌석예약</a>
-						<ul>
-							<li><a href="/seat/seat_reserve.do">좌석예약</a></li>
-							<li><a href="/seat/seat_view.do">좌석보기</a></li>
 						</ul>
 					</li>
 					<li><a href="#" id="current">참여마당</a>
@@ -63,6 +69,17 @@
 							<li><a href="/userguide/library_time.do">도서관 이용시간</a></li>
 						</ul>
 					</li>
+					<c:set var="sessionid">
+						<%=session.getAttribute("id") %>
+					</c:set>
+					<c:if test="${sessionid=='admin' }">
+					<li><a href="/" id="current">관리자메뉴</a>
+						<ul>
+							<li><a href="/admin/book_plus.do">도서추가</a></li>
+							<li><a href="/admin/book_management.do">도서관리</a></li>
+						</ul>
+					</li>
+					</c:if>	
 				</ul>
 			</div>
 			<!-- include -->
@@ -75,7 +92,8 @@
 			</div>			
 			<div class="footer" style="margin-top: 20px;">
 				<p>
-					SIST <a href="http://www.sist.co.kr">쌍용교육센터</a>
+					SIST <a href="http://www.sist.co.kr">쌍용교육센터</a><br/>
+					SISTLIBRARY					
 				</p>
 			</div>
 		</div>

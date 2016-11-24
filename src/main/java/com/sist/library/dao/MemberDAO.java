@@ -7,8 +7,8 @@ import java.util.*;
 @Repository("memberDAO")
 public class MemberDAO extends AbstractDAO{
 
-	public void insertMember(MemberVO vo) {
-		insert("member.insertMember", vo);
+	public int insertMember(MemberVO vo) {
+		return (int) insert("member.insertMember", vo);
 	}
 
 	public int check_id(String id) {
@@ -20,5 +20,25 @@ public class MemberDAO extends AbstractDAO{
 		map.put("id", id);
 		map.put("pwd", pwd);	
 		return (int) selectOne("member.login_ok",map);
+	}
+
+	public int findId(Map map) {
+		return (int) selectOne("member.findId",map);
+	}
+
+	public MailVO findmail(Map map) {
+		return (MailVO) selectOne("member.findmail", map);
+	}
+
+	public int findPwd(Map map) {
+		return (int) selectOne("member.findPwd",map);
+	}
+
+	public MailVO findPwdMail(Map map) {
+		return (MailVO) selectOne("member.findPwdMail",map);
+	}
+
+	public void changeRandomPwd(Map map) {
+		update("member.changeRandomPwd", map);
 	}
 }

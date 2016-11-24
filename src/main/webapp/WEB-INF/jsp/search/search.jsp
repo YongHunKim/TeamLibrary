@@ -81,7 +81,6 @@ input[type=button]{
 		$(f).attr("action","/book/detail.do");
 		f.submit();
 	}
-	
 </script>
 
 </head>
@@ -103,6 +102,20 @@ input[type=button]{
 <h1>인 기 도 서</h1>
 </c:when>
 </c:choose>
+
+
+<!-- 
+================================================================
+<c:set var="sessionid">
+	<%=session.getAttribute("id") %>
+</c:set>
+<c:if test="${sessionid=='admin' }">
+		<input type="button" name="book_plus" id="book_plus" onclick="book_plus" value="도서추가">
+</c:if>
+===================================================================
+ -->
+ 
+ 
 <c:choose>
 	<c:when test="${list.size() > 0 }">
 		<div class="result_group">
@@ -159,7 +172,7 @@ input[type=button]{
 					 	</a>
 					 	<!-- 기본적으로는 5페이지 단위로 페이지 이동, 처음 블록과 마지막 블록에서만 1페이지씩 이동 -->
 						<c:if test="${curPage>block }">
-							<a href="/search/search_ok.do?page=${fromPage-1}&searchWord=${searchWord }">
+							<a href=" ">
 								<img src="<%=application.getContextPath() %>/images/prev.gif">				 		
 						 	</a>
 						</c:if>	

@@ -11,90 +11,94 @@ import com.sist.library.dao.BookRecommendVO;
 import com.sist.library.dao.BookVO;
 import com.sist.library.dao.MailVO;
 import com.sist.library.dao.ReserveVO;
+import com.sist.library.dao.WishBookVO;
+import com.sist.library.dao.WishListVO;
 
 @Service("bookService")
-public class BookServiceImpl implements BookService{
-	
-	@Resource(name="bookDAO")
+public class BookServiceImpl implements BookService {
+
+	@Resource(name = "bookDAO")
 	private BookDAO bookDAO;
-	
-	
-	
+
 	@Override
-	public BookVO bookInfo(String book_code) {		
+	public BookVO bookInfo(String book_code) {
 		return bookDAO.bookInfo(book_code);
 	}
 
-
 	@Override
 	public int bookRent(String book_code, String id) {
-		return bookDAO.bookRent(book_code,id);
+		return bookDAO.bookRent(book_code, id);
 	}
-
 
 	@Override
 	public int getBookManagementCode(String book_code, String id) {
-		return bookDAO.getBookManagementCode(book_code,id);
+		return bookDAO.getBookManagementCode(book_code, id);
 	}
-
 
 	@Override
 	public MailVO mailInfo(int book_management_code, String id) {
-		return bookDAO.getMailInfo(book_management_code,id);
+		return bookDAO.getMailInfo(book_management_code, id);
 	}
-
 
 	@Override
 	public ReserveVO getReserveInfo(String book_code) {
 		return bookDAO.getReserveInfo(book_code);
 	}
 
-
 	@Override
 	public int bookReserve(String book_code, String id) {
-		return bookDAO.bookReserve(book_code,id);
+		return bookDAO.bookReserve(book_code, id);
 	}
-
 
 	@Override
 	public int bookRentyn(String book_code) {
 		return bookDAO.bookRentyn(book_code);
 	}
 
-
 	@Override
 	public int bookReserveyn(String book_code) {
 		return bookDAO.bookReserveyn(book_code);
 	}
-
 
 	@Override
 	public int insertRec(BookRecommendVO vo) {
 		return bookDAO.insertRec(vo);
 	}
 
-
 	@Override
 	public List<BookRecommendVO> bookRecommed(String book_code) {
 		return bookDAO.bookRecommed(book_code);
 	}
-
 
 	@Override
 	public int bookRecommedCount(String book_code) {
 		return bookDAO.bookRecommedCount(book_code);
 	}
 
-
 	@Override
 	public int bookRecommendModify(BookRecommendVO vo) {
 		return bookDAO.bookRecommendModify(vo);
 	}
 
-
 	@Override
 	public int bookRecommendDelete(String book_code, String book_recommend_code) {
-		return bookDAO.bookRecommendDelete(book_code,book_recommend_code);
+		return bookDAO.bookRecommendDelete(book_code, book_recommend_code);
+	}
+
+	@Override
+	public int addWishBook(WishBookVO vo) {
+		return bookDAO.addWishBook(vo);
+	}
+
+	public int wishInsert(WishListVO vo) {
+		// TODO Auto-generated method stub
+		return bookDAO.wishInsert(vo);
+	}
+
+	@Override
+	public int wishCheck(String id, String book_code) {
+		// TODO Auto-generated method stub
+		return bookDAO.wishCheck(id, book_code);
 	}
 
 }
