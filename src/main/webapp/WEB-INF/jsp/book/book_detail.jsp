@@ -93,6 +93,34 @@
 			}); 
 		}
 		
+		function wish_add(id){
+			$.ajax({
+				url : '/wish/wish_add.do',
+				type : 'post',
+				data : {
+					"id" : id,
+					"book_code" : $('#rec_book_code').val(),
+				},
+				datatype:"JSON",
+				success : function(data) {
+					if (data == "success") {
+						showMessage('찜하기 성공',1000);
+						setTimeout(function(){
+							location.href="/book/detail.do?book_code=${vo.book_code}&curPage=${curPage}&searchWord=${searchWord}";
+						},1000);
+						
+					} else {
+						$('#imgbtn').prop("onclick", false);
+						if(data == "fail"){
+							showMessage("이미 찜이 된 상태입니다.",1000);
+						}else{
+							showMessage('에러가 발생되었습니다..');
+						}
+					}
+				}
+			}); 
+		}
+		
 		function cancel(i){
 			var origin_text = $('#origin_text'+i).val();
 			$('#get_subject'+i).html(origin_text);
@@ -156,6 +184,8 @@
 		</tr>
 	</table>
 	<div style="text-align:right;">
+		<img src="/images/wish.png" onclick="javascript:wish_add('<%= session.getAttribute("id") %>');"  id="imgbtn" style="width:20px;">
+		
 		<a href="/search/search_ok.do?page=${curPage}&searchWord=${searchWord}"><img src="/images/btn_list.gif"></a>
 	</div>
 	<c:if test="${reclist.size()>0 }">

@@ -12,10 +12,10 @@
         <typeAlias type="com.sist.library.dao.MailVO" alias="mailvo"/>
         <typeAlias type="com.sist.library.dao.ReserveVO" alias="reservevo"/>
         <typeAlias type="com.sist.library.dao.BookRecommendVO" alias="recommendvo"/>
-        <typeAlias type="com.sist.library.dao.MemberVO" alias="membervo" />
         <typeAlias type="com.sist.library.dao.lostBoardVO" alias="listvo"/>
         <typeAlias type="com.sist.library.dao.NoticeVO" alias="noticevo" />
         <typeAlias type="com.sist.library.dao.WishBookVO" alias="wishbookvo" />
+        <typeAlias type="com.sist.library.dao.WishListVO" alias="wishlistvo" />
     </typeAliases>
     
 </configuration> 

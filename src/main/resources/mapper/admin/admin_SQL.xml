@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+	<insert id="bookPlus" parameterType="bookvo">
+		<![CDATA[
+		insert into book(book_code, book_name, book_author, book_publish, book_publish_date, book_info,book_image, book_category) 
+		values
+		((select nvl(max(book_code)+1,to_char(sysdate,'YYYYMMDD')||'0001') as book_code from book
+				where to_char(BOOK_STORAGE_DATE,'yymmdd')=to_char(sysdate,'yymmdd')), #{book_name, jdbcType=VARCHAR}, #{book_author, jdbcType=VARCHAR}, 
+				#{book_publish, jdbcType=VARCHAR}, to_date(#{book_update_date}, 'YY/MM/DD'), #{book_info, jdbcType=VARCHAR},
+				#{book_image, jdbcType=VARCHAR}, #{book_category, jdbcType=VARCHAR})
+		]]>
+	</insert> 
+	
+	<delete id="book_delete" parameterType="long">
+		<![CDATA[
+		delete book where book_code=#{book_code}
+		]]>
+	</delete>
+	
+	<select id="book_update" resultType="bookvo" parameterType="long">
+	<![CDATA[
+	SELECT book_code,book_name,book_author,book_publish,book_publish_date,book_info,rent_yn,reserve_yn,book_rent_count,book_image,book_storage_date,book_category
+	FROM book WHERE book_code=#{book_code}
+	]]>
+	</select>
+	
+	<update id="book_update_ok" parameterType="bookvo">
+		<![CDATA[
+   		update book SET book_image=#{book_image,jdbcType=VARCHAR},
+   		book_name=#{book_name,jdbcType=VARCHAR},
+   		book_author=#{book_author,jdbcType=VARCHAR},
+   		book_publish=#{book_publish,jdbcType=VARCHAR},
+   		book_publish_date=to_date(#{book_update_date}, 'YY/MM/DD'),	
+   		book_info=#{book_info,jdbcType=VARCHAR},
+   		book_category=#{book_category,jdbcType=VARCHAR}
+   		WHERE book_code=#{book_code}
+		]]>
+	</update>
+</mapper>

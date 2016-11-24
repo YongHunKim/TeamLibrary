@@ -1,5 +1,6 @@
 package com.sist.library.controller;
 
+import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sist.library.dao.BookRecommendVO;
 import com.sist.library.dao.MemberVO;
+import com.sist.library.dao.WishListVO;
 import com.sist.library.service.PcheckService;
 
 @Controller
@@ -36,7 +39,9 @@ public class MyPageController {
 		ModelAndView mav = new ModelAndView("main/main");
 		
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
+		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
 		mav.addObject("test", "/WEB-INF/jsp/mypage/mybook.jsp");
+		
 		return mav;
 	}
 	
@@ -50,31 +55,29 @@ public class MyPageController {
 	}
 
 	@RequestMapping(value = "/mypage/member_pcheck_ok.do")
-	public @ResponseBody String pcheck_ok(HttpServletRequest request) {
-		String scripting = "";
-		String id = request.getParameter("id");
+	public @ResponseBody String pcheck_ok(@RequestParam(value = "id", required = true) String id,
+			@RequestParam(value = "pwd", required = true) String pwd) {
+		
 		System.out.println(id);
-		String pwd = request.getParameter("pwd");
+		System.out.println(pwd);
+		
+		String res = "";
 		int result = mypageService.pcheck_ok(id, pwd);
+		System.out.println(result);
+		
 		if (result > 0) {
-			HttpSession session = request.getSession(true);
-			session.setAttribute("id", id);
-			session.setMaxInactiveInterval(60 * 30);
-			scripting = "<script type='text/javascript'>" + "location.href = '/mypage/member_update.do?id=" + id + "';"
-					+ "</script>";
+			res = "success";
 		} else {
-			scripting = "<script type='text/javascript'>" + "alert('보안암호를 확인하세요.');"
-					+ "location.href = '/mypage/mypage.do';" + "</script>";
+			res = "fail";
 		}
 
-		return scripting;
+		return res;
 	}
+	
 
 	@RequestMapping(value = "/mypage/member_update.do")
-	public ModelAndView member_update(HttpServletRequest request) throws Exception {
+	public ModelAndView member_update(@RequestParam(value="id",required=true)String id,HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("main/main");
-
-		String id = request.getParameter("id");
 		// System.out.println(id);
 		String pwd = request.getParameter("pwd");
 		MemberVO vo = mypageService.member_update(id, pwd);
@@ -89,18 +92,83 @@ public class MyPageController {
 	@RequestMapping(value = "/mypage/member_update_ok.do")
 	public @ResponseBody String member_update_ok(MemberVO vo) {
 
-		String scripting = "";
+		String res = "";
 
 		int result = mypageService.member_update_ok(vo);
 		System.out.println(result);
 		if (result > 0) {
-			scripting = "<script type='text/javascript'>" + "alert('수정되었습니다.');" + "location.href = '/main/main.do';"
-					+ "</script>";
+			res = "success";
+		}else{
+			res = "fail";
 		}
-
-		return scripting;
+		return res;
 	}
 
+	@RequestMapping(value = "/mypage/mybook.do")
+	public ModelAndView mybook(@RequestParam(value = "page", required=false)String page,
+			@RequestParam(value = "id", required=false)String id){
+		ModelAndView mav = new ModelAndView("main/main");
+		
+		page = (page == null) ? "1" : page;
+		int curPage = Integer.parseInt(page);
+		System.out.println(curPage);
+		List<WishListVO> list = mypageService.wishlist(curPage, id);
+		int totalPage = mypageService.wishPage(id); 
+		int totalRow = mypageService.wishRow(id);
+		int block = 5;
+		int fromPage = ((curPage-1)/block * block)+1;
+		System.out.println(fromPage);
+		int toPage = ((curPage-1)/block * block)+block;
+		System.out.println(toPage);
+		if(toPage > totalPage) toPage = totalPage;
+		
+		mav.addObject("totalRow", totalRow);
+		mav.addObject("block", block);
+		mav.addObject("toPage", toPage);
+		mav.addObject("fromPage", fromPage);
+		mav.addObject("totalPage", totalPage);
+		mav.addObject("curPage", curPage);
+		mav.addObject("id", id);
+		mav.addObject("list", list);
+		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
+		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
+		mav.addObject("test", "/WEB-INF/jsp/mypage/mybook.jsp");
+		
+		return mav;
+	}
+
+	@RequestMapping(value = "/mypage/rec_select.do")
+	public ModelAndView rec_select(@RequestParam(value = "id", required=true)String id,
+			@RequestParam(value = "page", required=false)String page){
+		ModelAndView mav = new ModelAndView("main/main");
+		System.out.println(id);
+		// 리스트로 뽑기, 그리고 페이징 처리
+		
+		page = (page == null) ? "1" : page;
+		int curPage = Integer.parseInt(page);
+		List<BookRecommendVO> list = mypageService.rec_select(curPage, id);
+		int totalPage = mypageService.recPage(id);
+		int totalRow = mypageService.recRow(id);
+		int block = 5;
+		int fromPage = ((curPage - 1) / block * block) + 1;
+		int toPage = ((curPage - 1) / block * block) + block;
+		if(toPage > totalPage)
+			toPage = totalPage;
+		
+		mav.addObject("totalRow", totalRow);
+		mav.addObject("block", block);
+		mav.addObject("toPage", toPage);
+		mav.addObject("fromPage", fromPage);
+		mav.addObject("totalPage", totalPage);
+		mav.addObject("curPage", curPage);
+		mav.addObject("id", id);
+		mav.addObject("rec", list);
+		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
+		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
+		mav.addObject("test", "/WEB-INF/jsp/mypage/rec_select.jsp");
+		return mav;
+	}
+	
 	@RequestMapping(value = "/mypage/member_leave.do")
 	public ModelAndView member_leave() {
 		ModelAndView mav = new ModelAndView("main/main");
@@ -112,30 +180,23 @@ public class MyPageController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/mypage/mybook.do")
-	public ModelAndView mybook(@RequestParam(value = "page", required=false)String page){
-		ModelAndView mav = new ModelAndView("main/main");
+	
+	@RequestMapping(value = "/mypage/member_leave_ok.do")
+	public @ResponseBody String member_leave_ok(HttpServletRequest request,@RequestParam(value="id",required=true)String id,
+			@RequestParam(value="pwd",required=true)String pwd){
 		
-		page = (page == null) ? "1" : page;
-		int curPage = Integer.parseInt(page);
-//		List list = mypageService;
-		int totalPage; 
-		int totalRow;
-		int block = 5;
-		int fromPage = ((curPage-1)/block * block)+1;
-		int toPage = ((curPage-1)/block * block)+block;
-	/*	if(toPage > totalPage) toPage = totalPage;
+		String res = "";
+		int result = mypageService.member_secession(id, pwd);
 		
-		mav.addObject("totalRow", totalRow);*/
-		mav.addObject("block", block);
-		mav.addObject("toPage", toPage);
-		mav.addObject("curPage", curPage);
-//		mav.addObject("list", list);
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
-		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
-		mav.addObject("test", "/WEB-INF/jsp/mypage/mybook.jsp");
+		if(result > 0){
+			request.getSession().removeAttribute("id");
+			request.getSession().invalidate();
+			res = "success";
+		}else{
+			res = "fail";
+		}
 		
-		return mav;
+		return res;
 	}
-
+	
 }

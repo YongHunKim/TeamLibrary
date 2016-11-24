@@ -5,25 +5,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="rental">
 
-	<select id="rental_history" parameterType="String" resultType="bookmanagervo">
+	<select id="rental_history" parameterType="hashmap" resultType="bookmanagervo">
 	 	<!-- select bm.book_code,b.book_name,b.book_author,bm.rent_date,bm.return_date
 		from book b, book_management bm where b.book_code = bm.book_code and
 		id=#{id}  -->
-		
-		select bm.book_code,b.book_name,b.book_author,bm.rent_date,bm.return_date,bm.id,bm.reserve_date
-		from book b, book_management bm where b.book_code = bm.book_code and sysdate between rent_date and return_date and bm.reserve_date is null and bm.id=#{kyh}
+
+
+		SELECT bm.book_code,b.book_name,b.book_author,bm.rent_date,bm.return_date,bm.id,bm.reserve_date,num
+      FROM (SELECT book_management_code,id,book_code,rent_date,return_date,reserve_date,rownum as num 
+      FROM (SELECT book_management_code,id,book_code,rent_date,return_date,reserve_date 
+      FROM book_management WHERE id=#{id} AND reserve_date is null ORDER BY book_management_code desc)) bm, book b 
+      where b.book_code = bm.book_code and num between #{start} and #{end}
 		
 	</select>
 
-	<select id="reservation_history" parameterType="String"
+	<select id="reservation_history" parameterType="hashmap"
 		resultType="bookmanagervo">
 		<!-- select bm.book_code,b.book_name,b.book_author,bm.reserve_date
 		from book b, book_management bm where b.book_code = bm.book_code and
 		id=#{id} -->
 		
-		select bm.book_code,b.book_name,b.book_author,bm.reserve_date,bm.id,bm.rent_date
+		<!-- select bm.book_code,b.book_name,b.book_author,bm.reserve_date,bm.id,bm.rent_date
 		from book b, book_management bm where b.book_code = bm.book_code and
-		bm.id=#{id} and rent_date is null
+		id=#{id} and rent_date is null -->
+		
+		SELECT bm.book_code,b.book_name,b.book_author,bm.reserve_date,bm.rent_date,bm.id,num
+      FROM (SELECT book_management_code,id,book_code,reserve_date,rent_date,rownum as num 
+      FROM (SELECT book_management_code,id,book_code,reserve_date,rent_date 
+      FROM book_management WHERE id=#{id} AND rent_date is null ORDER BY book_management_code desc)) bm, book b
+      where b.book_code = bm.book_code and num between #{start} and #{end}
+		
 	</select>
 	
 	<select id="rentPageCount" parameterType="String" resultType="int">
@@ -82,4 +93,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			WHERE book_code=#{book_code} and id=#{id} and book_management_code=#{book_management_code}
 		]]>
 	</update>
+ 	<select id="rentalPage" resultType="int" parameterType="String">
+		SELECT CEIL(COUNT(*)/10) FROM book b, book_management bm WHERE 
+		b.book_code = bm.book_code and bm.reserve_date is null and id=#{id}
+	</select>
+	
+	<select id="rentalRow" resultType="int" parameterType="String">
+		SELECT COUNT(*) FROM book b, book_management bm WHERE
+		b.book_code = bm.book_code and bm.reserve_date is null and id=#{id}
+	</select>
+	
+	<select id="reservePage" resultType="int" parameterType="String">
+		SELECT CEIL(COUNT(*)/10) FROM book b, book_management bm WHERE b.book_code = bm.book_code AND id=#{id} AND rent_date is null
+	</select>
+	 
+	 <select id="reserveRow" resultType="int" parameterType="String">
+	 SELECT COUNT(*) FROM book b, book_management bm WHERE b.book_code = bm.book_code AND id=#{id} AND rent_date is null
+	 </select>
+	
 </mapper>

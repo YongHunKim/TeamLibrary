@@ -6,7 +6,7 @@ function logout(){
 			if (data == "success") {
 				showMessage("로그아웃에 성공했습니다.");
 				setTimeout(function(){
-					location.reload();
+					location.href="/main/main.do";
 				},1000);
 			} else {
 				showMessage("로그아웃에 실패했습니다.");

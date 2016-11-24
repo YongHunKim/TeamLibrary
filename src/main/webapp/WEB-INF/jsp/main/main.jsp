@@ -57,12 +57,6 @@
 							<li><a href="/search/popularbook.do">인기자료</a></li>
 						</ul>
 					</li>
-					<li><a href="#" id="current">좌석예약</a>
-						<ul>
-							<li><a href="/seat/seat_reserve.do">좌석예약</a></li>
-							<li><a href="/seat/seat_view.do">좌석보기</a></li>
-						</ul>
-					</li>
 					<li><a href="#" id="current">참여마당</a>
 						<ul>
 							<li><a href="/notice/list.do">공지사항</a></li>
@@ -75,6 +69,17 @@
 							<li><a href="/userguide/library_time.do">도서관 이용시간</a></li>
 						</ul>
 					</li>
+					<c:set var="sessionid">
+						<%=session.getAttribute("id") %>
+					</c:set>
+					<c:if test="${sessionid=='admin' }">
+					<li><a href="/" id="current">관리자메뉴</a>
+						<ul>
+							<li><a href="/admin/book_plus.do">도서추가</a></li>
+							<li><a href="/admin/book_management.do">도서관리</a></li>
+						</ul>
+					</li>
+					</c:if>	
 				</ul>
 			</div>
 			<!-- include -->

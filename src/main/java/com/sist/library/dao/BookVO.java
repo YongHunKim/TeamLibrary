@@ -15,7 +15,16 @@ public class BookVO {
 	private String book_image;
 	private Date book_storage_date;
 	private String book_category;
+	private String book_update_date;
+	
 
+	public String getBook_update_date() {
+		return book_update_date;
+	}
+
+	public void setBook_update_date(String book_update_date) {
+		this.book_update_date = book_update_date;
+	}
 
 	public Long getBook_code() {
 		return book_code;

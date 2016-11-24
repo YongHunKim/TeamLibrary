@@ -12,18 +12,8 @@ public class UserguideController {
 		ModelAndView mav = new ModelAndView("main/main");
 		
 		mav.addObject("jsp", "/WEB-INF/jsp/userguide/guide.jsp");
-		mav.addObject("menu", "/WEB-INF/jsp/userguide/guidemenu.jsp");
-		mav.addObject("test", "/WEB-INF/jsp/userguide/library_map.jsp");
+		mav.addObject("jsp", "/WEB-INF/jsp/userguide/library_map.jsp");
 		
-		return mav;
-	}
-
-	@RequestMapping(value = "/userguide/guidemenu.do")
-	public ModelAndView guide_menu(){
-		ModelAndView mav = new ModelAndView("main/main");
-		
-		mav.addObject("jsp", "/WEB-INF/jsp/userguide/guide.jsp");
-		mav.addObject("test", "/WEB-INF/jsp/userguide/library_map.jsp");
 		return mav;
 	}
 	
@@ -31,10 +21,7 @@ public class UserguideController {
 	public ModelAndView library_map() {
 		ModelAndView mav = new ModelAndView("main/main");
 
-		mav.addObject("jsp", "/WEB-INF/jsp/userguide/guide.jsp");
-		mav.addObject("menu", "/WEB-INF/jsp/userguide/guidemenu.jsp");
-		mav.addObject("test", "/WEB-INF/jsp/userguide/library_map.jsp");
-
+		mav.addObject("jsp", "/WEB-INF/jsp/userguide/library_map.jsp");
 		return mav;
 	}
 
@@ -42,9 +29,7 @@ public class UserguideController {
 	public ModelAndView library_time() {
 		ModelAndView mav = new ModelAndView("main/main");
 
-		mav.addObject("jsp", "/WEB-INF/jsp/userguide/guide.jsp");
-		mav.addObject("menu", "/WEB-INF/jsp/userguide/guidemenu.jsp");
-		mav.addObject("test", "/WEB-INF/jsp/userguide/library_time.jsp");
+		mav.addObject("jsp", "/WEB-INF/jsp/userguide/library_time.jsp");
 		return mav;
 	}
 

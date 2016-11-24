@@ -19,12 +19,30 @@ public class RentalController {
 	private RentalService rentalService;
 	
 	@RequestMapping(value="/mypage/rental_guide.do")
-	public ModelAndView rental_guide(@RequestParam(value="id", required=true)String id) throws Exception{
+	public ModelAndView rental_guide(@RequestParam(value="id", required=true)String id,
+			@RequestParam(value="page", required=false)String page) throws Exception{
 		ModelAndView mav = new ModelAndView("main/main");
+		System.out.println(id);
 		
-		List<BookManagerVO> rentalList = rentalService.rental_history(id);		
+		page = (page == null) ? "1" : page;
+		int curPage = Integer.parseInt(page);
+		List<BookManagerVO> rentalList = rentalService.rental_history(curPage, id);		
+		int totalPage = rentalService.rentalPage(id);
+		int totalRow = rentalService.rentalRow(id);
+		int block = 5;
+		int fromPage = ((curPage-1)/block * block) + 1;
+		int toPage = ((curPage-1)/block * block) + block;
+		if(toPage > totalPage) 
+			toPage = totalPage;
 		
 		
+		mav.addObject("totalRow", totalRow);
+		mav.addObject("block", block);
+		mav.addObject("toPage", toPage);
+		mav.addObject("fromPage", fromPage);
+		mav.addObject("totalPage", totalPage);
+		mav.addObject("curPage", curPage);
+		mav.addObject("id", id);
 		mav.addObject("rental", rentalList);
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
 		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
@@ -33,11 +51,27 @@ public class RentalController {
 	}
 	
 	@RequestMapping(value = "/mypage/reserve_guide.do")
-	public ModelAndView reserve_guide(@RequestParam(value="id", required=true)String id) throws Exception{
+	public ModelAndView reserve_guide(@RequestParam(value="id", required=true)String id,
+			@RequestParam(value="page", required=false)String page) throws Exception{
 		ModelAndView mav = new ModelAndView("main/main");
 		
-		List<BookManagerVO> reservationList = rentalService.reservation_history(id);
+		page = (page == null) ? "1" : page;
+		int curPage = Integer.parseInt(page);
+		List<BookManagerVO> reservationList = rentalService.reservation_history(curPage,id);
+		int totalPage = rentalService.reservePage(id);
+		int totalRow = rentalService.rentalRow(id);
+		int block = 5;
+		int fromPage = ((curPage-1)/block * block) + 1;
+		int toPage = ((curPage-1)/block * block) + block;
+		if(toPage > totalPage) 
+			toPage = totalPage;
 		
+		mav.addObject("totalRow", totalRow);
+		mav.addObject("block", block);
+		mav.addObject("toPage", toPage);
+		mav.addObject("fromPage", fromPage);
+		mav.addObject("totalPage", totalPage);
+		mav.addObject("curPage", curPage);
 		mav.addObject("reservation", reservationList);
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
 		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
