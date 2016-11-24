@@ -13,6 +13,7 @@ public class lostBoardVO {
 	private int lb_group_id;
 	private int lb_group_step;
 	private int lb_group_tab;
+
 	public int getLb_no() {
 		return lb_no;
 	}

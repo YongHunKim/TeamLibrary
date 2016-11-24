@@ -1,12 +1,14 @@
 package com.sist.library.service;
 
 import java.util.List;
+import java.util.Map;
+
 
 import com.sist.library.dao.lostBoardVO;
 
 public interface lostBoardService {
 
-	public List<lostBoardVO> boardList() throws Exception;
+	public List<lostBoardVO> boardList(Map map) throws Exception;
 
 	public lostBoardVO getlostcontent(int content_no);
 	
@@ -18,5 +20,14 @@ public interface lostBoardService {
 	
 	public void getlostdelete(int lb_no) throws Exception;
 	
+	public void getlosthit(int lb_no);
+	
+	public int getlosttotalRow();
+	
+	public int getlostpageCount();
+	
+	public int divisionlostBoard(Map map);
+	
+	public List<lostBoardVO> boardSearch (Map map);
 	
 }
