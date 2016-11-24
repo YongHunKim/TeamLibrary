@@ -24,28 +24,7 @@ public class MainController {
 	public ModelAndView sitemap(){
 		ModelAndView mav = new ModelAndView("main/main");
 		
-		mav.addObject("jsp", "/WEB-INF/jsp/main/main.jsp");
 		mav.addObject("jsp", "/WEB-INF/jsp/sitemap/sitemap.jsp");
-		mav.addObject("jsp", "/WEB-INF/jsp/rent/rent.jsp");
-		
-		mav.addObject("jsp", "/WEB-INF/jsp/search/search.jsp");
-		mav.addObject("jsp", "/WEB-INF/jsp/search/newbook.jsp");
-		mav.addObject("jsp", "/WEB-INF/jsp/search/popularbook.jsp");
-		
-		mav.addObject("jsp", "/WEB-INF/jsp/notice/notice.jsp");
-		mav.addObject("jsp", "/WEB-INF/jsp/lostBoard/list.jsp");
-		
-		mav.addObject("jsp", "/WEB-INF/jsp/userguide/guide.jsp");
-		mav.addObject("jsp", "/WEB-INF/jsp/userguide/library_map.jsp");
-		mav.addObject("jsp", "/WEB-INF/jsp/userguide/library_time.jsp");
-		
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mybook.jsp");
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/member_pcheck.jsp");
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/member_leave.jsp");
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/rental_guide.jsp");
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/reserve_guide.jsp");
-		mav.addObject("jsp", "/WEB-INF/jsp/mypage/rec_select.jsp");
 		
 		return mav;
 	}
