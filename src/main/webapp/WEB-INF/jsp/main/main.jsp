@@ -63,6 +63,17 @@
 							<li><a href="/userguide/library_time.do">도서관 이용시간</a></li>
 						</ul>
 					</li>
+					<c:set var="sessionid">
+						<%=session.getAttribute("id") %>
+					</c:set>
+					<c:if test="${sessionid=='admin' }">
+					<li><a href="/" id="current">관리자메뉴</a>
+						<ul>
+							<li><a href="/admin/book_plus.do">도서추가</a></li>
+							<li><a href="/admin/book_management.do">도서관리</a></li>
+						</ul>
+					</li>
+					</c:if>	
 				</ul>
 			</div>
 			<!-- include -->

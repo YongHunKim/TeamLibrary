@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[
 			SELECT CEIL(count(*)/10) FROM book
 			WHERE book_name like '%'||#{searchWord,jdbcType=VARCHAR}||'%' 
-		]]>
+		]]> 
 	</select>
 	
 	<select id="totalRow" resultType="int" parameterType="String">
