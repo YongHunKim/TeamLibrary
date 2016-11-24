@@ -50,7 +50,7 @@ public class NoticeDAO extends AbstractDAO{
 	}
 	
     public int totalRow(){
-		return (int) selectOne("notice.totalRow");
+    	return (int) selectOne("notice.totalRow");
 	}
 
 
@@ -63,9 +63,20 @@ public class NoticeDAO extends AbstractDAO{
 		selectOne("notice.update_hit", content_no);
 	}
 	
-	public List<NoticeVO> search(Map map){
+	public List <NoticeVO> search(Map map){
 		return selectList("notice.search", map);
 	}
+	
+	public int searchtotalRow(Map map){
+	    return (int) selectOne("notice.searchtotalRow", map);
+	}
+
+
+	public int searchCount(Map map) {
+		return (int) selectOne("notice.searchCount", map); 
+	}
+	
+	
 }
 		
 

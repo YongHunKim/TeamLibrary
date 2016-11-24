@@ -1,134 +1,10 @@
-/* @CHARSET "EUC-KR";
-#table_content{
-	border-collapse: collapse;
-	border-top-width: 2px;
-	border-bottom-width: 1px;
-	border-top-style: solid;
-	border-bottom-style: solid;
-	border-top-color: #333;
-	border-bottom-color: #333;
-	//Author:Teylor Feliz
-	
-	
-	
-}
-
-#table_content th, #table_content td{
-	margin: 0px;
-	padding: 8px;
-	font-size: 9pt;
-	color: black;
-	text-align: center;
-}
-
-#table_content th{
-	background-color: #12ab72;
-	text-align: left;
-	border-spacing: 0px;
-	//font-family: Georgia, Arial, Helvetica, sans-serif;
-	color: #fff;
-	border-bottom-width: 1px;
-	border-bottom-color: #333;
-	text-align: center;
-
-
-}
-
-#table_content td{
-    border-bottom-color: #000000;
-	border-right-color: #000000;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	text-transform: uppercase;
-	font-size: 12px;
-	text-align: left;
-	font-style: normal;
-	color: #b5370e;
-	padding:10px;
-
-	
-  
-
-}
-
-#table_content .dataTr:HOVER{
-	background-color: #FC6;
-	cursor: pointer;
-}
-
-#table_content .dataTd:HOVER{
-	background-color: #FC6;
-	cursor: pointer;
-}
- 
- 
- 
-#table_content .tdleft{
-	text-align: left;
-}
-
-#table_content .tdcenter{
-	text-align: center;	
-}
-
-#table_content a{
-	text-decoration: none;
-	color: black;
-		
-}
-
-#table_content a:HOVER{
-	text-decoration:underline;
-	color: green;
-}
-
-input[type="submit"],
-input[type="button"],
-input[type="text"],
-input[type="password"],
-select,
-textarea {
-	-webkit-border-radius: 12px;
-	-moz-border-radius: 12px;
-	border-radius: 12px;
-	border: 1px #CCC solid;
-}
-
-#menubar{
-	text-align: center;
-}
-
-#crud{
-	text-align: left;
-}
-
-
-#under_btn{
-	text-align: right;
-}
-
- */
-
-
-
-
-
-/*  CSS Table Design
-Author: Stanislav Filev
-Theme: Stainless Steel: Stenli Style
-URL: http://www.stenli.net
-
------------------------------------------------ */
-
-
-
-
 #table_content{
 	border: 1px solid #000; 
-	background-color: #D4D0C8; 
+/* 	background-color: #D4D0C8;  */
 	color: #000;
 	 
 }
+ 
  
 #table_content th, #table_content td {
 	margin: 0px;
@@ -142,10 +18,9 @@ URL: http://www.stenli.net
 }
 
 #table_content th{
-	background-color: #12ab72;
+	background-color: #3a8cd2;
 	text-align: center;
 	border-spacing: 0px;
-	//font-family: Georgia, Arial, Helvetica, sans-serif;
 	color: #fff;
 	border-bottom-width: 1px;
 	border-bottom-color: #333;
@@ -162,29 +37,17 @@ URL: http://www.stenli.net
 	border-bottom-style: solid;
 	font-size: 12px;
 	font-style: normal;
-	//color: #b5370e;
 	padding:10px;
 	text-align: center;
 }
-#table_content .tdleft{
+/* #table_content .tdleft{
 	text-align: left;
 }
 
 #table_content .tdcenter{
 	text-align: center;	
-}
+} */
 
-
-
-thead th, tfoot th, tfoot td ,tbody th,tbody td {
-	color: #000; 
-	font: 8pt Verdana; 
-	//border-right: 1px solid #aaa; 
-	//border-top: 1px solid #eee; 
-	//border-left:1px solid #eee; 
-	//border-bottom: 1px solid #aaa; 
-
-}
 
 #fs{
 	text-align: center;
@@ -197,25 +60,21 @@ thead th, tfoot th, tfoot td ,tbody th,tbody td {
 }
 
 
-tbody th { white-space: nowrap; font-weight: bold; text-align:left; }
-
-
-thead th, tfoot th, tfoot td { background-color: #ccc; font-weight: bold; text-align:center; }
-
-
-tbody tr:hover td{
+ /* tbody :hover td{
 	background-color: silver;
-	border-right: 1px solid #eee; 
-	border-top: 1px solid #999; 
-	border-left: 1px solid #999; 
-	border-bottom: 1px solid #eee; 
+ */
+ 
 
-	
-
+#toptr{
+	background-color: mistyrose;
 }
+#toptr:HOVER{
+	background-color: #d68a8a;
+}  
 
-
-
+#dataTr:HOVER{
+	background-color: #d68a8a;
+}  
 
 
 

@@ -35,12 +35,13 @@ public interface NoticeService {
 	
 	public int pageCount();
 	
+	
 	public void update_hit(int content_no);
 	
 	/*검색*/
-	public List<NoticeVO> search(Map map);
-	
+	public List<NoticeVO> search(Map map) throws Exception;
+	public int searchtotalRow(Map map);
+	public int searchCount(Map map);
 
-	
 	
 }

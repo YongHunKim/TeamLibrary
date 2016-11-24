@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertNotice" parameterType="noticevo">
 		<![CDATA[	
 		insert into NOTICE(nt_no,id,nt_subject,nt_content,nt_hit)
-		values((SELECT NVL(MAX(nt_no)+1,1) FROM notice),'123',#{nt_subject,jdbcType=VARCHAR},#{nt_content,jdbcType=VARCHAR},0)
+		values((SELECT NVL(MAX(nt_no)+1,1) FROM notice),#{id},#{nt_subject,jdbcType=VARCHAR},#{nt_content,jdbcType=VARCHAR},0)
 		]]>
 	</insert>
 	
@@ -55,11 +55,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="update_ok_Notice" parameterType="noticevo">
 		<![CDATA[
-		update NOTICE SET (id,nt_subject,nt_content,nt_hit)
-		values(#{id},#{nt_subject,jdbcType=VARCHAR},#{nt_content,jdbcType=VARCHAR}) WHERE nt_no=#{nt_no}
+		update notice set nt_subject=#{nt_subject}, nt_content=#{nt_content} where nt_no=#{nt_no}
 		]]>
 	</select>
 	
+		<!-- update NOTICE SET (nt_subject,nt_content)
+		values(#{nt_subject,jdbcType=VARCHAR},#{nt_content,jdbcType=VARCHAR}) WHERE nt_no=#{nt_no} -->
 	
 	<delete id="getNoticedelete" parameterType="int">
 		<![CDATA[
@@ -67,7 +68,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</delete>
 
-	<select id="pageCount" resultType="int">
+ 	<select id="pageCount" resultType="int">
 		SELECT CEIL(count(*)/10) FROM notice
 	</select>
 	
@@ -91,17 +92,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select nt_no,id,nt_subject,nt_content,nt_hit,nt_regdate FROM
 		(select nt_no,id,nt_subject,nt_content,nt_hit,nt_regdate,rownum as num FROM
 		(select nt_no,id,nt_subject,nt_content,nt_hit,nt_regdate FROM
-		notice order by nt_no desc))
-		WHERE num between #{start} and #{end} AND #{fs}=#{sk}
-
+		notice WHERE ${fs} LIKE '%'||#{sk}||'%' order by nt_no desc))
+		WHERE num between #{start} and #{end}
 	]]>	
 	</select>
+ 	
+	<select id="searchCount" resultType="int"  parameterType="hashmap">
+	<![CDATA[
+		SELECT CEIL(count(*)/10) FROM notice WHERE ${fs} LIKE '%'||#{sk}||'%'
+	]]>		
+	</select> 
 	
-	<select id="pageCount" resultType="int" parameterType="hashmap">
-		SELECT CEIL(count(*)/10) FROM notice WHERE #{fs}=#{sk}
-	</select>
-	
-	<select id="totalRow" resultType="int" parameterType="hashmap">
-		SELECT count(*) FROM notice WHERE #{fs}=#{sk} 
+	<select id="searchtotalRow" resultType="int"  parameterType="hashmap" >
+	<![CDATA[
+		SELECT count(*) FROM notice WHERE ${fs} LIKE '%'||#{sk}||'%'
+	]]>		 
 	</select>
 </mapper>
