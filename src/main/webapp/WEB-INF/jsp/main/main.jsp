@@ -69,6 +69,11 @@
 							<li><a href="/userguide/library_time.do">도서관 이용시간</a></li>
 						</ul>
 					</li>
+					<li><a href="/sitemap/sitempa.do">사이트맵</a>
+						<ul>
+							<li><a href="/sitemap/sitemap.do">사이트맵</a></li>
+						</ul>
+					</li>
 					<c:set var="sessionid">
 						<%=session.getAttribute("id") %>
 					</c:set>
