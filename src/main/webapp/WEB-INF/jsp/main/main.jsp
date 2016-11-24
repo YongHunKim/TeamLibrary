@@ -10,14 +10,18 @@
 	<script>
 	window.onload = function(){
 		if(${sessionnull == '로그인 후 이용가능합니다.'}){
-			showMessage('로그인하세요.');
+			showMessage('로그인 후 이용해주세요.',1000);
+			setTimeout(function(){
+				location.href="/login/login.do";
+			},1000);
 		}
+		
 	}
 	</script>
 </head>
 <body>
 	
-	<div id="container">
+	<div id="container" style="min-height:950px;">
 		<div id="inner">
 			<div id="header">
 				<h1>   
@@ -83,7 +87,8 @@
 			</div>			
 			<div class="footer" style="margin-top: 20px;">
 				<p>
-					SIST <a href="http://www.sist.co.kr">쌍용교육센터</a>
+					SIST <a href="http://www.sist.co.kr">쌍용교육센터</a><br/>
+					SISTLIBRARY					
 				</p>
 			</div>
 		</div>

@@ -22,7 +22,12 @@
 							location.href="/main/main.do";
 						},1000);
 						
-					} else {
+					} else if(data="session_null"){
+						showMessage('로그인 후 이용해주세요.',1000);
+						setTimeout(function(){
+							location.href="/login/login.do";
+						},1000);
+					}else {
 						showMessage('예약에 실패했습니다.');					
 					}
 				}

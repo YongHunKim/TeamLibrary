@@ -16,4 +16,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="login_ok" parameterType="hashmap" resultType="int">
 		select count(*) from member where id=#{id} and pwd=#{pwd}
 	</select>
+	
+	<select id="findId" parameterType="hashmap" resultType="int">
+		select count(*) from member where name=#{name} and email=#{email}
+	</select>
+	
+	<select id="findmail" parameterType="hashmap" resultType="mailvo">
+		select id,email,name from member where name=#{name} and email=#{email}
+	</select>
+	
+	<select id="findPwd" parameterType="hashmap" resultType="int">
+		select count(*) from member where id=#{id} and email=#{email}
+	</select>
+	
+	<select id="findPwdMail" parameterType="hashmap" resultType="mailvo">
+		SELECT id,email,name,pwd from member where id=#{id} and email=#{email}
+	</select>
+	
+	<update id="changeRandomPwd" parameterType="hashmap">
+		update member set pwd=#{pwd} where id=#{id}
+	</update>
 </mapper>

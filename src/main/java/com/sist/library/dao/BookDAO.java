@@ -121,4 +121,8 @@ public class BookDAO extends AbstractDAO{
 		return (int) delete("book.bookRecommendDelete", map);
 	}
 
+	public int addWishBook(WishBookVO vo) {
+		return (int) insert("book.addWishBook", vo);
+	}
+
 }

@@ -7,6 +7,8 @@ import java.util.Date;
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,7 @@ import com.sist.library.dao.BookRecommendVO;
 import com.sist.library.dao.BookVO;
 import com.sist.library.dao.MailVO;
 import com.sist.library.dao.ReserveVO;
+import com.sist.library.dao.WishBookVO;
 import com.sist.library.mail.MailManager;
 import com.sist.library.service.BookService;
 
@@ -56,8 +59,11 @@ public class BookController {
 	}
 	
 	@RequestMapping(value="/book/rent_ok.do")
-	public @ResponseBody String rent_ok(@RequestParam(value="book_code" ,required=true)String book_code,
+	public @ResponseBody String rent_ok(HttpServletRequest request,@RequestParam(value="book_code" ,required=true)String book_code,
 			@RequestParam(value="id" ,required=true)String id) throws AddressException, MessagingException{
+		if(request.getSession().getAttribute("id") == null){
+			return "session_null";
+		}
 		String str_result="";		
 		int result = bookService.bookRent(book_code,id);
 		bookService.bookRentyn(book_code);
@@ -65,7 +71,7 @@ public class BookController {
 		MailVO vo = bookService.mailInfo(book_management_code,id);
 		System.out.println(vo.getEmail());
 		String type="rent";
-		//mail.sendMail(vo,type);
+		mail.sendMail(vo,type);
 		
 		if(result>0){
 			str_result="success";
@@ -88,9 +94,11 @@ public class BookController {
 	}
 	
 	@RequestMapping(value="/book/reserve_ok.do")
-	public @ResponseBody String reserve_ok(@RequestParam(value="book_code" ,required=true)String book_code,
+	public @ResponseBody String reserve_ok(HttpServletRequest request,@RequestParam(value="book_code" ,required=true)String book_code,
 			@RequestParam(value="id" ,required=true)String id) throws AddressException, MessagingException{
-		
+		if(request.getSession().getAttribute("id") == null){
+			return "session_null";
+		}
 		String str_result = "";		
 		int result = bookService.bookReserve(book_code,id);
 		bookService.bookReserveyn(book_code);
@@ -98,7 +106,7 @@ public class BookController {
 		MailVO vo = bookService.mailInfo(book_management_code,id);
 		System.out.println(vo.getEmail());
 		String type="reserve";
-		//mail.sendMail(vo,type);
+		mail.sendMail(vo,type);
 		
 		if(result>0){
 			str_result="success";
@@ -128,7 +136,10 @@ public class BookController {
 	}
 	
 	@RequestMapping(value="/book/recInsert.do")
-	public @ResponseBody String recInsert(BookRecommendVO vo){
+	public @ResponseBody String recInsert(HttpServletRequest request,BookRecommendVO vo){
+		if(request.getSession().getAttribute("id") == null){
+			return "session_null";
+		}
 		String res = "";
 		
 		int result = bookService.insertRec(vo);
@@ -167,4 +178,15 @@ public class BookController {
 		return res;
 	}
 	
+	@RequestMapping(value="/book/wishbook.do")
+	public @ResponseBody String wishBook(WishBookVO vo){	
+		String res="";
+		int result = bookService.addWishBook(vo);
+		if(result>0){
+			res="success";
+		}else{
+			res="fail";
+		}
+		return "success";
+	}
 }

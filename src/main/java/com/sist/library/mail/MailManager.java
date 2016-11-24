@@ -44,6 +44,19 @@ public class MailManager{
 	        		+"예약일 : "+vo.getReserve_date()+"\n"
 	        		+"위 정보로 예약되었습니다."+"\n"
 	        		+"항상 좋은일만 가득하시길 바랍니다.";
+	     }else if(type.equals("findid")){
+	    	 subject=vo.getName()+"님 안녕하세요. 문의하신 ID찾기 결과입니다.";
+	    	 body = "안녕하세요 "+vo.getName()+"님 \n"
+		        		+"저희 SIST Library를 이용해 주셔서 감사합니다. "+"\n"
+		        		+"문의주신 아이디는 '"+vo.getId()+"' 입니다.\n"
+		        		+"항상 좋은일만 가득하시길 바랍니다.";
+	     }else if(type.equals("findpwd")){
+	    	 subject=vo.getName()+"님 안녕하세요. 문의하신 비밀번호 찾기 결과입니다.";
+	    	 body = "안녕하세요 "+vo.getName()+"님 \n"
+		        		+"저희 SIST Library를 이용해 주셔서 감사합니다. "+"\n"
+		        		+"아이디 : "+vo.getId()+" \n"
+		        		+"임시비밀번호 : "+vo.getPwd()+" \n"
+		        		+"항상 좋은일만 가득하시길 바랍니다.";
 	     }
 	      
 	     Properties props = System.getProperties();

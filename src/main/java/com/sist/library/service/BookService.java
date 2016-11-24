@@ -6,6 +6,7 @@ import com.sist.library.dao.BookRecommendVO;
 import com.sist.library.dao.BookVO;
 import com.sist.library.dao.MailVO;
 import com.sist.library.dao.ReserveVO;
+import com.sist.library.dao.WishBookVO;
 
 public interface BookService {
 
@@ -34,5 +35,7 @@ public interface BookService {
 	int bookRecommendModify(BookRecommendVO vo);
 
 	int bookRecommendDelete(String book_code, String book_recommend_code);
+
+	int addWishBook(WishBookVO vo);
 
 }

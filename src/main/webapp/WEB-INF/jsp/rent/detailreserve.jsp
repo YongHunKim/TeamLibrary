@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	<script type="text/javascript">
 	function reserveCancel(book_code){
@@ -20,12 +20,12 @@
 			datatype:"JSON",
 			success : function(data) {				
 				if (data == "success") {
-					showMessage("¿¹¾àÃë¼Ò¿¡ ¼º°øÇß½À´Ï´Ù.");
+					showMessage("ì˜ˆì•½ì·¨ì†Œì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.");
 					setTimeout(function(){
 						location.reload();
 					},1000);
 				} else {
-					showMessage("¿¹¾àÃë¼Ò¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
+					showMessage("ì˜ˆì•½ì·¨ì†Œì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
 				}
 			}
 		});
@@ -34,18 +34,18 @@
 </head>
 <body>
 <center>
-<h3>¿¹¾à ³»¿ª</h3>
+<h3>ì˜ˆì•½ ë‚´ì—­</h3>
 <c:choose>
 	<c:when test="${reserveList.size()>0 }">
-	<div style="text-align:right;"><span>ÃÑ ´ëÃâ ³»¿ª : ${totalRow}</span></div>
+	<div style="text-align:right;"><span>ì´ ëŒ€ì¶œ ë‚´ì—­ : ${totalRow}</span></div>
 		<form>
 		<table class="table">
 			<tr>		
-				<th width="15%">µµ¼­ÄÚµå</th>
-				<th width="30%">µµ¼­¸í</th>
-				<th width="20%">ÀúÀÚ</th>
-				<th width="10%">¿¹¾àÀÏ</th>
-				<th width="15%">Ãë¼Ò</th>
+				<th width="15%">ë„ì„œì½”ë“œ</th>
+				<th width="30%">ë„ì„œëª…</th>
+				<th width="20%">ì €ì</th>
+				<th width="10%">ì˜ˆì•½ì¼</th>
+				<th width="15%">ì·¨ì†Œ</th>
 			</tr>
 			<c:forEach var="i" begin="0" end="${reserveList.size()-1 }">
 			<tr>
@@ -53,7 +53,7 @@
 				<td>${reserveList.get(i).book_name }</td>
 				<td>${reserveList.get(i).book_author }</td>
 				<td><fmt:formatDate value="${reserveList.get(i).reserve_date }" pattern="yyyy-MM-dd" /></td>
-				<td><input type="button" class="btn btn-disabled" value="¿¹¾àÃë¼Ò" onclick="javasciprt:reserveCancel(${reserveList.get(i).book_code})"/>
+				<td><input type="button" class="btn btn-disabled" value="ì˜ˆì•½ì·¨ì†Œ" onclick="javasciprt:reserveCancel(${reserveList.get(i).book_code})"/>
 				</td>
 			</tr>	
 			</c:forEach>	
@@ -71,7 +71,7 @@
 						 	<a href="/rent/rent.do?page=1">
 						 		<img src="/images/begin.gif">
 						 	</a>
-						 	<!-- ±âº»ÀûÀ¸·Î´Â 5ÆäÀÌÁö ´ÜÀ§·Î ÆäÀÌÁö ÀÌµ¿, Ã³À½ ºí·Ï°ú ¸¶Áö¸· ºí·Ï¿¡¼­¸¸ 1ÆäÀÌÁö¾¿ ÀÌµ¿ -->
+						 	<!-- ê¸°ë³¸ì ìœ¼ë¡œëŠ” 5í˜ì´ì§€ ë‹¨ìœ„ë¡œ í˜ì´ì§€ ì´ë™, ì²˜ìŒ ë¸”ë¡ê³¼ ë§ˆì§€ë§‰ ë¸”ë¡ì—ì„œë§Œ 1í˜ì´ì§€ì”© ì´ë™ -->
 							<c:if test="${curPage>block }">
 								<a href="/rent/rent.do?page=${fromPage-1}">
 									<img src="/images/prev.gif">				 		
@@ -118,7 +118,7 @@
 
 	</c:when>
 	<c:otherwise>
-	¿¹¾à³»¿ªÀÌ ¾ø½À´Ï´Ù.
+	ì˜ˆì•½ë‚´ì—­ì´ ì—†ìŠµë‹ˆë‹¤.
 	</c:otherwise>
 </c:choose>
 </center>

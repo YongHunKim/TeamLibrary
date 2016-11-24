@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	<script type="text/javascript">
 	function rentReturn(book_code){
@@ -19,12 +19,12 @@
 			datatype:"JSON",
 			success : function(data) {				
 				if (data == "success") {
-					showMessage("¹İ³³¿¡ ¼º°øÇß½À´Ï´Ù.");
+					showMessage("ë°˜ë‚©ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.");
 					setTimeout(function(){
 						location.reload();
 					},1000);
 				} else {
-					showMessage("¹İ³³¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
+					showMessage("ë°˜ë‚©ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
 				}
 			}
 		});
@@ -42,12 +42,12 @@
 			datatype:"JSON",
 			success : function(data) {				
 				if (data == "success") {
-					showMessage("¿¬±â¿¡ ¼º°øÇß½À´Ï´Ù.");
+					showMessage("ì—°ê¸°ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.");
 					setTimeout(function(){
 						location.reload();
 					},1000);
 				} else {
-					showMessage("¿¬±â¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
+					showMessage("ì—°ê¸°ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
 				}
 			}
 		});
@@ -56,19 +56,19 @@
 </head>
 <body>
 <center>
-<h3>´ëÃâ ³»¿ª</h3>
+<h3>ëŒ€ì¶œ ë‚´ì—­</h3>
 <c:choose>
 	<c:when test="${rentList.size()>0 }">
-	<div style="text-align:right;"><span>ÃÑ ´ëÃâ ³»¿ª : ${totalRow}</span></div>
+	<div style="text-align:right;"><span>ì´ ëŒ€ì¶œ ë‚´ì—­ : ${totalRow}</span></div>
 		<form>
 		<table class="table">
 			<tr>		
-				<th width="15%">µµ¼­ÄÚµå</th>
-				<th width="30%">µµ¼­¸í</th>
-				<th width="20%">ÀúÀÚ</th>
-				<th width="10%">´ëÃâÀÏ</th>
-				<th width="10%">¹İ³³ÀÏ</th>
-				<th width="15%">¹İ³³ ¹× ¿¬±â</th>
+				<th width="15%">ë„ì„œì½”ë“œ</th>
+				<th width="30%">ë„ì„œëª…</th>
+				<th width="20%">ì €ì</th>
+				<th width="10%">ëŒ€ì¶œì¼</th>
+				<th width="10%">ë°˜ë‚©ì¼</th>
+				<th width="15%">ë°˜ë‚© ë° ì—°ê¸°</th>
 			</tr>
 			<c:forEach var="i" begin="0" end="${rentList.size()-1 }">
 			<tr>
@@ -80,8 +80,8 @@
 				<td>${rentList.get(i).book_author }</td>
 				<td><fmt:formatDate value="${rentList.get(i).rent_date }" pattern="yyyy-MM-dd" /></td>
 				<td><fmt:formatDate value="${rentList.get(i).return_date }" pattern="yyyy-MM-dd" /></td>
-				<td><input type="button" class="btn btn-disabled" value="¹İ³³" onclick="javasciprt:rentReturn(${rentList.get(i).book_code})"/>
-				<input type="button" class="btn btn-disabled" value="¿¬±â" id="rentDelayBtn" onclick="javasciprt:rentDelay(${rentList.get(i).book_code},${i})"/></td>
+				<td><input type="button" class="btn btn-disabled" value="ë°˜ë‚©" onclick="javasciprt:rentReturn(${rentList.get(i).book_code})"/>
+				<input type="button" class="btn btn-disabled" value="ì—°ê¸°" id="rentDelayBtn" onclick="javasciprt:rentDelay(${rentList.get(i).book_code},${i})"/></td>
 			</tr>	
 			</c:forEach>	
 		</table>
@@ -98,7 +98,7 @@
 						 	<a href="/rent/rent.do?page=1">
 						 		<img src="/images/begin.gif">
 						 	</a>
-						 	<!-- ±âº»ÀûÀ¸·Î´Â 5ÆäÀÌÁö ´ÜÀ§·Î ÆäÀÌÁö ÀÌµ¿, Ã³À½ ºí·Ï°ú ¸¶Áö¸· ºí·Ï¿¡¼­¸¸ 1ÆäÀÌÁö¾¿ ÀÌµ¿ -->
+						 	<!-- ê¸°ë³¸ì ìœ¼ë¡œëŠ” 5í˜ì´ì§€ ë‹¨ìœ„ë¡œ í˜ì´ì§€ ì´ë™, ì²˜ìŒ ë¸”ë¡ê³¼ ë§ˆì§€ë§‰ ë¸”ë¡ì—ì„œë§Œ 1í˜ì´ì§€ì”© ì´ë™ -->
 							<c:if test="${curPage>block }">
 								<a href="/rent/rent.do?page=${fromPage-1}">
 									<img src="/images/prev.gif">				 		
@@ -145,7 +145,7 @@
 
 	</c:when>
 	<c:otherwise>
-	´ëÃâ³»¿ªÀÌ ¾ø½À´Ï´Ù.
+	ëŒ€ì¶œë‚´ì—­ì´ ì—†ìŠµë‹ˆë‹¤.
 	</c:otherwise>
 </c:choose>
 </center>

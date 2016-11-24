@@ -76,4 +76,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE FROM book_recommend
 		WHERE book_code=#{book_code} AND book_recommend_code=#{book_recommend_code}
 	</delete>
+	
+	<insert id="addWishBook" parameterType="wishbookvo">
+		<![CDATA[
+		INSERT INTO wishbook(wish_book_num,id,wish_book_name,wish_book_author,wish_book_publish,wish_book_category)
+		VALUES((SELECT NVL(MAX(wish_book_num)+1,1) FROM wishbook),#{id},#{wish_book_name},#{wish_book_author},#{wish_book_publish},#{wish_book_category})
+		]]>	
+	</insert>
 </mapper>
