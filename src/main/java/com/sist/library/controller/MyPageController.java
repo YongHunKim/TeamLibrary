@@ -30,6 +30,7 @@ public class MyPageController {
 
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
 		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
+		mav.addObject("test", "/WEB-INF/jsp/mypage/mybook.jsp");
 		
 		return mav;
 	}
@@ -40,7 +41,7 @@ public class MyPageController {
 		
 		mav.addObject("jsp", "/WEB-INF/jsp/mypage/mypage.jsp");
 		mav.addObject("menu", "/WEB-INF/jsp/mypage/mypage_menu.jsp");
-		mav.addObject("test", "/WEB-INF/jsp/mypage/mybook.jsp");
+		
 		
 		return mav;
 	}

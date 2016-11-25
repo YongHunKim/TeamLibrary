@@ -66,7 +66,7 @@ public class MyPageDAO extends AbstractDAO{
 
 	public List<BookRecommendVO> rec_select(int curPage, String id){
 		Map map = new HashMap<>();
-		int pageRow = 10;
+		int pageRow = 5;
 		int start = (curPage * pageRow) - (pageRow - 1);
 		int end = start + (pageRow - 1);
 		map.put("start", start);
@@ -92,7 +92,7 @@ public class MyPageDAO extends AbstractDAO{
 	
 	public List<WishListVO> wishlist(int curPage, String id){
 		Map map = new HashMap<>();
-		int pageRow = 10;
+		int pageRow = 5;
 		int start = (curPage * pageRow) - (pageRow - 1);
 		int end = start + (pageRow - 1);
 		map.put("start", start);

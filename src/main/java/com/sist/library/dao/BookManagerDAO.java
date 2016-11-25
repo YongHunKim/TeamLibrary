@@ -9,7 +9,7 @@ public class BookManagerDAO extends AbstractDAO {
 		
 	public List<BookManagerVO> rental_history(int curPage, String id){
 		Map map = new HashMap<>();
-		int pageRow = 10;
+		int pageRow = 5;
 		int start = (curPage * pageRow)-(pageRow-1);
 		int end = start+(pageRow-1);
 		map.put("start", start);
@@ -28,7 +28,7 @@ public class BookManagerDAO extends AbstractDAO {
 	
 	public List<BookManagerVO> reservation_history(int curPage, String id){
 		Map map = new HashMap<>();
-		int pageRow = 10;
+		int pageRow = 5;
 		int start = (curPage * pageRow)-(pageRow-1);
 		int end = start + (pageRow-1);
 		map.put("start", start);
