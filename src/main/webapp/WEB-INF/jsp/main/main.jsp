@@ -16,6 +16,16 @@
 			},1000);
 		}
 		
+	}	
+	
+	function closeSitemap(){
+		$('#modal-sitemap-content').removeClass("active");
+		$('#modal-sitemap-content').attr("style","display:none;")
+	}
+		
+	function sitemap(){
+		$('#modal-sitemap-content').addClass("active");
+		$('#modal-sitemap-content').attr("style","display:block;")
 	}
 	
 	</script>
@@ -93,7 +103,80 @@
 				<div id="modal-message-text"> </div>
 			</div>
 			</div>
-									
+			<div id="modal-sitemap-content" style="display:none;"><div id="sitemap-wrapper">
+	<div id="sitemap-header" class="clearfix">
+		<span style="margin-top: 12px; margin-left: 8px;" class="pull-left icon-modal-head"> </span>
+		<span style="margin-top: -6px; margin-left: 12px;" class="pull-left"><h1>사이트맵</h1></span>
+		<div class="modal-close" onclick="closeSitemap();" style="right:13px;top:3px;">×</div>
+	</div>
+	<div id="sitemap-content">
+		<table>
+			<tbody>
+			<tr>
+				<td class="sitemap-content-head" style="cursor: pointer;" onclick="location.href='/'">자료 신청 및 예약</td>
+				<td class="sitemap-content-head ajax-link" data-url="news/notice">자료검색</td>
+				<td class="sitemap-content-head ajax-link" data-url="search/search_topic">참여마당</td>
+				<td class="sitemap-content-head ajax-link" data-url="gallery/index">이용안내</td>
+				<td class="sitemap-content-head ajax-link" data-url="support/faq" style="border-right: none;">마이페이지</td>
+			</tr>
+			<tr>
+				<td class="sitemap-content-list">
+						<div class="sitemap-content-item">
+							<a href="/rent/rent.do"><span>대출연기 및 반납</span></a><br>
+						</div>
+						<div class="sitemap-content-item">
+							<a href="/rent/reserve.do"><span>예약취소</span></a><br>
+						</div>
+						<div class="sitemap-content-item">
+							<a href="/rent/wishbook.do"><span>희망도서 신청</span></a><br>
+						</div>											
+				</td>
+				<td class="sitemap-content-list">
+						<div class="sitemap-content-item">
+							<a href="/search/search.do"><span>자료검색</span></a><br>
+						</div>
+						<div class="sitemap-content-item">
+							<a href="/search/newbook.do"><span>신간도서</span></a><br>
+						</div>
+						<div class="sitemap-content-item">
+							<a href="/search/popularbook.do"><span>인기도서</span></a><br>
+						</div>				
+				</td>
+				<td class="sitemap-content-list">
+						<div class="sitemap-content-item">
+							<a href="/notice/list.do"><span>공지사항</span></a><br>
+						</div>
+						<div class="sitemap-content-item">
+							<a href="/lostBoard/list.do"><span>분실물게시판</span></a><br>
+						</div>									
+				</td>
+				<td class="sitemap-content-list">
+						<div class="sitemap-content-item">
+							<a href="/userguide/library_map.do"><span>오시는 길</span></a><br>
+						</div>
+						<div class="sitemap-content-item">
+							<a href="/userguide/library_time.do"><span>도서관 이용안내</span></a><br>
+						</div>
+				</td>
+				<td class="sitemap-content-list">
+						<div class="sitemap-content-item">
+							<a href="/mypage/mybook.do?id=<%=session.getAttribute("id")%>"><span>나의 관심도서</span></a><br>
+						</div>
+						<div class="sitemap-content-item">
+							<a href="/mypage/rental_guide.do?id=<%=session.getAttribute("id")%>"><span>대출내역</span></a><br>
+						</div>
+						<div class="sitemap-content-item">
+							<a href="/mypage/reserve_guide.do?id=<%=session.getAttribute("id")%>"><span>예약내역</span></a><br>
+						</div>
+						<div class="sitemap-content-item">
+							<a href="/mypage/rec_select.do?id=<%=session.getAttribute("id")%>"><span>한줄평 모음</span></a><br>
+						</div>				
+				</td>				
+			</tr>			
+		</tbody></table>
+	</div>
+</div>
+</div>						
 			<div class="footer" style="margin-top: 20px;">
 				<p>
 					SIST <a href="http://www.sist.co.kr">쌍용교육센터</a><br/>

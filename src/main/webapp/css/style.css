@@ -387,6 +387,15 @@ font-size:14px;font-weight:700;color:#fff;line-height:60px;text-align:center;tex
 	top: 0px;
 	position: relative;
 }
+#modal-sitemap-content { width: 800px; height: 576px; display: none; z-index: 500; position: fixed; top: 50%; left: -400px; outline: none; margin: 0 50%; margin-top: -288px; }
 #quickMenu ul {background:url("/images_new/jdlib/bg_quickM.gif") repeat-y 0 0;}
 #quickMenu ul li {background:url("/images_new/jdlib/bg_quickl.gif") no-repeat center 0;}
+#sitemap-wrapper { width: 800px; height: 576px; padding: 15px; background-color: #ffffff; }
+#sitemap-header { width: 770px; height: 100px; background-color: #383d40; color: #ffffff; padding: 15px; margin-bottom: 15px;}
+td.sitemap-content-head { background-color: #212121; text-align: center; color: #ffffff; width: 154px; height: 30px; border-right: 10px solid #ffffff; }
+td.sitemap-content-list { vertical-align: top; width: 154px; height: 30px; border-right: 10px solid #ffffff; padding: 12px 0;}
+div.sitemap-content-item { margin: 5px 0; font-weight: bold; height: 20px; }
+.icon-circle.icon-sitemap  { background-position: 0px -60px; }
+.icon-circle.icon-sitemap:hover  { background-position: -30px -60px; }
+#modal-sitemap-wrapper { width: 800px; height: 576px; display: none; z-index: 500; position: fixed; top: 50%; left: -400px; outline: none; margin: 0 50%; margin-top: -288px; }
 
