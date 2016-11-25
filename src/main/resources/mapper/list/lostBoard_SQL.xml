@@ -17,7 +17,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT lb_no,id,lb_subject,lb_content,lb_hit,lb_root,lb_depth,
 		lb_regdate, lb_group_id,lb_group_step,lb_group_tab FROM lostboard 
 		order by lb_no desc
-	]]>
 	 
 	</select>
 	

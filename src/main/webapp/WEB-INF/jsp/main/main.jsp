@@ -9,7 +9,7 @@
 	<%@ include file="/WEB-INF/include/include-header.jspf" %>
 	<script>
 	window.onload = function(){
-		if(${sessionnull == '로그인 후 이용가능합니다.'}){
+		if(${session_null == '로그인 후 이용가능합니다.'}){
 			showMessage('로그인 후 이용해주세요.',1000);
 			setTimeout(function(){
 				location.href="/login/login.do";
@@ -67,11 +67,6 @@
 						<ul>
 							<li><a href="/userguide/library_map.do">오시는길</a></li>
 							<li><a href="/userguide/library_time.do">도서관 이용시간</a></li>
-						</ul>
-					</li>
-					<li><a href="/sitemap/sitempa.do">사이트맵</a>
-						<ul>
-							<li><a href="/sitemap/sitemap.do">사이트맵</a></li>
 						</ul>
 					</li>
 					<c:set var="sessionid">
