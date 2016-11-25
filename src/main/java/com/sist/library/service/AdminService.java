@@ -10,9 +10,9 @@ public interface AdminService {
 	public void book_plus(BookVO vo) throws Exception;
 
 	public void book_delete(long book_code) throws Exception;
-	
+
 	public BookVO book_update(long book_code) throws Exception;
-	
+
 	public void book_update_ok(BookVO vo) throws Exception;
 	
 	public int wishTotalPage();
@@ -20,5 +20,5 @@ public interface AdminService {
 	public int wishTotalRow();
 	
 	public List<WishBookVO> wishBookList(Map map);
-	
+
 }

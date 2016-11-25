@@ -16,7 +16,6 @@ public class BookVO {
 	private Date book_storage_date;
 	private String book_category;
 	private String book_update_date;
-	
 
 	public String getBook_update_date() {
 		return book_update_date;

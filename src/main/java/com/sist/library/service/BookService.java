@@ -36,7 +36,7 @@ public interface BookService {
 	int bookRecommendModify(BookRecommendVO vo);
 
 	int bookRecommendDelete(String book_code, String book_recommend_code);
-	
+
 	int wishInsert(WishListVO vo);
 
 	int addWishBook(WishBookVO vo);

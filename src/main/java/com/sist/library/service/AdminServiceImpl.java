@@ -3,7 +3,6 @@ package com.sist.library.service;
 
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -12,11 +11,10 @@ import com.sist.library.dao.AdminDAO;
 import com.sist.library.dao.BookVO;
 import com.sist.library.dao.WishBookVO;
 
-
 @Service("AdminService")
 public class AdminServiceImpl implements AdminService {
-	
-	@Resource(name="AdminDAO")
+
+	@Resource(name = "AdminDAO")
 	private AdminDAO AdminDAO;
 
 	@Override
@@ -27,7 +25,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void book_delete(long book_code) throws Exception {
 		AdminDAO.book_delete(book_code);
-		
+
 	}
 
 	@Override
@@ -57,6 +55,5 @@ public class AdminServiceImpl implements AdminService {
 	
 	
 
-	
 
 }

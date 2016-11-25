@@ -10,13 +10,13 @@ import com.sist.library.dao.BookManagerDAO;
 import com.sist.library.dao.BookManagerVO;
 
 @Service("rentalService")
-public class RentalServiceImpl implements RentalService{
+public class RentalServiceImpl implements RentalService {
 
-	@Resource(name="bookmanagerDAO")
+	@Resource(name = "bookmanagerDAO")
 	private BookManagerDAO bookmanagerDAO;
 
 	@Override
-	public List<BookManagerVO> rental_history(int page, String id){
+	public List<BookManagerVO> rental_history(int page, String id) {
 		return bookmanagerDAO.rental_history(page, id);
 	}
 
@@ -33,10 +33,9 @@ public class RentalServiceImpl implements RentalService{
 	}
 
 	@Override
-	public List<BookManagerVO> reservation_history(int page, String id){
+	public List<BookManagerVO> reservation_history(int page, String id) {
 		return bookmanagerDAO.reservation_history(page, id);
 	}
-
 
 	@Override
 	public int reservePage(String id) {

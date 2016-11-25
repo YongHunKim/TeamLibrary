@@ -28,8 +28,8 @@ import com.sist.library.service.BookService;
 @Controller
 public class BookController {
 	Logger log = Logger.getLogger(this.getClass());
-	
-	@Resource(name="bookService")
+
+	@Resource(name = "bookService")
 	private BookService bookService;
 
 	@Autowired
@@ -56,15 +56,16 @@ public class BookController {
 		mav.addObject("jsp", "/WEB-INF/jsp/book/rent.jsp");
 		return mav;
 	}
-	
-	@RequestMapping(value="/book/rent_ok.do")
-	public @ResponseBody String rent_ok(HttpServletRequest request,@RequestParam(value="book_code" ,required=true)String book_code,
-			@RequestParam(value="id" ,required=true)String id) throws AddressException, MessagingException{
-		if(request.getSession().getAttribute("id") == null){
+
+	@RequestMapping(value = "/book/rent_ok.do")
+	public @ResponseBody String rent_ok(HttpServletRequest request,
+			@RequestParam(value = "book_code", required = true) String book_code,
+			@RequestParam(value = "id", required = true) String id) throws AddressException, MessagingException {
+		if (request.getSession().getAttribute("id") == null) {
 			return "session_null";
 		}
-		String str_result="";		
-		int result = bookService.bookRent(book_code,id);
+		String str_result = "";
+		int result = bookService.bookRent(book_code, id);
 		bookService.bookRentyn(book_code);
 		int book_management_code = bookService.getBookManagementCode(book_code, id);
 		MailVO vo = bookService.mailInfo(book_management_code, id);
@@ -91,15 +92,16 @@ public class BookController {
 		mav.addObject("jsp", "/WEB-INF/jsp/book/reserve.jsp");
 		return mav;
 	}
-	
-	@RequestMapping(value="/book/reserve_ok.do")
-	public @ResponseBody String reserve_ok(HttpServletRequest request,@RequestParam(value="book_code" ,required=true)String book_code,
-			@RequestParam(value="id" ,required=true)String id) throws AddressException, MessagingException{
-		if(request.getSession().getAttribute("id") == null){
+
+	@RequestMapping(value = "/book/reserve_ok.do")
+	public @ResponseBody String reserve_ok(HttpServletRequest request,
+			@RequestParam(value = "book_code", required = true) String book_code,
+			@RequestParam(value = "id", required = true) String id) throws AddressException, MessagingException {
+		if (request.getSession().getAttribute("id") == null) {
 			return "session_null";
 		}
-		String str_result = "";		
-		int result = bookService.bookReserve(book_code,id);
+		String str_result = "";
+		int result = bookService.bookReserve(book_code, id);
 		bookService.bookReserveyn(book_code);
 		int book_management_code = bookService.getBookManagementCode(book_code, id);
 		MailVO vo = bookService.mailInfo(book_management_code, id);
@@ -133,10 +135,10 @@ public class BookController {
 		mav.addObject("jsp", "/WEB-INF/jsp/book/book_detail.jsp");
 		return mav;
 	}
-	
-	@RequestMapping(value="/book/recInsert.do")
-	public @ResponseBody String recInsert(HttpServletRequest request,BookRecommendVO vo){
-		if(request.getSession().getAttribute("id") == null){
+
+	@RequestMapping(value = "/book/recInsert.do")
+	public @ResponseBody String recInsert(HttpServletRequest request, BookRecommendVO vo) {
+		if (request.getSession().getAttribute("id") == null) {
 			return "session_null";
 		}
 		String res = "";
@@ -176,15 +178,15 @@ public class BookController {
 		}
 		return res;
 	}
-	
-	@RequestMapping(value="/book/wishbook.do")
-	public @ResponseBody String wishBook(WishBookVO vo){	
-		String res="";
+
+	@RequestMapping(value = "/book/wishbook.do")
+	public @ResponseBody String wishBook(WishBookVO vo) {
+		String res = "";
 		int result = bookService.addWishBook(vo);
-		if(result>0){
-			res="success";
-		}else{
-			res="fail";
+		if (result > 0) {
+			res = "success";
+		} else {
+			res = "fail";
 		}
 		return "success";
 	}
@@ -196,13 +198,13 @@ public class BookController {
 	 */
 
 	@RequestMapping(value = "/wish/wish_add.do")
-	public @ResponseBody String wish_add(@RequestParam(value = "id", required = true)String id,
-			@RequestParam(value = "book_code", required = true)String book_code, WishListVO vo) {
+	public @ResponseBody String wish_add(@RequestParam(value = "id", required = true) String id,
+			@RequestParam(value = "book_code", required = true) String book_code, WishListVO vo) {
 		String res = "";
 		int wishCount = bookService.wishCheck(id, book_code);
-		if(wishCount > 0){
-			res= "fail";
-		}else{
+		if (wishCount > 0) {
+			res = "fail";
+		} else {
 			int result = bookService.wishInsert(vo);
 
 			if (result > 0) {
@@ -212,7 +214,7 @@ public class BookController {
 			}
 
 		}
-		
+
 		return res;
 	}
 

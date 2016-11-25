@@ -8,15 +8,15 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserguideController {
 
 	@RequestMapping(value = "/userguide/guide.do")
-	public ModelAndView guide(){
+	public ModelAndView guide() {
 		ModelAndView mav = new ModelAndView("main/main");
-		
+
 		mav.addObject("jsp", "/WEB-INF/jsp/userguide/guide.jsp");
 		mav.addObject("jsp", "/WEB-INF/jsp/userguide/library_map.jsp");
-		
+
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/userguide/library_map.do")
 	public ModelAndView library_map() {
 		ModelAndView mav = new ModelAndView("main/main");

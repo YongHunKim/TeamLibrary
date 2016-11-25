@@ -12,7 +12,7 @@
 	<p style="font-size: 2.2em">대출내역</p>
 	<c:choose>
 		<c:when test="${rental.size() > 0 }">
-			<table border="1" class="table" style="margin-top: 30px;">
+			<table border="1" class="table" style="margin-top: 30px; vertical-align: middle;">
 				<tr>
 					<th colspan="6" style="text-align: center;">대출내역</th>
 				</tr>
