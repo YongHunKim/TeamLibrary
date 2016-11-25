@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page session="true"%>
-<%
-	String session_id = session.getAttribute("id")==null ? "xxx" : (String)session.getAttribute("id");
-%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 	<%@ include file="/WEB-INF/include/include-header.jspf" %>
 	<script>
 	window.onload = function(){
-		if(${session_null == '로그인 후 이용가능합니다.'}){
+		if(${sessionnull == '로그인 후 이용가능합니다.'}){
 			showMessage('로그인 후 이용해주세요.',1000);
 			setTimeout(function(){
 				location.href="/login/login.do";
