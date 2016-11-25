@@ -29,7 +29,7 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	@RequestMapping(value = "/notice/list.do")
-	public ModelAndView notice_list(String page, String fs, String sk, HttpServletRequest request) throws Exception {
+	public ModelAndView notice_list(@RequestParam(value="page" ,required=false) String page, String fs, String sk, HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("main/main");
 		mav.addObject("type","list");
 		mav.addObject("jsp", "/WEB-INF/jsp/notice/list.jsp");
@@ -115,11 +115,12 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "/notice/content.do")
-	public ModelAndView notice_content(@RequestParam(value="nt_no") String nt_no) throws Exception {
+	public ModelAndView notice_content(@RequestParam(value="nt_no") String nt_no,@RequestParam(value="page") String page) throws Exception {
 		ModelAndView mav = new ModelAndView("main/main");	
 		NoticeVO vo = noticeService.getNoticecontent(Integer.parseInt(nt_no));
 		int content_no=Integer.parseInt(nt_no);
 		noticeService.update_hit(content_no);	
+		mav.addObject("curpage",page);
 		mav.addObject("vo", vo);
 		mav.addObject("jsp", "/WEB-INF/jsp/notice/content.jsp");
 		
@@ -137,9 +138,10 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "/notice/update.do")
-	public ModelAndView notice_update(@RequestParam(value="nt_no") String nt_no)throws Exception{
+	public ModelAndView notice_update(@RequestParam(value="nt_no") String nt_no,@RequestParam(value="page") String page)throws Exception{
 		ModelAndView mav=new ModelAndView("main/main");
 		NoticeVO vo = noticeService.updateNotice(Integer.parseInt(nt_no));
+		mav.addObject("curpage",page);
 		mav.addObject("vo",vo);
 		mav.addObject("jsp", "/WEB-INF/jsp/notice/update.jsp");
 		
@@ -149,11 +151,12 @@ public class NoticeController {
 	
 	
 	@RequestMapping(value = "/notice/update_ok.do")
-	public ModelAndView notice_update_ok(NoticeVO vo)throws Exception{
+	public ModelAndView notice_update_ok(NoticeVO vo,@RequestParam(value="page") String page)throws Exception{
 		ModelAndView mav=new ModelAndView("main/main");
 		noticeService.update_ok_Notice(vo);
 		System.out.println(vo.getNt_subject());
 		mav.addObject("vo",vo);
+		mav.addObject("curpage",page);
 		mav.addObject("jsp", "/WEB-INF/jsp/notice/update_ok.jsp");
 		
 		return mav;

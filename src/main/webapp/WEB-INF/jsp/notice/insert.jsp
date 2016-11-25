@@ -11,21 +11,21 @@
 $(function(){
 	$('#insert_submit_btn').click(function(){
 		var name=$('#name').val();
-		if(name.trim()=="")
+		if(name=="")
 		{
-			$('#name').focus();
-			$('#name').val("");
+			$('#id').focus();
+			$('#id').val("");
 			return;
 		}
 		var subject=$('#nt_subject').val();
-		if(subject.trim()=="")
+		if(subject=="")
 		{
 			$('#nt_subject').focus();
 			$('#nt_subject').val("");
 			return;
 		}
 		var content=$('#nt_content').val();
-		if(content.trim()=="")
+		if(content=="")
 		{
 			$('#nt_content').focus();
 			$('#nt_content').val("");
@@ -46,9 +46,9 @@ $(function(){
 	<table width="700" id="table_content" >
 				<tr>
 					<th style="line-height: 1.2;" >¿Ã∏ß<span class="essential"></span></th>
-					<td class="1Line"><input type="text" name="name" id="name"
-						class="form-controll" size="75" maxlength="30" value="">
-					<input type="hidden" name="id" id="id" value="<%=session.getAttribute("id") %>"> 
+					<td class="1Line">
+					<input type="hidden" name="id" id="id" value="<%=session.getAttribute("id")%>">
+					<%=session.getAttribute("id")%>
 					</td>
 				</tr>
 				

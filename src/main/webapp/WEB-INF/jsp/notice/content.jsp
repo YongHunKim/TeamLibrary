@@ -31,12 +31,12 @@
 			
 	
 			<th width="21%">제목</th>
-			<td width="47%" align="left" colspan="3" valign="top">${vo.nt_subject} </td>
+			<td width="47%" style="text-align: left;" colspan="3" valign="top">${vo.nt_subject} </td>
 			</tr> 
 			
 		
 			<th width="21%">내용</th>
-			<td align="left" colspan="4" height="250" valign="top">${vo.nt_content} </td>
+			<td style="text-align: left;" colspan="4" height="250" valign="top">${vo.nt_content} </td>
 			</tr>
 			
 			
@@ -61,9 +61,9 @@
 			<table id="under_btn" width="700">
 			<tr>
 				 <td align="right"> 
-					<a href="/notice/update.do?nt_no=${vo.nt_no }"><button type="button" class="btn btn-success">수정</button></a>&nbsp;
+					<a href="/notice/update.do?nt_no=${vo.nt_no }&page=${curpage}"><button type="button" class="btn btn-success">수정</button></a>&nbsp;
 					<a href="/notice/delete.do?nt_no=${vo.nt_no }"><button type="button" class="btn btn-success">삭제</button></a>&nbsp;
-					<a href="list.do"><button type="submit" class="btn btn-success">목록</button></a>&nbsp;
+					<a href="/notice/list.do?page=${curpage}"><button type="submit" class="btn btn-success">목록</button></a>&nbsp;
 				</td>
 			</tr> 
 		</table> 

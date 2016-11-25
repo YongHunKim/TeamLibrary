@@ -49,6 +49,7 @@ $(function(){
 					<td class="1Line"><%-- <input type="text" name="name" id="name"
 						class="form-controll" size="45" maxlength="10" value=" --%><%=session.getAttribute("id") %>
 <%-- 					<input type="hidden" name="id" id="id" value="<%=session.getAttribute("id") %>"> --%>
+						<input type="hidden" name="page" value="${curpage}"/>
 					</td>
 				</tr>	
 	
@@ -82,6 +83,7 @@ $(function(){
 				<table id="table_content" width="560" class="fileView">
 				</table> -->
 			 
+			
 			
 		<td colspan="2" align="center">
 		<input type="button" value="ÀÛ¼º" class="btn btn-primary" id="insert_submit_btn" />&nbsp;&nbsp;
