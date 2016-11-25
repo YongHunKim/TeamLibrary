@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sist.library.dao.BookVO;
+import com.sist.library.dao.WishBookVO;
 import com.sist.library.dao.lostBoardVO;
 import com.sist.library.service.AdminService;
 import com.sist.library.service.SearchService;
@@ -119,5 +120,37 @@ public class AdminController {
     	
     	return mv;
     }
+	
+	@RequestMapping(value="/admin/wishbooklist.do")
+	public ModelAndView wishBookList(@RequestParam(value="page" ,required=false)String page){
+		
+		page = (page==null)?"1":page;
+		int curPage = Integer.parseInt(page);		
+		int totalPage = AdminService.wishTotalPage();
+		int totalRow = AdminService.wishTotalRow();
+		int block=5;
+		int fromPage=((curPage-1)/block*block)+1;
+		int toPage=((curPage-1)/block*block)+block;
+		if(toPage>totalPage)toPage=totalPage;
+		int pageRow = 5;
+		int start = (curPage*pageRow)-(pageRow-1);
+		int end = start+(pageRow-1);
+		
+		Map map = new HashMap<>();
+		map.put("start", start);
+		map.put("end",end);
+		ModelAndView mav = new ModelAndView("main/main");
+		List<WishBookVO> wishList = AdminService.wishBookList(map);
+		mav.addObject("wishList",wishList);	
+		mav.addObject("totalPage",totalPage);
+		mav.addObject("totalRow",totalRow);
+		mav.addObject("fromPage",fromPage);
+		mav.addObject("toPage",toPage);
+		mav.addObject("block",block);
+		mav.addObject("curPage",curPage);
+		
+		mav.addObject("jsp", "/WEB-INF/jsp/admin/wishbook.jsp");
+		return mav;		
+	}
 	
 }

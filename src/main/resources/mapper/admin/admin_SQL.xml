@@ -40,4 +40,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    		WHERE book_code=#{book_code}
 		]]>
 	</update>
+	
+	<select id="wishTotalPage" resultType="int">
+		SELECT CEIL(count(*)/5) FROM wishbook
+	</select>
+	
+	<select id="wishTotalRow" resultType="int">
+		SELECT count(*) FROM wishbook
+	</select>
+	
+	<select id="wishBookList" parameterType="hashmap" resultType="wishbookvo">
+		SELECT wish_book_num,id,wish_book_name,wish_book_author,wish_book_publish,wish_book_category
+		FROM (SELECT wish_book_num,id,wish_book_name,wish_book_author,wish_book_publish,wish_book_category,rownum as num
+		FROM (SELECT wish_book_num,id,wish_book_name,wish_book_author,wish_book_publish,wish_book_category 
+		FROM wishbook order by wish_book_num desc))
+		WHERE num between #{start} and #{end}
+	</select>
+	
 </mapper>

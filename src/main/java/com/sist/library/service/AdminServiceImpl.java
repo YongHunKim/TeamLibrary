@@ -1,12 +1,16 @@
 package com.sist.library.service;
 
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.sist.library.dao.AdminDAO;
 import com.sist.library.dao.BookVO;
+import com.sist.library.dao.WishBookVO;
 
 
 @Service("AdminService")
@@ -35,6 +39,23 @@ public class AdminServiceImpl implements AdminService {
 	public void book_update_ok(BookVO vo) throws Exception {
 		AdminDAO.book_update_ok(vo);
 	}
+
+	@Override
+	public int wishTotalPage() {
+		return AdminDAO.wishTotalPage();
+	}
+
+	@Override
+	public int wishTotalRow() {
+		return AdminDAO.wishTotalRow();
+	}
+
+	@Override
+	public List<WishBookVO> wishBookList(Map map) {
+		return AdminDAO.wishBookList(map);
+	}
+	
+	
 
 	
 

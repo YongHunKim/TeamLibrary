@@ -1,5 +1,8 @@
 package com.sist.library.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 @Repository("AdminDAO")
@@ -19,6 +22,18 @@ public class AdminDAO extends AbstractDAO{
 
 	public void book_update_ok(BookVO vo) {
 		update("admin.book_update_ok", vo);	
+	}
+
+	public int wishTotalPage() {
+		return (int) selectOne("admin.wishTotalPage");
+	}
+
+	public int wishTotalRow() {
+		return (int) selectOne("admin.wishTotalRow");
+	}
+
+	public List<WishBookVO> wishBookList(Map map) {
+		return selectList("admin.wishBookList", map);
 	}
 
 }

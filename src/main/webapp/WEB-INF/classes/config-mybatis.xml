@@ -4,7 +4,6 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
     
 <configuration>
-
     <typeAliases>
         <typeAlias type="com.sist.library.dao.MemberVO" alias="membervo" />
         <typeAlias type="com.sist.library.dao.BookVO" alias="bookvo"/>
@@ -17,5 +16,4 @@
         <typeAlias type="com.sist.library.dao.WishBookVO" alias="wishbookvo" />
         <typeAlias type="com.sist.library.dao.WishListVO" alias="wishlistvo" />
     </typeAliases>
-    
 </configuration> 

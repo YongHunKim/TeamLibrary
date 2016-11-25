@@ -24,9 +24,9 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value='/css/nivo-slider.css'/>">
 	<link rel="stylesheet" type="text/css" href="<c:url value='/css/search.css'/>">
 	<script src="//code.jquery.com/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>	
-	<script type="text/javascript" src="<c:url value='/js/jquery.nivo.slider.pack.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/js/common.js'/>"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>		
+	<script type="text/javascript" src="/js/jquery.nivo.slider.pack.js"></script>
+	<script type="text/javascript" src="/js/common.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script type="text/javascript">
 		$(window).load(function() {
