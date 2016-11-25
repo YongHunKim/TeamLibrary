@@ -1,5 +1,6 @@
 package com.sist.library.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -58,7 +59,6 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public int pageCount() {
-		// TODO Auto-generated method stub
 		return noticeDAO.pageCount();
 	}
 
@@ -67,4 +67,29 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDAO.totalRow();
 	}
 
+	@Override
+	public void update_hit(int content_no) {
+		noticeDAO.update_hit(content_no);
+	}
+
+	@Override
+	public List<NoticeVO> topNotice() throws Exception {
+		return noticeDAO.topNotice();
+	}
+
+	@Override
+	public List<NoticeVO> search(Map map) throws Exception {
+		return noticeDAO.search(map);
+
+	}
+
+	@Override
+	public int searchtotalRow(Map map) {
+		return noticeDAO.searchtotalRow(map);
+	}
+
+	@Override
+	public int searchCount(Map map) {
+		return noticeDAO.searchCount(map);
+	}
 }

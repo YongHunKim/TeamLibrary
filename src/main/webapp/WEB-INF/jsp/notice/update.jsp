@@ -10,13 +10,13 @@
 <script type="text/javascript">
 $(function(){
 	$('#insert_submit_btn').click(function(){
-		var name=$('#name').val();
+/* 		var name=$('#name').val();
 		if(name.trim()=="")
 		{
 			$('#name').focus();
 			$('#name').val("");
 			return;
-		}
+		} */
 		var subject=$('#nt_subject').val();
 		if(subject.trim()=="")
 		{
@@ -42,15 +42,14 @@ $(function(){
 <body>
 	<center>
 	<h3>글쓰기</h3>
-	<form:form method="post" action="insert_ok.do" id="frm" name="frm" >
+	<form:form method="post" action="update_ok.do" id="frm" name="frm" >
 	<table width="700" id="table_content" >
-		<tr>
+				<tr>
 					<th style="line-height: 1.2;" >이름<span class="essential"></span></th>
-					<td class="1Line"><input type="text" name="name" id="name"
-						class="form-controll" size="45" maxlength="10" value="${vo.id }">
+					<td class="1Line"><%-- <input type="text" name="name" id="name"
+						class="form-controll" size="45" maxlength="10" value=" --%><%=session.getAttribute("id") %>
 <%-- 					<input type="hidden" name="id" id="id" value="<%=session.getAttribute("id") %>"> --%>
-
-					<input type="hidden" name="nt_no" value="${vo.nt_no }">
+						<input type="hidden" name="page" value="${curpage}"/>
 					</td>
 				</tr>	
 	
@@ -59,6 +58,7 @@ $(function(){
 					<td class="1Line"><input type="text" name="nt_subject" id="nt_subject"
 						class="form-controll" size="45" maxlength="10" value="${vo.nt_subject }">
 <%-- 					<input type="hidden" name="nt_subject" id="nt_subject" value="<%=session.getAttribute("nt_subject") %>"> --%>
+					<input type="hidden" name="nt_no" value="${vo.nt_no }">
 					</td>
 				</tr>
 	
@@ -70,8 +70,21 @@ $(function(){
 					</td>
 					
 				</tr>
-
-
+				
+			 	<!-- 
+				<tr>
+				<th style="line-height: 1.2;" >첨부파일<span class="essential"></span></th>
+					<td class="1Line">
+						<input type="button" value="추가"  id="addBtn">
+						<input type="button" value="취소"  id="removeBtn">
+					</td>
+				</tr>
+				
+				<table id="table_content" width="560" class="fileView">
+				</table> -->
+			 
+			
+			
 		<td colspan="2" align="center">
 		<input type="button" value="작성" class="btn btn-primary" id="insert_submit_btn" />&nbsp;&nbsp;
 		<input type="button" value="취소" class="btn btn-primary" onclick="javascript:history.back();"/>

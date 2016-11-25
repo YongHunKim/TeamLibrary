@@ -1,7 +1,5 @@
 package com.sist.library.dao;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.util.*;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,7 +8,13 @@ import org.springframework.stereotype.Repository;
 @Repository("noticeDAO")
 public class NoticeDAO extends AbstractDAO {
 
-	public void insertNotice(NoticeVO vo) {
+
+	public List<NoticeVO> topNotice(){
+		return selectList("notice.topNotice");
+	}//상단고정
+	
+	
+	public void insertNotice(NoticeVO vo){
 		insert("notice.insertNotice", vo);
 
 	}
@@ -39,13 +43,31 @@ public class NoticeDAO extends AbstractDAO {
 	public int divisionNotice(Map map) {
 		return (int) selectOne("notice.divisionNotice", map);
 	}
-
-	public int totalRow() {
-		return (int) selectOne("notice.totalRow");
+	
+    public int totalRow(){
+    	return (int) selectOne("notice.totalRow");
 	}
 
 	public int pageCount() {
 		return (int) selectOne("notice.pageCount");
+	}
+
+
+	public void update_hit(int content_no) {
+		selectOne("notice.update_hit", content_no);
+	}
+	
+	public List <NoticeVO> search(Map map){
+		return selectList("notice.search", map);
+	}
+	
+	public int searchtotalRow(Map map){
+	    return (int) selectOne("notice.searchtotalRow", map);
+	}
+
+
+	public int searchCount(Map map) {
+		return (int) selectOne("notice.searchCount", map); 
 	}
 
 }

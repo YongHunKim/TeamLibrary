@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.*;
 
 import javax.annotation.Resource;
-
+import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,12 +28,11 @@ public class NoticeController {
 	private NoticeService noticeService;
 
 	@RequestMapping(value = "/notice/list.do")
-	public ModelAndView notice_list(String page) throws Exception {
+	public ModelAndView notice_list(@RequestParam(value="page" ,required=false) String page, String fs, String sk, HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("main/main");
 		mav.addObject("type", "list");
 		mav.addObject("jsp", "/WEB-INF/jsp/notice/list.jsp");
-
-		page = (page == null) ? "1" : page;
+		page = (page==null) ? "1" : page;
 		int curpage = Integer.parseInt(page);
 		Map map = new HashMap();
 		int rowSize = 10;
@@ -44,24 +43,53 @@ public class NoticeController {
 		int topage = ((curpage - 1) / block * block) + block;
 		map.put("start", start);
 		map.put("end", end);
-		List<NoticeVO> list = noticeService.getAllNotice(map);
-
-		int totalPage = noticeService.pageCount();
-		if (topage > totalPage) {
-			topage = totalPage;
-		}
-		int totalRow = noticeService.totalRow();
-
+		
+		int totalpage=0;
+		int totalRow=0;				
+		List<NoticeVO> list=null;
+		List<NoticeVO> list2=noticeService.topNotice();
+		
+		if(sk==null){
+			list = noticeService.getAllNotice(map);		
+			totalpage = noticeService.pageCount();
+			if(topage>totalpage){
+				topage = totalpage;
+			}
+			totalRow = noticeService.totalRow();
+		}else{
+			/* 검색select , 검색Text*/
+			map=new HashMap();
+			map.put("start", start);
+			map.put("end", end);
+			map.put("fs", fs);
+			map.put("sk", sk);
+			
+			list= noticeService.search(map);
+			
+			Map map2=new HashMap();
+			map2.put("fs", fs);
+			map2.put("sk", sk);
+			totalpage=noticeService.searchCount(map2);
+			if(topage>totalpage){
+				topage = totalpage;
+			}
+			totalRow = noticeService.searchtotalRow(map2);
+		}		
+		
+		mav.addObject("list2", list2);
 		mav.addObject("totalRow", totalRow);
 		mav.addObject("block", block);
 		mav.addObject("topage", topage);
 		mav.addObject("frompage", frompage);
-		mav.addObject("totalPage", totalPage);
+		mav.addObject("totalPage", totalpage);
 		mav.addObject("curPage", curpage);
 		mav.addObject("list", list);
+		mav.addObject("fs",fs);
+		mav.addObject("sk",sk);
 		mav.addObject("jsp", "/WEB-INF/jsp/notice/list.jsp");
 
 		return mav;
+		
 	}
 
 	@RequestMapping(value = "/notice/insert.do")
@@ -81,11 +109,14 @@ public class NoticeController {
 		return mav;
 	}
 
+	
 	@RequestMapping(value = "/notice/content.do")
-	public ModelAndView notice_content(@RequestParam(value = "nt_no") String nt_no) throws Exception {
-		ModelAndView mav = new ModelAndView("main/main");
+	public ModelAndView notice_content(@RequestParam(value="nt_no") String nt_no,@RequestParam(value="page") String page) throws Exception {
+		ModelAndView mav = new ModelAndView("main/main");	
 		NoticeVO vo = noticeService.getNoticecontent(Integer.parseInt(nt_no));
-
+		int content_no=Integer.parseInt(nt_no);
+		noticeService.update_hit(content_no);	
+		mav.addObject("curpage",page);
 		mav.addObject("vo", vo);
 		mav.addObject("jsp", "/WEB-INF/jsp/notice/content.jsp");
 
@@ -102,24 +133,29 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "/notice/update.do")
-	public ModelAndView notice_update(@RequestParam(value = "nt_no") String nt_no) throws Exception {
-		ModelAndView mav = new ModelAndView("main/main");
+	public ModelAndView notice_update(@RequestParam(value="nt_no") String nt_no,@RequestParam(value="page") String page)throws Exception{
+		ModelAndView mav=new ModelAndView("main/main");
 		NoticeVO vo = noticeService.updateNotice(Integer.parseInt(nt_no));
 		mav.addObject("vo", vo);
+		mav.addObject("curpage",page);
+		mav.addObject("vo",vo);
 		mav.addObject("jsp", "/WEB-INF/jsp/notice/update.jsp");
 
 		return mav;
 	}
 
 	@RequestMapping(value = "/notice/update_ok.do")
-	public ModelAndView notice_update_ok(NoticeVO vo) throws Exception {
-		ModelAndView mav = new ModelAndView("main/main");
+	public ModelAndView notice_update_ok(NoticeVO vo,@RequestParam(value="page") String page)throws Exception{
+		ModelAndView mav=new ModelAndView("main/main");
 		noticeService.update_ok_Notice(vo);
 		System.out.println(vo.getNt_subject());
 		mav.addObject("vo", vo);
+		mav.addObject("vo",vo);
+		mav.addObject("curpage",page);
 		mav.addObject("jsp", "/WEB-INF/jsp/notice/update_ok.jsp");
 
 		return mav;
 	}
 
 }
+	
