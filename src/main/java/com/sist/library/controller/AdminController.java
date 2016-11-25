@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sist.library.dao.BookVO;
-import com.sist.library.dao.lostBoardVO;
 import com.sist.library.service.AdminService;
 import com.sist.library.service.SearchService;
 
