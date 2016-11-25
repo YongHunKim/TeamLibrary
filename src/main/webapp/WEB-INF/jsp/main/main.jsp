@@ -70,12 +70,7 @@
 							<li><a href="/userguide/library_map.do">오시는길</a></li>
 							<li><a href="/userguide/library_time.do">도서관 이용시간</a></li>
 						</ul>
-					</li>
-					<li><a href="/sitemap/sitemap.do" id="current">사이트맵</a>
-						<ul>
-							<li><a href="/sitemap/sitemap.do">사이트맵</a></li>
-						</ul>
-					</li>
+					</li>					
 					<c:set var="sessionid">
 						<%=session.getAttribute("id") %>
 					</c:set>
