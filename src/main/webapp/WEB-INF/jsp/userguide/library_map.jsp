@@ -43,7 +43,7 @@
 		주소) 봉구스 밥버거 반대편, 현대&기아 자동차 옆. </span> -->
 	</div>
 	<br />
-	<div id="map" style="width: 700px; height: 300px;"></div>
+	<div id="map" style="width: 960px; height: 500px;"></div>
 	<!-- width:960px; height: 400px; -->
 
 	<script

@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript">
+
 function delete_check(){	
 	var id = $('#id').val();
 	var pwd = $('#pwd').val();
