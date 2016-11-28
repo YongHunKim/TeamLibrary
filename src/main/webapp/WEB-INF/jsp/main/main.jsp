@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+	<title>SIST LIBRARY</title>
    <%@ include file="/WEB-INF/include/include-header.jspf" %>
    <script>
    window.onload = function(){

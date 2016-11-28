@@ -63,7 +63,7 @@
 				 <td align="right"> 
 					<a href="/notice/update.do?nt_no=${vo.nt_no }&page=${curpage}"><button type="button" class="btn btn-success">수정</button></a>&nbsp;
 					<a href="/notice/delete.do?nt_no=${vo.nt_no }"><button type="button" class="btn btn-success">삭제</button></a>&nbsp;
-					<a href="/notice/list.do?page=${curpage}"><button type="submit" class="btn btn-success">목록</button></a>&nbsp;
+					<a href="/notice/list.do"><button type="button" class="btn btn-success" onclick="">목록</button></a>&nbsp;
 				</td>
 			</tr> 
 		</table> 
