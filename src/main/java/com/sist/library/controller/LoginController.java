@@ -59,6 +59,7 @@ public class LoginController {
 		return mav;
 	}
 	
+	
 	@RequestMapping(value="/login/login_ok.do",method=RequestMethod.POST)
 	public @ResponseBody String login_ok(HttpServletRequest request){
 		String res = "";

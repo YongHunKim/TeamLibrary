@@ -35,7 +35,6 @@ public interface NoticeService {
 	
 	public int pageCount();
 	
-	
 	public void update_hit(int content_no);
 	
 	/*검색*/

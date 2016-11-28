@@ -151,7 +151,7 @@ public class NoticeController {
 	
 	
 	@RequestMapping(value = "/notice/update_ok.do")
-	public ModelAndView notice_update_ok(NoticeVO vo,@RequestParam(value="page") String page)throws Exception{
+	public ModelAndView notice_update_ok(NoticeVO vo, @RequestParam(value="page") String page)throws Exception{
 		ModelAndView mav=new ModelAndView("main/main");
 		noticeService.update_ok_Notice(vo);
 		System.out.println(vo.getNt_subject());

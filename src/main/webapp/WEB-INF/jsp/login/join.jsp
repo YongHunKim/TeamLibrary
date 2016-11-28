@@ -25,6 +25,7 @@
 		});
 	}
 
+
 	function check_field() {
 		var f = $('#join_form');
 		var id = $('#mem_id').val();
