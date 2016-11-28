@@ -11,8 +11,8 @@
 		<span>자료신청 및 예약</span>
 		<ul>
 			<li><a href="/rent/rent.do">대출연기및반납</a></li>
-			<li>예약연기및반납</li>
-			<li>희망도서신청</li>
+			<li><a href="/rent/reserve.do">예약연기및반납</a></li>
+			<li><a href="/rent/wishbook.do">희망도서신청</a></li>
 		</ul>
 	</div>
 
